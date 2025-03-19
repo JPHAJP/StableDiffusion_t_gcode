@@ -106,7 +106,7 @@ def process_image(image: Image.Image) -> Image.Image:
 if __name__ == '__main__':
     modo = input("¿Deseas generar una imagen (g) o cargar una imagen existente (c)? ").strip().lower()
     if modo == 'g':
-        prompt_text = "A beatifull sunflower, big and nice with a shiny sun, animated, logo style, simple."
+        prompt_text = "A dashhound dog running in a field of flowers."
         img = generate_image(prompt_text)
     elif modo == 'c':
         file_path = input("Ingresa la ruta de la imagen a cargar: ").strip()
@@ -116,13 +116,3 @@ if __name__ == '__main__':
     
     # Procesar la imagen (ya sea generada o cargada)
     process_image(img)
-
-#https://github.com/kiri-art/docker-diffusers-api/blob/dev/README.md
-#https://github.com/Stypox/image-to-gcode
-#https://github.com/jherrm/gcode-viewer
-
-#export
-
-#sudo docker build -t gadicc/diffusers-api .
-#sudo docker run --gpus all -p 8000:8000 -e HF_AUTH_TOKEN gadicc/diffusers-api
-#python3 image-to-gcode/image_to_gcode.py --input image.png --output graph.nc --threshold 100 --scale 0.02
