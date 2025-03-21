@@ -1,7 +1,10 @@
 import requests
 import base64
 import io
+import numpy as np
+import cv2
 from PIL import Image, ImageFilter
+import os
 
 def generate_image(prompt: str) -> Image.Image:
     """
@@ -72,36 +75,147 @@ def load_image(file_path: str) -> Image.Image:
     except Exception as e:
         raise Exception(f"No se pudo cargar la imagen: {e}")
 
-def process_image(image: Image.Image) -> Image.Image:
+def process_image(input_image_path, output_path="output_processed.png", threshold_min=100, threshold_max=200):
     """
-    Procesa la imagen para obtener un dibujo de líneas simple:
-    - Convierte la imagen a escala de grises.
-    - Aplica un desenfoque previo para suavizar la imagen.
-    - Detecta los bordes con FIND_EDGES.
-    - Aplica un desenfoque posterior para suavizar los bordes.
-    - Reduce la resolución a la mitad en cada dimensión.
+    Procesa una imagen para detectar bordes de forma avanzada, obteniendo líneas continuas.
+    Invierte los colores al final (bordes blancos sobre fondo negro).
     
-    Guarda la imagen procesada como 'output_processed.png' y la muestra.
-    
-    Parámetro:
-        image (Image.Image): La imagen a procesar.
+    Parámetros:
+        input_image_path (str o Image.Image): Ruta de la imagen o objeto Image a procesar.
+        output_path (str): Ruta donde guardar la imagen procesada.
+        threshold_min (int): Umbral mínimo para la detección de bordes (0-255).
+        threshold_max (int): Umbral máximo para la detección de bordes (0-255).
         
     Retorna:
-        Image.Image: La imagen procesada.
+        Image.Image: La imagen procesada con los bordes detectados (invertida).
     """
-    gray_image = image.convert("L")
-    pre_smoothed = gray_image.filter(ImageFilter.GaussianBlur(radius=1))
-    edges = pre_smoothed.filter(ImageFilter.FIND_EDGES)
-    smooth_edges = edges.filter(ImageFilter.GaussianBlur(radius=1))
+    # Verificar si la entrada es una ruta o un objeto Image
+    if isinstance(input_image_path, str):
+        # Cargar la imagen con OpenCV (mejor para procesamiento)
+        image_cv = cv2.imread(input_image_path)
+    else:
+        # Convertir objeto PIL Image a formato OpenCV
+        image_pil = input_image_path
+        image_np = np.array(image_pil)
+        # Convertir RGB a BGR (formato OpenCV)
+        if len(image_np.shape) == 3 and image_np.shape[2] == 3:
+            image_cv = cv2.cvtColor(image_np, cv2.COLOR_RGB2BGR)
+        else:
+            image_cv = image_np
     
-    new_size = (smooth_edges.width // 1, smooth_edges.height // 1)
-    processed_image = smooth_edges.resize(new_size, resample=Image.NEAREST)
+    # Convertir a escala de grises
+    gray = cv2.cvtColor(image_cv, cv2.COLOR_BGR2GRAY) if len(image_cv.shape) == 3 else image_cv
     
-    processed_image.save("output_processed.png")
-    print("Imagen procesada guardada como 'output_processed.png'")
-    #processed_image.show()
+    # Aplicar desenfoque gaussiano para reducir ruido
+    blurred = cv2.GaussianBlur(gray, (5, 5), 0)
     
-    return processed_image
+    # Ecualización del histograma para mejorar contraste
+    equalized = cv2.equalizeHist(blurred)
+    
+    # Detector de bordes Canny (mejor para líneas continuas)
+    edges = cv2.Canny(equalized, threshold_min, threshold_max)
+    
+    # Dilatación para rellenar pequeños huecos en las líneas
+    kernel = np.ones((2, 2), np.uint8)
+    dilated_edges = cv2.dilate(edges, kernel, iterations=1)
+    
+    # Erosión para adelgazar las líneas dilatadas
+    eroded_edges = cv2.erode(dilated_edges, kernel, iterations=1)
+    
+    # Transformación morfológica para mejorar la continuidad
+    closing = cv2.morphologyEx(eroded_edges, cv2.MORPH_CLOSE, kernel)
+    
+    # Aplicar umbral adaptativo para mejorar la definición
+    adaptive_threshold = cv2.adaptiveThreshold(
+        blurred, 255, cv2.ADAPTIVE_THRESH_GAUSSIAN_C, cv2.THRESH_BINARY_INV, 11, 2
+    )
+    
+    # Combinar los resultados con una operación bitwise OR
+    combined = cv2.bitwise_or(closing, adaptive_threshold)
+    
+    # Invertir los colores para tener bordes blancos sobre fondo negro
+    inverted = cv2.bitwise_not(combined)
+    
+    # Convertir resultado a formato PIL para guardar
+    result_pil = Image.fromarray(inverted)
+    
+    # Guardar la imagen resultante
+    result_pil.save(output_path)
+    print(f"Imagen procesada guardada como '{output_path}'")
+    
+    return result_pil
+
+def process_image_alternative(input_image_path, output_path="output_simplified.png", simplify_level=10):
+    """
+    Método alternativo para simplificar una imagen y extraer solo los contornos principales.
+    Utiliza cuantización de color y detección de contornos para simplificar.
+    
+    Parámetros:
+        input_image_path (str o Image.Image): Ruta de la imagen o objeto Image a procesar.
+        output_path (str): Ruta donde guardar la imagen procesada.
+        simplify_level (int): Nivel de simplificación (1-20, menor = más detalles).
+        
+    Retorna:
+        Image.Image: La imagen procesada con contornos simplificados.
+    """
+    # Verificar si la entrada es una ruta o un objeto Image
+    if isinstance(input_image_path, str):
+        image_cv = cv2.imread(input_image_path)
+    else:
+        image_pil = input_image_path
+        image_np = np.array(image_pil)
+        if len(image_np.shape) == 3 and image_np.shape[2] == 3:
+            image_cv = cv2.cvtColor(image_np, cv2.COLOR_RGB2BGR)
+        else:
+            image_cv = image_np
+    
+    # Convertir a escala de grises
+    gray = cv2.cvtColor(image_cv, cv2.COLOR_BGR2GRAY) if len(image_cv.shape) == 3 else image_cv
+    
+    # Fuerte desenfoque para eliminar detalles
+    blurred = cv2.GaussianBlur(gray, (11, 11), 0)
+    
+    # Cuantización de la imagen (reducir número de niveles de gris)
+    num_levels = max(2, 256 // simplify_level)
+    quantized = np.floor(blurred / (256 / num_levels)) * (256 / num_levels)
+    quantized = quantized.astype(np.uint8)
+    
+    # Detectar bordes con Laplaciano (más simple que Canny)
+    laplacian = cv2.Laplacian(quantized, cv2.CV_8U, ksize=3)
+    
+    # Umbralización adaptativa
+    thresholded = cv2.adaptiveThreshold(
+        laplacian, 255, cv2.ADAPTIVE_THRESH_MEAN_C, cv2.THRESH_BINARY, 11, 2
+    )
+    
+    # Eliminar ruido con operaciones morfológicas
+    kernel = np.ones((2, 2), np.uint8)
+    denoised = cv2.morphologyEx(thresholded, cv2.MORPH_OPEN, kernel)
+    
+    # Detección de contornos para encontrar solo los principales
+    contours, _ = cv2.findContours(denoised, cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_SIMPLE)
+    
+    # Crear una imagen en blanco para dibujar solo los contornos importantes
+    contour_img = np.zeros_like(gray)
+    
+    # Filtrar contornos por área para mantener solo los más grandes/importantes
+    min_area = (gray.shape[0] * gray.shape[1]) / (100 * simplify_level)
+    significant_contours = [cnt for cnt in contours if cv2.contourArea(cnt) > min_area]
+    
+    # Dibujar los contornos importantes
+    cv2.drawContours(contour_img, significant_contours, -1, 255, 1)
+    
+    # Invertir para tener líneas blancas sobre fondo negro
+    inverted = cv2.bitwise_not(contour_img)
+    
+    # Convertir resultado a formato PIL para guardar
+    result_pil = Image.fromarray(inverted)
+    
+    # Guardar la imagen resultante
+    result_pil.save(output_path)
+    print(f"Imagen alternativa simplificada guardada como '{output_path}'")
+    
+    return result_pil
 
 if __name__ == '__main__':
     modo = input("¿Deseas generar una imagen (g) o cargar una imagen existente (c)? ").strip().lower()
@@ -115,4 +229,5 @@ if __name__ == '__main__':
         raise Exception("Opción no válida. Elige 'g' para generar o 'c' para cargar.")
     
     # Procesar la imagen (ya sea generada o cargada)
-    process_image(img)
+    process_image(img, "bordes_simplificados.png")
+    process_image_alternative(img, "contornos_principales.png", simplify_level=1)
