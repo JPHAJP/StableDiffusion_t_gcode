@@ -35,6 +35,6 @@ export HF_AUTH_TOKEN="abc123"
 stable diffusion on docker API thks to #https://github.com/kiri-art/docker-diffusers-api/blob/dev
 
 image_to_gcode, thks to #https://github.com/Stypox/image-to-gcode
-#python3 image-to-gcode/image_to_gcode.py --input image.png --output graph.nc --threshold 100 --scale 0.02
+#python3 image-to-gcode/image_to_gcode.py --input image.png --output graph.nc --threshold 100 --scale 1
 
 gcode viewer #https://github.com/jherrm/gcode-viewer
