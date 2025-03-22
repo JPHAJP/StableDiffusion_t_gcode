@@ -45,7 +45,8 @@ class CircularRange:
 class Graph:
     class Node:
         def __init__(self, point, index):
-            self.x, self.y = point
+            # Intercambiamos para que x corresponda a la columna y y a la fila
+            self.x, self.y = point[1], -point[0]
             self.index = index
             self.connections = {}
 
@@ -588,3 +589,69 @@ def main():
 
 if __name__ == "__main__":
     main()
+
+import numpy as np
+import imageio
+from PIL import Image
+
+def convert_image_to_gcode(
+    image_input,
+    output_gcode="out.nc",
+    edges_mode="black",
+    threshold=32,
+    scale=1.0,
+    simplify=0.5,
+    dot_output=None
+):
+    """
+    Convierte una imagen a G-code usando la lógica de este script.
+    - image_input: puede ser una ruta (str) o un objeto PIL.Image
+    - output_gcode: nombre del archivo G-code de salida (por defecto 'out.nc')
+    - edges_mode: 'white' o 'black' (similar a --edges en tu script)
+    - threshold: umbral para convertir a binario (similar a --threshold)
+    - scale: factor de escala (similar a -s)
+    - simplify: factor de simplificación (similar a --simplify)
+    - dot_output: si quieres guardar el grafo en formato DOT (opcional, o None)
+    """
+
+    # 1) Cargar la imagen (ruta o PIL)
+    if isinstance(image_input, str):
+        # Si es ruta, la leemos con imageio
+        image = imageio.imread(image_input)
+    elif isinstance(image_input, Image.Image):
+        # Si ya es PIL.Image, convertimos a numpy array
+        image = np.array(image_input)
+    else:
+        raise ValueError("image_input debe ser una ruta (str) o PIL.Image.")
+
+    # 2) Si edges_mode es None, usar sobel; si es 'black' o 'white', invertimos o no
+    if edges_mode is None:
+        # Usa Sobel
+        from scipy import ndimage
+        edges = sobel(image)  # sobel() está definido en este mismo script
+    elif edges_mode == "black":
+        # Invertir la imagen (asume bordes en negro sobre fondo blanco)
+        edges = np.invert(image)
+    elif edges_mode == "white":
+        # Usa la imagen tal cual, asumiendo bordes en blanco
+        edges = image
+    else:
+        raise ValueError("edges_mode debe ser 'black', 'white' o None.")
+
+    # 3) Umbralizar la imagen para obtener un array booleano de bordes
+    edges_bool = convertToBinaryEdges(edges, threshold)
+
+    # 4) Construir el grafo a partir de los bordes
+    converter = EdgesToGcode(edges_bool)
+    graph = converter.buildGraph()
+
+    # 5) Guardar DOT opcional
+    if dot_output is not None:
+        with open(dot_output, "w") as f:
+            graph.saveAsDotFile(f)
+
+    # 6) Guardar G-code
+    with open(output_gcode, "w") as f:
+        graph.saveAsGcodeFile(f, scale=scale, simplify_factor=simplify)
+
+    print(f"G-code guardado en: {output_gcode}")

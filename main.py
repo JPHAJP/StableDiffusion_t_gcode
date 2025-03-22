@@ -1,1 +1,0 @@
-#Incorporar todas las tecnologías
