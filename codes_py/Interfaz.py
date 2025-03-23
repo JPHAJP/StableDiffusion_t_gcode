@@ -41,13 +41,14 @@ def enhance_prompt(text, target_language="en"):
 
         Rules:
         1. The prompt MUST be in English, regardless of the input language.
-        2. Focus on generating an animated/cartoon-style image.
+        2. Focus on generating an animated image.
         3. Keep the description simple but detailed.
         4. Include aspects such as: art style, lighting, colors, perspective.
         5. Final format: Just the prompt with no additional explanation.
         6. Use no more than 75 words.
         7. Never say you are generating a prompt.
         8. Just write the prompt as if you are describing a scene to an artist.
+        9. Focus on making the image interesting but simple.
     """
     
     messages = [
