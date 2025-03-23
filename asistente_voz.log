@@ -1,0 +1,1699 @@
+2025-03-22 21:08:15,536 - AsistenteVoz - INFO - Micrófono seleccionado: 0
+2025-03-22 21:08:15,537 - AsistenteVoz - INFO - Iniciando hilo de reconocimiento de voz...
+2025-03-22 21:08:15,538 - AsistenteVoz - INFO - Analizando nivel de audio ambiental durante 3 segundos...
+2025-03-22 21:08:15,725 - AsistenteVoz - ERROR - Error al analizar nivel de audio: [Errno -9997] Invalid sample rate
+2025-03-22 21:08:16,529 - AsistenteVoz - INFO - Reproduciendo: Asistente de voz activado. Di mi nombre para comenzar.
+2025-03-22 21:08:20,318 - AsistenteVoz - INFO - Deteniendo el asistente de voz...
+2025-03-22 21:08:20,682 - AsistenteVoz - ERROR - Error al reproducir audio: Command '['/usr/bin/python3', '/home/jpha/Documents/Proyectos/StableDiffusion_t_gcode/venv/lib/python3.12/site-packages/playsound.py', 'audio_cache/respuesta_7c8349d6d295206129f905d537c3549b.mp3']' died with <Signals.SIGINT: 2>.
+2025-03-22 21:08:20,682 - AsistenteVoz - INFO - Hilo terminado correctamente.
+2025-03-22 21:13:36,721 - AsistenteVoz - INFO - Micrófono seleccionado: 0
+2025-03-22 21:13:36,721 - AsistenteVoz - INFO - Iniciando hilo de reconocimiento de voz...
+2025-03-22 21:13:36,750 - AsistenteVoz - INFO - Analizando nivel de audio ambiental durante 3 segundos...
+2025-03-22 21:13:36,750 - AsistenteVoz - ERROR - Error al analizar nivel de audio: [Errno -9997] Invalid sample rate
+2025-03-22 21:13:37,629 - AsistenteVoz - INFO - Reproduciendo: Asistente de voz activado. Di mi nombre para comenzar.
+2025-03-22 21:13:42,236 - AsistenteVoz - INFO - Esperando la palabra clave...
+2025-03-22 21:13:42,286 - AsistenteVoz - INFO - Escuchando... (timeout=7.0s, phrase_limit=5.0s)
+2025-03-22 21:13:42,287 - AsistenteVoz - INFO - Ajustando para ruido ambiental...
+2025-03-22 21:13:45,775 - AsistenteVoz - INFO - Audio capturado correctamente
+2025-03-22 21:13:46,357 - AsistenteVoz - INFO - Transcripción (Google): 'José'
+2025-03-22 21:13:46,357 - AsistenteVoz - INFO - Verificando si 'josé' contiene palabra clave
+2025-03-22 21:13:46,358 - AsistenteVoz - INFO - Esperando la palabra clave...
+2025-03-22 21:13:46,425 - AsistenteVoz - INFO - Escuchando... (timeout=7.5s, phrase_limit=5.5s)
+2025-03-22 21:13:55,600 - AsistenteVoz - WARNING - Tiempo de espera agotado. No se detectó audio.
+2025-03-22 21:13:55,602 - AsistenteVoz - INFO - Esperando la palabra clave...
+2025-03-22 21:13:55,701 - AsistenteVoz - INFO - Escuchando... (timeout=8.0s, phrase_limit=6.0s)
+2025-03-22 21:14:04,816 - AsistenteVoz - WARNING - Tiempo de espera agotado. No se detectó audio.
+2025-03-22 21:14:04,817 - AsistenteVoz - INFO - Esperando la palabra clave...
+2025-03-22 21:14:04,906 - AsistenteVoz - INFO - Escuchando... (timeout=8.5s, phrase_limit=6.5s)
+2025-03-22 21:14:10,064 - AsistenteVoz - INFO - Audio capturado correctamente
+2025-03-22 21:14:10,515 - AsistenteVoz - WARNING - Google no pudo entender el audio
+2025-03-22 21:14:10,515 - AsistenteVoz - WARNING - Todos los servicios de transcripción fallaron
+2025-03-22 21:14:10,515 - AsistenteVoz - INFO - Esperando la palabra clave...
+2025-03-22 21:14:10,581 - AsistenteVoz - INFO - Escuchando... (timeout=9.0s, phrase_limit=7.0s)
+2025-03-22 21:14:12,143 - AsistenteVoz - INFO - Audio capturado correctamente
+2025-03-22 21:14:12,475 - AsistenteVoz - WARNING - Google no pudo entender el audio
+2025-03-22 21:14:12,475 - AsistenteVoz - WARNING - Todos los servicios de transcripción fallaron
+2025-03-22 21:14:12,475 - AsistenteVoz - INFO - Esperando la palabra clave...
+2025-03-22 21:14:12,564 - AsistenteVoz - INFO - Escuchando... (timeout=9.5s, phrase_limit=7.5s)
+2025-03-22 21:14:14,897 - AsistenteVoz - INFO - Audio capturado correctamente
+2025-03-22 21:14:15,329 - AsistenteVoz - WARNING - Google no pudo entender el audio
+2025-03-22 21:14:15,330 - AsistenteVoz - WARNING - Todos los servicios de transcripción fallaron
+2025-03-22 21:14:15,330 - AsistenteVoz - INFO - Esperando la palabra clave...
+2025-03-22 21:14:15,395 - AsistenteVoz - INFO - Escuchando... (timeout=10.0s, phrase_limit=8.0s)
+2025-03-22 21:14:27,296 - AsistenteVoz - WARNING - Tiempo de espera agotado. No se detectó audio.
+2025-03-22 21:14:27,298 - AsistenteVoz - INFO - Esperando la palabra clave...
+2025-03-22 21:14:27,499 - AsistenteVoz - INFO - Escuchando... (timeout=10.5s, phrase_limit=8s)
+2025-03-22 21:14:39,982 - AsistenteVoz - WARNING - Tiempo de espera agotado. No se detectó audio.
+2025-03-22 21:14:39,983 - AsistenteVoz - INFO - Esperando la palabra clave...
+2025-03-22 21:14:40,067 - AsistenteVoz - INFO - Escuchando... (timeout=11.0s, phrase_limit=8s)
+2025-03-22 21:14:54,066 - AsistenteVoz - WARNING - Tiempo de espera agotado. No se detectó audio.
+2025-03-22 21:14:54,067 - AsistenteVoz - INFO - Esperando la palabra clave...
+2025-03-22 21:14:54,134 - AsistenteVoz - INFO - Escuchando... (timeout=11.5s, phrase_limit=8s)
+2025-03-22 21:14:54,135 - AsistenteVoz - INFO - Ajustando para ruido ambiental...
+2025-03-22 21:15:10,224 - AsistenteVoz - WARNING - Tiempo de espera agotado. No se detectó audio.
+2025-03-22 21:15:10,226 - AsistenteVoz - INFO - Esperando la palabra clave...
+2025-03-22 21:15:10,318 - AsistenteVoz - INFO - Escuchando... (timeout=12.0s, phrase_limit=8s)
+2025-03-22 21:15:14,713 - AsistenteVoz - INFO - Audio capturado correctamente
+2025-03-22 21:15:15,407 - AsistenteVoz - INFO - Transcripción (Google): 'Hola cómo estás'
+2025-03-22 21:15:15,407 - AsistenteVoz - INFO - Verificando si 'hola cómo estás' contiene palabra clave
+2025-03-22 21:15:15,408 - AsistenteVoz - INFO - ¡Palabra de activación detectada! ('hola' en 'hola cómo estás')
+2025-03-22 21:15:16,029 - AsistenteVoz - INFO - Reproduciendo: ¿En qué puedo ayudarte?
+2025-03-22 21:15:18,525 - AsistenteVoz - INFO - Palabra clave detectada. Entrando en modo de instrucciones.
+2025-03-22 21:15:18,526 - AsistenteVoz - INFO - Esperando instrucciones...
+2025-03-22 21:15:18,607 - AsistenteVoz - INFO - Escuchando... (timeout=10s, phrase_limit=7s)
+2025-03-22 21:15:21,111 - AsistenteVoz - INFO - Audio capturado correctamente
+2025-03-22 21:15:21,581 - AsistenteVoz - INFO - Transcripción (Google): 'quién eres'
+2025-03-22 21:15:21,581 - AsistenteVoz - INFO - Instrucción recibida: quién eres
+2025-03-22 21:15:22,388 - AsistenteVoz - INFO - Reproduciendo: No tengo una respuesta específica para 'quién eres'. ¿Puedo ayudarte con algo más?
+2025-03-22 21:15:29,594 - AsistenteVoz - INFO - Esperando la palabra clave...
+2025-03-22 21:15:29,649 - AsistenteVoz - INFO - Escuchando... (timeout=7.0s, phrase_limit=5.0s)
+2025-03-22 21:15:35,608 - AsistenteVoz - INFO - Audio capturado correctamente
+2025-03-22 21:15:36,763 - AsistenteVoz - INFO - Transcripción (Google): 'Silvia salir'
+2025-03-22 21:15:36,763 - AsistenteVoz - INFO - Verificando si 'silvia salir' contiene palabra clave
+2025-03-22 21:15:36,763 - AsistenteVoz - INFO - ¡Palabra de activación detectada! ('silvia' en 'silvia salir')
+2025-03-22 21:15:36,763 - AsistenteVoz - INFO - Reproduciendo: ¿En qué puedo ayudarte?
+2025-03-22 21:15:39,277 - AsistenteVoz - INFO - Palabra clave detectada. Entrando en modo de instrucciones.
+2025-03-22 21:15:39,277 - AsistenteVoz - INFO - Esperando instrucciones...
+2025-03-22 21:15:39,337 - AsistenteVoz - INFO - Escuchando... (timeout=10s, phrase_limit=7s)
+2025-03-22 21:15:41,696 - AsistenteVoz - INFO - Audio capturado correctamente
+2025-03-22 21:15:42,472 - AsistenteVoz - INFO - Transcripción (Google): 'Silvia salir'
+2025-03-22 21:15:42,472 - AsistenteVoz - INFO - Instrucción recibida: silvia salir
+2025-03-22 21:15:42,517 - AsistenteVoz - INFO - Deteniendo el asistente de voz...
+2025-03-22 21:15:43,121 - AsistenteVoz - INFO - Reproduciendo: Cerrando asistente
+2025-03-22 21:15:46,423 - AsistenteVoz - INFO - Hilo terminado correctamente.
+2025-03-22 21:16:52,891 - AsistenteVoz - INFO - Micrófono seleccionado: 0
+2025-03-22 21:16:52,891 - AsistenteVoz - INFO - Iniciando hilo de reconocimiento de voz...
+2025-03-22 21:16:52,916 - AsistenteVoz - INFO - Analizando nivel de audio ambiental durante 3 segundos...
+2025-03-22 21:16:52,916 - AsistenteVoz - ERROR - Error al analizar nivel de audio: [Errno -9997] Invalid sample rate
+2025-03-22 21:16:53,505 - AsistenteVoz - INFO - Reproduciendo: Asistente de voz activado. Di mi nombre para comenzar.
+2025-03-22 21:16:58,119 - AsistenteVoz - INFO - Esperando la palabra clave...
+2025-03-22 21:16:58,173 - AsistenteVoz - INFO - Escuchando... (timeout=7.0s, phrase_limit=5.0s)
+2025-03-22 21:16:58,173 - AsistenteVoz - INFO - Ajustando para ruido ambiental...
+2025-03-22 21:17:03,656 - AsistenteVoz - INFO - Audio capturado correctamente
+2025-03-22 21:17:04,273 - AsistenteVoz - INFO - Transcripción (Google): 'Hola Silvia'
+2025-03-22 21:17:04,274 - AsistenteVoz - INFO - Verificando si 'hola silvia' contiene palabra clave
+2025-03-22 21:17:04,275 - AsistenteVoz - INFO - ¡Palabra de activación detectada! ('silvia' en 'hola silvia')
+2025-03-22 21:17:04,843 - AsistenteVoz - INFO - Reproduciendo: ¿En qué puedo ayudarte?
+2025-03-22 21:17:07,344 - AsistenteVoz - INFO - Palabra clave detectada. Entrando en modo de instrucciones.
+2025-03-22 21:17:07,344 - AsistenteVoz - INFO - Esperando instrucciones...
+2025-03-22 21:17:07,430 - AsistenteVoz - INFO - Escuchando... (timeout=10s, phrase_limit=7s)
+2025-03-22 21:17:08,996 - AsistenteVoz - INFO - Audio capturado correctamente
+2025-03-22 21:17:09,577 - AsistenteVoz - INFO - Transcripción (Google): 'Quiero saber la hora'
+2025-03-22 21:17:09,577 - AsistenteVoz - INFO - Instrucción recibida: quiero saber la hora
+2025-03-22 21:17:10,266 - AsistenteVoz - INFO - Reproduciendo: Son las 21:17
+2025-03-22 21:17:14,445 - AsistenteVoz - INFO - Esperando la palabra clave...
+2025-03-22 21:17:14,518 - AsistenteVoz - INFO - Escuchando... (timeout=7.0s, phrase_limit=5.0s)
+2025-03-22 21:17:22,340 - AsistenteVoz - INFO - Audio capturado correctamente
+2025-03-22 21:17:22,973 - AsistenteVoz - WARNING - Google no pudo entender el audio
+2025-03-22 21:17:22,973 - AsistenteVoz - WARNING - Todos los servicios de transcripción fallaron
+2025-03-22 21:17:22,973 - AsistenteVoz - INFO - Esperando la palabra clave...
+2025-03-22 21:17:23,050 - AsistenteVoz - INFO - Escuchando... (timeout=7.5s, phrase_limit=5.5s)
+2025-03-22 21:17:25,019 - AsistenteVoz - INFO - Deteniendo el asistente de voz...
+2025-03-22 21:19:10,433 - AsistenteVoz - INFO - Micrófono seleccionado: 0
+2025-03-22 21:19:10,434 - AsistenteVoz - INFO - Iniciando hilo de reconocimiento de voz...
+2025-03-22 21:19:10,464 - AsistenteVoz - INFO - Analizando nivel de audio ambiental durante 3 segundos...
+2025-03-22 21:19:10,464 - AsistenteVoz - ERROR - Error al analizar nivel de audio: [Errno -9997] Invalid sample rate
+2025-03-22 21:19:10,464 - AsistenteVoz - INFO - Reproduciendo: Asistente de voz activado. Di mi nombre para comenzar.
+2025-03-22 21:19:15,097 - AsistenteVoz - INFO - Esperando la palabra clave...
+2025-03-22 21:19:15,172 - AsistenteVoz - INFO - Escuchando... (timeout=7.0s, phrase_limit=5.0s)
+2025-03-22 21:19:15,173 - AsistenteVoz - INFO - Ajustando para ruido ambiental...
+2025-03-22 21:19:22,821 - AsistenteVoz - INFO - Audio capturado correctamente
+2025-03-22 21:19:23,168 - AsistenteVoz - WARNING - Google no pudo entender el audio
+2025-03-22 21:19:23,169 - AsistenteVoz - WARNING - Todos los servicios de transcripción fallaron
+2025-03-22 21:19:23,169 - AsistenteVoz - INFO - Esperando la palabra clave...
+2025-03-22 21:19:23,241 - AsistenteVoz - INFO - Escuchando... (timeout=7.5s, phrase_limit=5.5s)
+2025-03-22 21:19:25,196 - AsistenteVoz - INFO - Audio capturado correctamente
+2025-03-22 21:19:25,635 - AsistenteVoz - WARNING - Google no pudo entender el audio
+2025-03-22 21:19:25,635 - AsistenteVoz - WARNING - Todos los servicios de transcripción fallaron
+2025-03-22 21:19:25,635 - AsistenteVoz - INFO - Esperando la palabra clave...
+2025-03-22 21:19:25,724 - AsistenteVoz - INFO - Escuchando... (timeout=8.0s, phrase_limit=6.0s)
+2025-03-22 21:19:27,891 - AsistenteVoz - INFO - Audio capturado correctamente
+2025-03-22 21:19:28,074 - AsistenteVoz - WARNING - Google no pudo entender el audio
+2025-03-22 21:19:28,074 - AsistenteVoz - WARNING - Todos los servicios de transcripción fallaron
+2025-03-22 21:19:28,075 - AsistenteVoz - INFO - Esperando la palabra clave...
+2025-03-22 21:19:28,156 - AsistenteVoz - INFO - Escuchando... (timeout=8.5s, phrase_limit=6.5s)
+2025-03-22 21:19:31,559 - AsistenteVoz - INFO - Audio capturado correctamente
+2025-03-22 21:19:32,100 - AsistenteVoz - WARNING - Google no pudo entender el audio
+2025-03-22 21:19:32,101 - AsistenteVoz - WARNING - Todos los servicios de transcripción fallaron
+2025-03-22 21:19:32,101 - AsistenteVoz - INFO - Esperando la palabra clave...
+2025-03-22 21:19:32,185 - AsistenteVoz - INFO - Escuchando... (timeout=9.0s, phrase_limit=7.0s)
+2025-03-22 21:19:34,939 - AsistenteVoz - INFO - Audio capturado correctamente
+2025-03-22 21:19:35,427 - AsistenteVoz - WARNING - Google no pudo entender el audio
+2025-03-22 21:19:35,427 - AsistenteVoz - WARNING - Todos los servicios de transcripción fallaron
+2025-03-22 21:19:35,427 - AsistenteVoz - INFO - Esperando la palabra clave...
+2025-03-22 21:19:35,517 - AsistenteVoz - INFO - Escuchando... (timeout=9.5s, phrase_limit=7.5s)
+2025-03-22 21:19:40,898 - AsistenteVoz - INFO - Audio capturado correctamente
+2025-03-22 21:19:41,430 - AsistenteVoz - WARNING - Google no pudo entender el audio
+2025-03-22 21:19:41,431 - AsistenteVoz - WARNING - Todos los servicios de transcripción fallaron
+2025-03-22 21:19:41,431 - AsistenteVoz - INFO - Esperando la palabra clave...
+2025-03-22 21:19:41,514 - AsistenteVoz - INFO - Escuchando... (timeout=10.0s, phrase_limit=8.0s)
+2025-03-22 21:19:41,592 - AsistenteVoz - INFO - Deteniendo el asistente de voz...
+2025-03-22 21:19:43,031 - AsistenteVoz - INFO - Audio capturado correctamente
+2025-03-22 21:19:43,381 - AsistenteVoz - WARNING - Google no pudo entender el audio
+2025-03-22 21:19:43,381 - AsistenteVoz - WARNING - Todos los servicios de transcripción fallaron
+2025-03-22 21:19:43,381 - AsistenteVoz - INFO - Hilo terminado correctamente.
+2025-03-22 21:19:57,816 - AsistenteVoz - INFO - Micrófono seleccionado: 0
+2025-03-22 21:19:57,816 - AsistenteVoz - INFO - Iniciando hilo de reconocimiento de voz...
+2025-03-22 21:19:57,844 - AsistenteVoz - INFO - Analizando nivel de audio ambiental durante 3 segundos...
+2025-03-22 21:19:57,844 - AsistenteVoz - ERROR - Error al analizar nivel de audio: [Errno -9997] Invalid sample rate
+2025-03-22 21:19:57,845 - AsistenteVoz - INFO - Reproduciendo: Asistente de voz activado. Di mi nombre para comenzar.
+2025-03-22 21:20:02,487 - AsistenteVoz - INFO - Esperando la palabra clave...
+2025-03-22 21:20:02,564 - AsistenteVoz - INFO - Escuchando... (timeout=7.0s, phrase_limit=5.0s)
+2025-03-22 21:20:02,565 - AsistenteVoz - INFO - Ajustando para ruido ambiental...
+2025-03-22 21:20:10,406 - AsistenteVoz - INFO - Audio capturado correctamente
+2025-03-22 21:20:11,068 - AsistenteVoz - INFO - Transcripción (Google): 'Hola Silvia'
+2025-03-22 21:20:11,068 - AsistenteVoz - INFO - Verificando si 'hola silvia' contiene palabra clave
+2025-03-22 21:20:11,068 - AsistenteVoz - INFO - ¡Palabra de activación detectada! ('silvia' en 'hola silvia')
+2025-03-22 21:20:11,069 - AsistenteVoz - INFO - Reproduciendo: ¿En qué puedo ayudarte?
+2025-03-22 21:20:13,360 - AsistenteVoz - INFO - Palabra clave detectada. Entrando en modo de instrucciones.
+2025-03-22 21:20:13,360 - AsistenteVoz - INFO - Esperando instrucciones...
+2025-03-22 21:20:13,442 - AsistenteVoz - INFO - Escuchando... (timeout=10s, phrase_limit=7s)
+2025-03-22 21:20:15,804 - AsistenteVoz - INFO - Audio capturado correctamente
+2025-03-22 21:20:16,653 - AsistenteVoz - INFO - Transcripción (Google): 'Dame la hora'
+2025-03-22 21:20:16,654 - AsistenteVoz - INFO - Instrucción recibida: dame la hora
+2025-03-22 21:20:17,349 - AsistenteVoz - INFO - Reproduciendo: Son las 21:20
+2025-03-22 21:20:21,286 - AsistenteVoz - INFO - Esperando la palabra clave...
+2025-03-22 21:20:21,341 - AsistenteVoz - INFO - Escuchando... (timeout=7.0s, phrase_limit=5.0s)
+2025-03-22 21:20:23,422 - AsistenteVoz - INFO - Audio capturado correctamente
+2025-03-22 21:20:23,777 - AsistenteVoz - WARNING - Google no pudo entender el audio
+2025-03-22 21:20:23,777 - AsistenteVoz - WARNING - Todos los servicios de transcripción fallaron
+2025-03-22 21:20:23,778 - AsistenteVoz - INFO - Esperando la palabra clave...
+2025-03-22 21:20:23,863 - AsistenteVoz - INFO - Escuchando... (timeout=7.5s, phrase_limit=5.5s)
+2025-03-22 21:20:31,134 - AsistenteVoz - INFO - Audio capturado correctamente
+2025-03-22 21:20:31,557 - AsistenteVoz - WARNING - Google no pudo entender el audio
+2025-03-22 21:20:31,557 - AsistenteVoz - WARNING - Todos los servicios de transcripción fallaron
+2025-03-22 21:20:31,557 - AsistenteVoz - INFO - Esperando la palabra clave...
+2025-03-22 21:20:31,651 - AsistenteVoz - INFO - Escuchando... (timeout=8.0s, phrase_limit=6.0s)
+2025-03-22 21:20:37,551 - AsistenteVoz - INFO - Deteniendo el asistente de voz...
+2025-03-22 21:20:38,430 - AsistenteVoz - INFO - Audio capturado correctamente
+2025-03-22 21:20:38,789 - AsistenteVoz - WARNING - Google no pudo entender el audio
+2025-03-22 21:20:38,790 - AsistenteVoz - WARNING - Todos los servicios de transcripción fallaron
+2025-03-22 21:20:38,790 - AsistenteVoz - INFO - Hilo terminado correctamente.
+2025-03-22 21:23:34,594 - AsistenteVoz - INFO - Micrófono seleccionado: 0
+2025-03-22 21:23:34,595 - AsistenteVoz - INFO - Iniciando hilo de reconocimiento de voz...
+2025-03-22 21:23:34,621 - AsistenteVoz - INFO - Analizando nivel de audio ambiental durante 3 segundos...
+2025-03-22 21:23:34,621 - AsistenteVoz - ERROR - Error al analizar nivel de audio: [Errno -9997] Invalid sample rate
+2025-03-22 21:23:35,269 - AsistenteVoz - INFO - Reproduciendo: Asistente de voz activado. Di mi nombre para comenzar.
+2025-03-22 21:23:39,900 - AsistenteVoz - INFO - Esperando la palabra clave...
+2025-03-22 21:23:40,073 - AsistenteVoz - INFO - Escuchando... (timeout=7.0s, phrase_limit=5.0s)
+2025-03-22 21:23:40,074 - AsistenteVoz - INFO - Ajustando para ruido ambiental...
+2025-03-22 21:23:48,457 - AsistenteVoz - INFO - Audio capturado correctamente
+2025-03-22 21:23:48,911 - AsistenteVoz - WARNING - Google no pudo entender el audio
+2025-03-22 21:23:48,911 - AsistenteVoz - WARNING - Todos los servicios de transcripción fallaron
+2025-03-22 21:23:48,912 - AsistenteVoz - INFO - Esperando la palabra clave...
+2025-03-22 21:23:48,997 - AsistenteVoz - INFO - Escuchando... (timeout=7.5s, phrase_limit=5.5s)
+2025-03-22 21:23:51,263 - AsistenteVoz - INFO - Audio capturado correctamente
+2025-03-22 21:23:51,855 - AsistenteVoz - INFO - Transcripción (Google): 'Hola Silvia'
+2025-03-22 21:23:51,856 - AsistenteVoz - INFO - Verificando si 'hola silvia' contiene palabra clave
+2025-03-22 21:23:51,856 - AsistenteVoz - INFO - ¡Palabra de activación detectada! ('silvia' en 'hola silvia')
+2025-03-22 21:23:52,425 - AsistenteVoz - INFO - Reproduciendo: ¿En qué puedo ayudarte?
+2025-03-22 21:23:54,921 - AsistenteVoz - INFO - Palabra clave detectada. Entrando en modo de instrucciones.
+2025-03-22 21:23:54,921 - AsistenteVoz - INFO - Esperando instrucciones...
+2025-03-22 21:23:54,992 - AsistenteVoz - INFO - Escuchando... (timeout=10s, phrase_limit=7s)
+2025-03-22 21:23:57,123 - AsistenteVoz - INFO - Audio capturado correctamente
+2025-03-22 21:23:57,983 - AsistenteVoz - INFO - Transcripción (Google): 'es la fecha de hoy'
+2025-03-22 21:23:57,983 - AsistenteVoz - INFO - Instrucción recibida: es la fecha de hoy
+2025-03-22 21:23:58,785 - AsistenteVoz - INFO - Reproduciendo: Hoy es 22 de March de 2025
+2025-03-22 21:24:03,706 - AsistenteVoz - INFO - Esperando la palabra clave...
+2025-03-22 21:24:03,761 - AsistenteVoz - INFO - Escuchando... (timeout=7.0s, phrase_limit=5.0s)
+2025-03-22 21:24:11,276 - AsistenteVoz - INFO - Audio capturado correctamente
+2025-03-22 21:24:12,519 - AsistenteVoz - INFO - Transcripción (Google): 'Hola Sí bien que me puedes ayudar'
+2025-03-22 21:24:12,520 - AsistenteVoz - INFO - Verificando si 'hola sí bien que me puedes ayudar' contiene palabra clave
+2025-03-22 21:24:12,520 - AsistenteVoz - INFO - ¡Palabra de activación detectada! ('ayuda' en 'hola sí bien que me puedes ayudar')
+2025-03-22 21:24:12,520 - AsistenteVoz - INFO - Reproduciendo: ¿En qué puedo ayudarte?
+2025-03-22 21:24:15,039 - AsistenteVoz - INFO - Palabra clave detectada. Entrando en modo de instrucciones.
+2025-03-22 21:24:15,039 - AsistenteVoz - INFO - Esperando instrucciones...
+2025-03-22 21:24:15,107 - AsistenteVoz - INFO - Escuchando... (timeout=10s, phrase_limit=7s)
+2025-03-22 21:24:20,444 - AsistenteVoz - INFO - Audio capturado correctamente
+2025-03-22 21:24:20,834 - AsistenteVoz - WARNING - Google no pudo entender el audio
+2025-03-22 21:24:20,834 - AsistenteVoz - WARNING - Todos los servicios de transcripción fallaron
+2025-03-22 21:24:21,575 - AsistenteVoz - INFO - Reproduciendo: No te he entendido. ¿Puedes repetir?
+2025-03-22 21:24:25,035 - AsistenteVoz - INFO - Esperando instrucciones...
+2025-03-22 21:24:25,122 - AsistenteVoz - INFO - Escuchando... (timeout=10s, phrase_limit=7s)
+2025-03-22 21:24:37,476 - AsistenteVoz - WARNING - Tiempo de espera agotado. No se detectó audio.
+2025-03-22 21:24:38,156 - AsistenteVoz - INFO - Reproduciendo: ¿Puedes repetir tu instrucción, por favor?
+2025-03-22 21:24:41,726 - AsistenteVoz - INFO - Esperando instrucciones...
+2025-03-22 21:24:41,892 - AsistenteVoz - INFO - Escuchando... (timeout=10s, phrase_limit=7s)
+2025-03-22 21:24:41,892 - AsistenteVoz - INFO - Ajustando para ruido ambiental...
+2025-03-22 21:24:49,740 - AsistenteVoz - INFO - Audio capturado correctamente
+2025-03-22 21:24:50,664 - AsistenteVoz - INFO - Transcripción (Google): 'Hola Siri ayuda'
+2025-03-22 21:24:50,664 - AsistenteVoz - INFO - Instrucción recibida: hola siri ayuda
+2025-03-22 21:24:51,589 - AsistenteVoz - INFO - Reproduciendo: Puedo ayudarte con varios comandos básicos como: hora, fecha, saludo, etc.
+2025-03-22 21:25:00,154 - AsistenteVoz - INFO - Esperando la palabra clave...
+2025-03-22 21:25:00,335 - AsistenteVoz - INFO - Escuchando... (timeout=7.0s, phrase_limit=5.0s)
+2025-03-22 21:25:06,952 - AsistenteVoz - INFO - Audio capturado correctamente
+2025-03-22 21:25:07,760 - AsistenteVoz - INFO - Transcripción (Google): 'Hola Silvia gracias'
+2025-03-22 21:25:07,760 - AsistenteVoz - INFO - Verificando si 'hola silvia gracias' contiene palabra clave
+2025-03-22 21:25:07,760 - AsistenteVoz - INFO - ¡Palabra de activación detectada! ('silvia' en 'hola silvia gracias')
+2025-03-22 21:25:07,761 - AsistenteVoz - INFO - Reproduciendo: ¿En qué puedo ayudarte?
+2025-03-22 21:25:10,084 - AsistenteVoz - INFO - Palabra clave detectada. Entrando en modo de instrucciones.
+2025-03-22 21:25:10,085 - AsistenteVoz - INFO - Esperando instrucciones...
+2025-03-22 21:25:10,163 - AsistenteVoz - INFO - Escuchando... (timeout=10s, phrase_limit=7s)
+2025-03-22 21:25:16,978 - AsistenteVoz - INFO - Audio capturado correctamente
+2025-03-22 21:25:17,559 - AsistenteVoz - INFO - Transcripción (Google): 'gracias'
+2025-03-22 21:25:17,560 - AsistenteVoz - INFO - Instrucción recibida: gracias
+2025-03-22 21:25:18,195 - AsistenteVoz - INFO - Reproduciendo: De nada, estoy para ayudarte
+2025-03-22 21:25:22,469 - AsistenteVoz - INFO - Esperando la palabra clave...
+2025-03-22 21:25:22,548 - AsistenteVoz - INFO - Escuchando... (timeout=7.0s, phrase_limit=5.0s)
+2025-03-22 21:25:28,903 - AsistenteVoz - INFO - Audio capturado correctamente
+2025-03-22 21:25:29,661 - AsistenteVoz - WARNING - Google no pudo entender el audio
+2025-03-22 21:25:29,662 - AsistenteVoz - WARNING - Todos los servicios de transcripción fallaron
+2025-03-22 21:25:29,662 - AsistenteVoz - INFO - Esperando la palabra clave...
+2025-03-22 21:25:29,744 - AsistenteVoz - INFO - Escuchando... (timeout=7.5s, phrase_limit=5.5s)
+2025-03-22 21:25:31,677 - AsistenteVoz - INFO - Deteniendo el asistente de voz...
+2025-03-22 21:29:20,911 - AsistenteVoz - INFO - Micrófono seleccionado: 0
+2025-03-22 21:29:20,912 - AsistenteVoz - INFO - Iniciando hilo de reconocimiento de voz...
+2025-03-22 21:29:20,939 - AsistenteVoz - INFO - Analizando nivel de audio ambiental durante 3 segundos...
+2025-03-22 21:29:20,940 - AsistenteVoz - ERROR - Error al analizar nivel de audio: [Errno -9997] Invalid sample rate
+2025-03-22 21:29:20,940 - AsistenteVoz - INFO - Reproduciendo: Asistente de voz activado. Di mi nombre para comenzar.
+2025-03-22 21:29:25,553 - AsistenteVoz - INFO - Esperando la palabra clave...
+2025-03-22 21:29:25,617 - AsistenteVoz - INFO - Escuchando... (timeout=7.0s, phrase_limit=5.0s)
+2025-03-22 21:29:25,618 - AsistenteVoz - INFO - Ajustando para ruido ambiental...
+2025-03-22 21:29:31,605 - AsistenteVoz - INFO - Audio capturado correctamente
+2025-03-22 21:29:32,127 - AsistenteVoz - INFO - Transcripción (Google): 'Silvia'
+2025-03-22 21:29:32,128 - AsistenteVoz - INFO - Verificando si 'silvia' contiene palabra clave
+2025-03-22 21:29:32,128 - AsistenteVoz - INFO - ¡Palabra de activación detectada! ('silvia' en 'silvia')
+2025-03-22 21:29:32,128 - AsistenteVoz - INFO - Reproduciendo: ¿En qué puedo ayudarte?
+2025-03-22 21:29:34,455 - AsistenteVoz - INFO - Palabra clave detectada. Entrando en modo de instrucciones.
+2025-03-22 21:29:34,456 - AsistenteVoz - INFO - Esperando instrucciones...
+2025-03-22 21:29:34,516 - AsistenteVoz - INFO - Escuchando... (timeout=10s, phrase_limit=7s)
+2025-03-22 21:29:36,646 - AsistenteVoz - INFO - Audio capturado correctamente
+2025-03-22 21:29:37,411 - AsistenteVoz - INFO - Transcripción (Google): 'Dime quién era Freddie'
+2025-03-22 21:29:37,411 - AsistenteVoz - INFO - Instrucción recibida: dime quién era freddie
+2025-03-22 21:29:37,435 - AsistenteVoz - ERROR - Error al ejecutar Ollama: Error: unknown shorthand flag: 'p' in -p
+
+2025-03-22 21:29:38,122 - AsistenteVoz - INFO - Reproduciendo: Hubo un error al generar la respuesta con Ollama.
+2025-03-22 21:29:43,075 - AsistenteVoz - INFO - Esperando la palabra clave...
+2025-03-22 21:29:43,133 - AsistenteVoz - INFO - Escuchando... (timeout=7.0s, phrase_limit=5.0s)
+2025-03-22 21:29:46,509 - AsistenteVoz - INFO - Audio capturado correctamente
+2025-03-22 21:29:47,150 - AsistenteVoz - INFO - Transcripción (Google): 'para Silvia'
+2025-03-22 21:29:47,150 - AsistenteVoz - INFO - Verificando si 'para silvia' contiene palabra clave
+2025-03-22 21:29:47,150 - AsistenteVoz - INFO - ¡Palabra de activación detectada! ('silvia' en 'para silvia')
+2025-03-22 21:29:47,150 - AsistenteVoz - INFO - Reproduciendo: ¿En qué puedo ayudarte?
+2025-03-22 21:29:49,445 - AsistenteVoz - INFO - Palabra clave detectada. Entrando en modo de instrucciones.
+2025-03-22 21:29:49,445 - AsistenteVoz - INFO - Esperando instrucciones...
+2025-03-22 21:29:49,533 - AsistenteVoz - INFO - Escuchando... (timeout=10s, phrase_limit=7s)
+2025-03-22 21:29:51,051 - AsistenteVoz - INFO - Audio capturado correctamente
+2025-03-22 21:29:51,712 - AsistenteVoz - INFO - Transcripción (Google): 'era Freddie Mercury'
+2025-03-22 21:29:51,712 - AsistenteVoz - INFO - Instrucción recibida: era freddie mercury
+2025-03-22 21:29:51,739 - AsistenteVoz - ERROR - Error al ejecutar Ollama: Error: unknown shorthand flag: 'p' in -p
+
+2025-03-22 21:29:51,740 - AsistenteVoz - INFO - Reproduciendo: Hubo un error al generar la respuesta con Ollama.
+2025-03-22 21:29:56,724 - AsistenteVoz - INFO - Esperando la palabra clave...
+2025-03-22 21:29:56,939 - AsistenteVoz - INFO - Escuchando... (timeout=7.0s, phrase_limit=5.0s)
+2025-03-22 21:30:01,080 - AsistenteVoz - INFO - Audio capturado correctamente
+2025-03-22 21:30:01,547 - AsistenteVoz - WARNING - Google no pudo entender el audio
+2025-03-22 21:30:01,548 - AsistenteVoz - WARNING - Todos los servicios de transcripción fallaron
+2025-03-22 21:30:01,548 - AsistenteVoz - INFO - Esperando la palabra clave...
+2025-03-22 21:30:01,683 - AsistenteVoz - INFO - Escuchando... (timeout=7.5s, phrase_limit=5.5s)
+2025-03-22 21:30:06,094 - AsistenteVoz - INFO - Audio capturado correctamente
+2025-03-22 21:30:06,800 - AsistenteVoz - WARNING - Google no pudo entender el audio
+2025-03-22 21:30:06,800 - AsistenteVoz - WARNING - Todos los servicios de transcripción fallaron
+2025-03-22 21:30:06,800 - AsistenteVoz - INFO - Esperando la palabra clave...
+2025-03-22 21:30:06,858 - AsistenteVoz - INFO - Escuchando... (timeout=8.0s, phrase_limit=6.0s)
+2025-03-22 21:30:10,374 - AsistenteVoz - INFO - Audio capturado correctamente
+2025-03-22 21:30:10,812 - AsistenteVoz - WARNING - Google no pudo entender el audio
+2025-03-22 21:30:10,812 - AsistenteVoz - WARNING - Todos los servicios de transcripción fallaron
+2025-03-22 21:30:10,812 - AsistenteVoz - INFO - Esperando la palabra clave...
+2025-03-22 21:30:10,886 - AsistenteVoz - INFO - Escuchando... (timeout=8.5s, phrase_limit=6.5s)
+2025-03-22 21:30:14,859 - AsistenteVoz - INFO - Audio capturado correctamente
+2025-03-22 21:30:15,211 - AsistenteVoz - WARNING - Google no pudo entender el audio
+2025-03-22 21:30:15,211 - AsistenteVoz - WARNING - Todos los servicios de transcripción fallaron
+2025-03-22 21:30:15,211 - AsistenteVoz - INFO - Esperando la palabra clave...
+2025-03-22 21:30:15,397 - AsistenteVoz - INFO - Escuchando... (timeout=9.0s, phrase_limit=7.0s)
+2025-03-22 21:30:25,628 - AsistenteVoz - WARNING - Tiempo de espera agotado. No se detectó audio.
+2025-03-22 21:30:25,629 - AsistenteVoz - INFO - Esperando la palabra clave...
+2025-03-22 21:30:25,700 - AsistenteVoz - INFO - Escuchando... (timeout=9.5s, phrase_limit=7.5s)
+2025-03-22 21:30:25,701 - AsistenteVoz - INFO - Ajustando para ruido ambiental...
+2025-03-22 21:30:29,071 - AsistenteVoz - INFO - Deteniendo el asistente de voz...
+2025-03-22 21:30:34,071 - AsistenteVoz - WARNING - El hilo no se cerró correctamente. Continuando...
+2025-03-22 21:31:45,146 - AsistenteVoz - INFO - Micrófono seleccionado: 0
+2025-03-22 21:31:45,147 - AsistenteVoz - INFO - Iniciando hilo de reconocimiento de voz...
+2025-03-22 21:31:45,170 - AsistenteVoz - INFO - Analizando nivel de audio ambiental durante 3 segundos...
+2025-03-22 21:31:45,171 - AsistenteVoz - ERROR - Error al analizar nivel de audio: [Errno -9997] Invalid sample rate
+2025-03-22 21:31:45,769 - AsistenteVoz - INFO - Reproduciendo: Asistente de voz activado. Di mi nombre para comenzar.
+2025-03-22 21:31:50,417 - AsistenteVoz - INFO - Esperando la palabra clave...
+2025-03-22 21:31:50,500 - AsistenteVoz - INFO - Escuchando... (timeout=7.0s, phrase_limit=5.0s)
+2025-03-22 21:31:50,501 - AsistenteVoz - INFO - Ajustando para ruido ambiental...
+2025-03-22 21:31:56,902 - AsistenteVoz - INFO - Audio capturado correctamente
+2025-03-22 21:31:57,446 - AsistenteVoz - WARNING - Google no pudo entender el audio
+2025-03-22 21:31:57,446 - AsistenteVoz - WARNING - Todos los servicios de transcripción fallaron
+2025-03-22 21:31:57,446 - AsistenteVoz - INFO - Esperando la palabra clave...
+2025-03-22 21:31:57,634 - AsistenteVoz - INFO - Escuchando... (timeout=7.5s, phrase_limit=5.5s)
+2025-03-22 21:32:00,016 - AsistenteVoz - INFO - Audio capturado correctamente
+2025-03-22 21:32:00,462 - AsistenteVoz - WARNING - Google no pudo entender el audio
+2025-03-22 21:32:00,462 - AsistenteVoz - WARNING - Todos los servicios de transcripción fallaron
+2025-03-22 21:32:00,462 - AsistenteVoz - INFO - Esperando la palabra clave...
+2025-03-22 21:32:00,690 - AsistenteVoz - INFO - Escuchando... (timeout=8.0s, phrase_limit=6.0s)
+2025-03-22 21:32:08,696 - AsistenteVoz - INFO - Audio capturado correctamente
+2025-03-22 21:32:09,212 - AsistenteVoz - WARNING - Google no pudo entender el audio
+2025-03-22 21:32:09,212 - AsistenteVoz - WARNING - Todos los servicios de transcripción fallaron
+2025-03-22 21:32:09,213 - AsistenteVoz - INFO - Esperando la palabra clave...
+2025-03-22 21:32:09,277 - AsistenteVoz - INFO - Escuchando... (timeout=8.5s, phrase_limit=6.5s)
+2025-03-22 21:32:13,409 - AsistenteVoz - INFO - Audio capturado correctamente
+2025-03-22 21:32:14,012 - AsistenteVoz - WARNING - Google no pudo entender el audio
+2025-03-22 21:32:14,012 - AsistenteVoz - WARNING - Todos los servicios de transcripción fallaron
+2025-03-22 21:32:14,013 - AsistenteVoz - INFO - Esperando la palabra clave...
+2025-03-22 21:32:14,084 - AsistenteVoz - INFO - Escuchando... (timeout=9.0s, phrase_limit=7.0s)
+2025-03-22 21:32:25,130 - AsistenteVoz - WARNING - Tiempo de espera agotado. No se detectó audio.
+2025-03-22 21:32:25,133 - AsistenteVoz - INFO - Esperando la palabra clave...
+2025-03-22 21:32:25,256 - AsistenteVoz - INFO - Escuchando... (timeout=9.5s, phrase_limit=7.5s)
+2025-03-22 21:32:27,149 - AsistenteVoz - INFO - Audio capturado correctamente
+2025-03-22 21:32:27,755 - AsistenteVoz - INFO - Transcripción (Google): 'Silvia'
+2025-03-22 21:32:27,756 - AsistenteVoz - INFO - Verificando si 'silvia' contiene palabra clave
+2025-03-22 21:32:27,756 - AsistenteVoz - INFO - ¡Palabra de activación detectada! ('silvia' en 'silvia')
+2025-03-22 21:32:28,351 - AsistenteVoz - INFO - Reproduciendo: ¿En qué puedo ayudarte?
+2025-03-22 21:32:30,843 - AsistenteVoz - INFO - Palabra clave detectada. Entrando en modo de instrucciones.
+2025-03-22 21:32:30,843 - AsistenteVoz - INFO - Esperando instrucciones...
+2025-03-22 21:32:31,001 - AsistenteVoz - INFO - Escuchando... (timeout=10s, phrase_limit=7s)
+2025-03-22 21:32:33,720 - AsistenteVoz - INFO - Audio capturado correctamente
+2025-03-22 21:32:34,420 - AsistenteVoz - INFO - Transcripción (Google): 'Quiero que me digas ahora'
+2025-03-22 21:32:34,421 - AsistenteVoz - INFO - Instrucción recibida: quiero que me digas ahora
+2025-03-22 21:32:35,268 - AsistenteVoz - INFO - Reproduciendo: Son las 21:32
+2025-03-22 21:32:39,435 - AsistenteVoz - INFO - Esperando la palabra clave...
+2025-03-22 21:32:39,520 - AsistenteVoz - INFO - Escuchando... (timeout=7.0s, phrase_limit=5.0s)
+2025-03-22 21:32:46,935 - AsistenteVoz - INFO - Audio capturado correctamente
+2025-03-22 21:32:47,367 - AsistenteVoz - WARNING - Google no pudo entender el audio
+2025-03-22 21:32:47,368 - AsistenteVoz - WARNING - Todos los servicios de transcripción fallaron
+2025-03-22 21:32:47,368 - AsistenteVoz - INFO - Esperando la palabra clave...
+2025-03-22 21:32:47,440 - AsistenteVoz - INFO - Escuchando... (timeout=7.5s, phrase_limit=5.5s)
+2025-03-22 21:32:51,170 - AsistenteVoz - INFO - Audio capturado correctamente
+2025-03-22 21:32:51,711 - AsistenteVoz - INFO - Transcripción (Google): 'Qué pasó'
+2025-03-22 21:32:51,712 - AsistenteVoz - INFO - Verificando si 'qué pasó' contiene palabra clave
+2025-03-22 21:32:51,712 - AsistenteVoz - INFO - Esperando la palabra clave...
+2025-03-22 21:32:51,774 - AsistenteVoz - INFO - Escuchando... (timeout=8.0s, phrase_limit=6.0s)
+2025-03-22 21:32:51,774 - AsistenteVoz - INFO - Ajustando para ruido ambiental...
+2025-03-22 21:32:55,553 - AsistenteVoz - INFO - Audio capturado correctamente
+2025-03-22 21:32:56,497 - AsistenteVoz - INFO - Transcripción (Google): 'compramos algo'
+2025-03-22 21:32:56,497 - AsistenteVoz - INFO - Verificando si 'compramos algo' contiene palabra clave
+2025-03-22 21:32:56,497 - AsistenteVoz - INFO - ¡Palabra similar detectada! ('algo' similar a 'hola')
+2025-03-22 21:32:56,498 - AsistenteVoz - INFO - Reproduciendo: ¿En qué puedo ayudarte?
+2025-03-22 21:32:58,765 - AsistenteVoz - INFO - Palabra clave detectada. Entrando en modo de instrucciones.
+2025-03-22 21:32:58,765 - AsistenteVoz - INFO - Esperando instrucciones...
+2025-03-22 21:32:58,943 - AsistenteVoz - INFO - Escuchando... (timeout=10s, phrase_limit=7s)
+2025-03-22 21:33:02,687 - AsistenteVoz - INFO - Audio capturado correctamente
+2025-03-22 21:33:03,506 - AsistenteVoz - INFO - Transcripción (Google): 'Ahorita va gracias'
+2025-03-22 21:33:03,506 - AsistenteVoz - INFO - Instrucción recibida: ahorita va gracias
+2025-03-22 21:33:04,131 - AsistenteVoz - INFO - Reproduciendo: De nada, estoy para ayudarte
+2025-03-22 21:33:08,179 - AsistenteVoz - INFO - Esperando la palabra clave...
+2025-03-22 21:33:08,237 - AsistenteVoz - INFO - Escuchando... (timeout=7.0s, phrase_limit=5.0s)
+2025-03-22 21:33:21,589 - AsistenteVoz - INFO - Audio capturado correctamente
+2025-03-22 21:33:22,415 - AsistenteVoz - WARNING - Google no pudo entender el audio
+2025-03-22 21:33:22,415 - AsistenteVoz - WARNING - Todos los servicios de transcripción fallaron
+2025-03-22 21:33:22,416 - AsistenteVoz - INFO - Esperando la palabra clave...
+2025-03-22 21:33:22,505 - AsistenteVoz - INFO - Escuchando... (timeout=7.5s, phrase_limit=5.5s)
+2025-03-22 21:33:24,256 - AsistenteVoz - INFO - Audio capturado correctamente
+2025-03-22 21:33:24,611 - AsistenteVoz - WARNING - Google no pudo entender el audio
+2025-03-22 21:33:24,612 - AsistenteVoz - WARNING - Todos los servicios de transcripción fallaron
+2025-03-22 21:33:24,612 - AsistenteVoz - INFO - Esperando la palabra clave...
+2025-03-22 21:33:24,747 - AsistenteVoz - INFO - Escuchando... (timeout=8.0s, phrase_limit=6.0s)
+2025-03-22 21:33:29,652 - AsistenteVoz - INFO - Audio capturado correctamente
+2025-03-22 21:33:30,140 - AsistenteVoz - WARNING - Google no pudo entender el audio
+2025-03-22 21:33:30,140 - AsistenteVoz - WARNING - Todos los servicios de transcripción fallaron
+2025-03-22 21:33:30,141 - AsistenteVoz - INFO - Esperando la palabra clave...
+2025-03-22 21:33:30,216 - AsistenteVoz - INFO - Escuchando... (timeout=8.5s, phrase_limit=6.5s)
+2025-03-22 21:33:39,176 - AsistenteVoz - INFO - Audio capturado correctamente
+2025-03-22 21:33:39,494 - AsistenteVoz - WARNING - Google no pudo entender el audio
+2025-03-22 21:33:39,494 - AsistenteVoz - WARNING - Todos los servicios de transcripción fallaron
+2025-03-22 21:33:39,495 - AsistenteVoz - INFO - Esperando la palabra clave...
+2025-03-22 21:33:39,548 - AsistenteVoz - INFO - Escuchando... (timeout=9.0s, phrase_limit=7.0s)
+2025-03-22 21:33:42,116 - AsistenteVoz - INFO - Audio capturado correctamente
+2025-03-22 21:33:42,488 - AsistenteVoz - WARNING - Google no pudo entender el audio
+2025-03-22 21:33:42,488 - AsistenteVoz - WARNING - Todos los servicios de transcripción fallaron
+2025-03-22 21:33:42,489 - AsistenteVoz - INFO - Esperando la palabra clave...
+2025-03-22 21:33:42,576 - AsistenteVoz - INFO - Escuchando... (timeout=9.5s, phrase_limit=7.5s)
+2025-03-22 21:33:51,065 - AsistenteVoz - INFO - Audio capturado correctamente
+2025-03-22 21:33:51,602 - AsistenteVoz - WARNING - Google no pudo entender el audio
+2025-03-22 21:33:51,602 - AsistenteVoz - WARNING - Todos los servicios de transcripción fallaron
+2025-03-22 21:33:51,603 - AsistenteVoz - INFO - Esperando la palabra clave...
+2025-03-22 21:33:51,692 - AsistenteVoz - INFO - Escuchando... (timeout=10.0s, phrase_limit=8.0s)
+2025-03-22 21:33:56,949 - AsistenteVoz - INFO - Audio capturado correctamente
+2025-03-22 21:33:57,302 - AsistenteVoz - WARNING - Google no pudo entender el audio
+2025-03-22 21:33:57,303 - AsistenteVoz - WARNING - Todos los servicios de transcripción fallaron
+2025-03-22 21:33:57,303 - AsistenteVoz - INFO - Esperando la palabra clave...
+2025-03-22 21:33:57,491 - AsistenteVoz - INFO - Escuchando... (timeout=10.5s, phrase_limit=8s)
+2025-03-22 21:33:57,491 - AsistenteVoz - INFO - Ajustando para ruido ambiental...
+2025-03-22 21:34:08,636 - AsistenteVoz - INFO - Audio capturado correctamente
+2025-03-22 21:34:09,344 - AsistenteVoz - WARNING - Google no pudo entender el audio
+2025-03-22 21:34:09,344 - AsistenteVoz - WARNING - Todos los servicios de transcripción fallaron
+2025-03-22 21:34:09,345 - AsistenteVoz - INFO - Esperando la palabra clave...
+2025-03-22 21:34:09,532 - AsistenteVoz - INFO - Escuchando... (timeout=11.0s, phrase_limit=8s)
+2025-03-22 21:34:18,077 - AsistenteVoz - INFO - Audio capturado correctamente
+2025-03-22 21:34:18,538 - AsistenteVoz - WARNING - Google no pudo entender el audio
+2025-03-22 21:34:18,539 - AsistenteVoz - WARNING - Todos los servicios de transcripción fallaron
+2025-03-22 21:34:18,539 - AsistenteVoz - INFO - Esperando la palabra clave...
+2025-03-22 21:34:18,721 - AsistenteVoz - INFO - Escuchando... (timeout=11.5s, phrase_limit=8s)
+2025-03-22 21:34:23,953 - AsistenteVoz - INFO - Audio capturado correctamente
+2025-03-22 21:34:24,289 - AsistenteVoz - WARNING - Google no pudo entender el audio
+2025-03-22 21:34:24,289 - AsistenteVoz - WARNING - Todos los servicios de transcripción fallaron
+2025-03-22 21:34:24,289 - AsistenteVoz - INFO - Esperando la palabra clave...
+2025-03-22 21:34:24,411 - AsistenteVoz - INFO - Escuchando... (timeout=12.0s, phrase_limit=8s)
+2025-03-22 21:34:26,322 - AsistenteVoz - INFO - Audio capturado correctamente
+2025-03-22 21:34:26,765 - AsistenteVoz - WARNING - Google no pudo entender el audio
+2025-03-22 21:34:26,766 - AsistenteVoz - WARNING - Todos los servicios de transcripción fallaron
+2025-03-22 21:34:26,766 - AsistenteVoz - INFO - Esperando la palabra clave...
+2025-03-22 21:34:26,766 - AsistenteVoz - WARNING - Muchos fallos consecutivos (11), recalibrando...
+2025-03-22 21:34:26,841 - AsistenteVoz - INFO - Analizando nivel de audio ambiental durante 3 segundos...
+2025-03-22 21:34:26,842 - AsistenteVoz - ERROR - Error al analizar nivel de audio: [Errno -9997] Invalid sample rate
+2025-03-22 21:34:27,499 - AsistenteVoz - INFO - Reproduciendo: Recalibrando sensibilidad a 300
+2025-03-22 21:34:31,189 - AsistenteVoz - INFO - Escuchando... (timeout=12s, phrase_limit=8s)
+2025-03-22 21:34:40,823 - AsistenteVoz - INFO - Audio capturado correctamente
+2025-03-22 21:34:41,261 - AsistenteVoz - WARNING - Google no pudo entender el audio
+2025-03-22 21:34:41,261 - AsistenteVoz - WARNING - Todos los servicios de transcripción fallaron
+2025-03-22 21:34:41,261 - AsistenteVoz - INFO - Esperando la palabra clave...
+2025-03-22 21:34:41,392 - AsistenteVoz - INFO - Escuchando... (timeout=7.5s, phrase_limit=5.5s)
+2025-03-22 21:34:48,373 - AsistenteVoz - INFO - Audio capturado correctamente
+2025-03-22 21:34:49,003 - AsistenteVoz - WARNING - Google no pudo entender el audio
+2025-03-22 21:34:49,003 - AsistenteVoz - WARNING - Todos los servicios de transcripción fallaron
+2025-03-22 21:34:49,003 - AsistenteVoz - INFO - Esperando la palabra clave...
+2025-03-22 21:34:49,078 - AsistenteVoz - INFO - Escuchando... (timeout=8.0s, phrase_limit=6.0s)
+2025-03-22 21:34:54,698 - AsistenteVoz - INFO - Audio capturado correctamente
+2025-03-22 21:34:55,114 - AsistenteVoz - WARNING - Google no pudo entender el audio
+2025-03-22 21:34:55,114 - AsistenteVoz - WARNING - Todos los servicios de transcripción fallaron
+2025-03-22 21:34:55,114 - AsistenteVoz - INFO - Esperando la palabra clave...
+2025-03-22 21:34:55,169 - AsistenteVoz - INFO - Escuchando... (timeout=8.5s, phrase_limit=6.5s)
+2025-03-22 21:34:56,616 - AsistenteVoz - INFO - Audio capturado correctamente
+2025-03-22 21:34:56,947 - AsistenteVoz - WARNING - Google no pudo entender el audio
+2025-03-22 21:34:56,947 - AsistenteVoz - WARNING - Todos los servicios de transcripción fallaron
+2025-03-22 21:34:56,947 - AsistenteVoz - INFO - Esperando la palabra clave...
+2025-03-22 21:34:57,037 - AsistenteVoz - INFO - Escuchando... (timeout=9.0s, phrase_limit=7.0s)
+2025-03-22 21:35:00,135 - AsistenteVoz - INFO - Audio capturado correctamente
+2025-03-22 21:35:00,472 - AsistenteVoz - WARNING - Google no pudo entender el audio
+2025-03-22 21:35:00,473 - AsistenteVoz - WARNING - Todos los servicios de transcripción fallaron
+2025-03-22 21:35:00,473 - AsistenteVoz - INFO - Esperando la palabra clave...
+2025-03-22 21:35:00,568 - AsistenteVoz - INFO - Escuchando... (timeout=9.5s, phrase_limit=7.5s)
+2025-03-22 21:35:00,569 - AsistenteVoz - INFO - Ajustando para ruido ambiental...
+2025-03-22 21:35:04,331 - AsistenteVoz - INFO - Audio capturado correctamente
+2025-03-22 21:35:04,762 - AsistenteVoz - WARNING - Google no pudo entender el audio
+2025-03-22 21:35:04,762 - AsistenteVoz - WARNING - Todos los servicios de transcripción fallaron
+2025-03-22 21:35:04,762 - AsistenteVoz - INFO - Esperando la palabra clave...
+2025-03-22 21:35:04,861 - AsistenteVoz - INFO - Escuchando... (timeout=10.0s, phrase_limit=8.0s)
+2025-03-22 21:35:08,313 - AsistenteVoz - INFO - Audio capturado correctamente
+2025-03-22 21:35:08,768 - AsistenteVoz - WARNING - Google no pudo entender el audio
+2025-03-22 21:35:08,768 - AsistenteVoz - WARNING - Todos los servicios de transcripción fallaron
+2025-03-22 21:35:08,768 - AsistenteVoz - INFO - Esperando la palabra clave...
+2025-03-22 21:35:08,838 - AsistenteVoz - INFO - Escuchando... (timeout=10.5s, phrase_limit=8s)
+2025-03-22 21:35:22,777 - AsistenteVoz - INFO - Audio capturado correctamente
+2025-03-22 21:35:23,321 - AsistenteVoz - WARNING - Google no pudo entender el audio
+2025-03-22 21:35:23,322 - AsistenteVoz - WARNING - Todos los servicios de transcripción fallaron
+2025-03-22 21:35:23,322 - AsistenteVoz - INFO - Esperando la palabra clave...
+2025-03-22 21:35:23,386 - AsistenteVoz - INFO - Escuchando... (timeout=11.0s, phrase_limit=8s)
+2025-03-22 21:35:29,306 - AsistenteVoz - INFO - Audio capturado correctamente
+2025-03-22 21:35:29,695 - AsistenteVoz - WARNING - Google no pudo entender el audio
+2025-03-22 21:35:29,695 - AsistenteVoz - WARNING - Todos los servicios de transcripción fallaron
+2025-03-22 21:35:29,696 - AsistenteVoz - INFO - Esperando la palabra clave...
+2025-03-22 21:35:29,782 - AsistenteVoz - INFO - Escuchando... (timeout=11.5s, phrase_limit=8s)
+2025-03-22 21:35:36,083 - AsistenteVoz - INFO - Audio capturado correctamente
+2025-03-22 21:35:36,671 - AsistenteVoz - WARNING - Google no pudo entender el audio
+2025-03-22 21:35:36,671 - AsistenteVoz - WARNING - Todos los servicios de transcripción fallaron
+2025-03-22 21:35:36,671 - AsistenteVoz - INFO - Esperando la palabra clave...
+2025-03-22 21:35:36,723 - AsistenteVoz - INFO - Escuchando... (timeout=12.0s, phrase_limit=8s)
+2025-03-22 21:35:40,370 - AsistenteVoz - INFO - Audio capturado correctamente
+2025-03-22 21:35:40,756 - AsistenteVoz - WARNING - Google no pudo entender el audio
+2025-03-22 21:35:40,756 - AsistenteVoz - WARNING - Todos los servicios de transcripción fallaron
+2025-03-22 21:35:40,756 - AsistenteVoz - INFO - Esperando la palabra clave...
+2025-03-22 21:35:40,756 - AsistenteVoz - WARNING - Muchos fallos consecutivos (11), recalibrando...
+2025-03-22 21:35:40,822 - AsistenteVoz - INFO - Analizando nivel de audio ambiental durante 3 segundos...
+2025-03-22 21:35:40,823 - AsistenteVoz - ERROR - Error al analizar nivel de audio: [Errno -9997] Invalid sample rate
+2025-03-22 21:35:40,824 - AsistenteVoz - INFO - Reproduciendo: Recalibrando sensibilidad a 300
+2025-03-22 21:35:44,524 - AsistenteVoz - INFO - Escuchando... (timeout=12s, phrase_limit=8s)
+2025-03-22 21:35:58,731 - AsistenteVoz - WARNING - Tiempo de espera agotado. No se detectó audio.
+2025-03-22 21:35:58,733 - AsistenteVoz - INFO - Esperando la palabra clave...
+2025-03-22 21:35:58,812 - AsistenteVoz - INFO - Escuchando... (timeout=7.5s, phrase_limit=5.5s)
+2025-03-22 21:36:05,047 - AsistenteVoz - INFO - Audio capturado correctamente
+2025-03-22 21:36:05,505 - AsistenteVoz - WARNING - Google no pudo entender el audio
+2025-03-22 21:36:05,506 - AsistenteVoz - WARNING - Todos los servicios de transcripción fallaron
+2025-03-22 21:36:05,506 - AsistenteVoz - INFO - Esperando la palabra clave...
+2025-03-22 21:36:05,625 - AsistenteVoz - INFO - Escuchando... (timeout=8.0s, phrase_limit=6.0s)
+2025-03-22 21:36:05,625 - AsistenteVoz - INFO - Ajustando para ruido ambiental...
+2025-03-22 21:36:08,891 - AsistenteVoz - INFO - Audio capturado correctamente
+2025-03-22 21:36:09,283 - AsistenteVoz - WARNING - Google no pudo entender el audio
+2025-03-22 21:36:09,284 - AsistenteVoz - WARNING - Todos los servicios de transcripción fallaron
+2025-03-22 21:36:09,285 - AsistenteVoz - INFO - Esperando la palabra clave...
+2025-03-22 21:36:09,434 - AsistenteVoz - INFO - Escuchando... (timeout=8.5s, phrase_limit=6.5s)
+2025-03-22 21:36:19,368 - AsistenteVoz - WARNING - Tiempo de espera agotado. No se detectó audio.
+2025-03-22 21:36:19,370 - AsistenteVoz - INFO - Esperando la palabra clave...
+2025-03-22 21:36:19,458 - AsistenteVoz - INFO - Escuchando... (timeout=9.0s, phrase_limit=7.0s)
+2025-03-22 21:36:26,777 - AsistenteVoz - INFO - Audio capturado correctamente
+2025-03-22 21:36:27,286 - AsistenteVoz - WARNING - Google no pudo entender el audio
+2025-03-22 21:36:27,286 - AsistenteVoz - WARNING - Todos los servicios de transcripción fallaron
+2025-03-22 21:36:27,287 - AsistenteVoz - INFO - Esperando la palabra clave...
+2025-03-22 21:36:27,445 - AsistenteVoz - INFO - Escuchando... (timeout=9.5s, phrase_limit=7.5s)
+2025-03-22 21:36:33,504 - AsistenteVoz - INFO - Audio capturado correctamente
+2025-03-22 21:36:33,874 - AsistenteVoz - WARNING - Google no pudo entender el audio
+2025-03-22 21:36:33,874 - AsistenteVoz - WARNING - Todos los servicios de transcripción fallaron
+2025-03-22 21:36:33,874 - AsistenteVoz - INFO - Esperando la palabra clave...
+2025-03-22 21:36:34,035 - AsistenteVoz - INFO - Escuchando... (timeout=10.0s, phrase_limit=8.0s)
+2025-03-22 21:36:40,283 - AsistenteVoz - INFO - Audio capturado correctamente
+2025-03-22 21:36:40,891 - AsistenteVoz - WARNING - Google no pudo entender el audio
+2025-03-22 21:36:40,891 - AsistenteVoz - WARNING - Todos los servicios de transcripción fallaron
+2025-03-22 21:36:40,892 - AsistenteVoz - INFO - Esperando la palabra clave...
+2025-03-22 21:36:40,951 - AsistenteVoz - INFO - Escuchando... (timeout=10.5s, phrase_limit=8s)
+2025-03-22 21:36:46,563 - AsistenteVoz - INFO - Audio capturado correctamente
+2025-03-22 21:36:47,154 - AsistenteVoz - WARNING - Google no pudo entender el audio
+2025-03-22 21:36:47,154 - AsistenteVoz - WARNING - Todos los servicios de transcripción fallaron
+2025-03-22 21:36:47,154 - AsistenteVoz - INFO - Esperando la palabra clave...
+2025-03-22 21:36:47,220 - AsistenteVoz - INFO - Escuchando... (timeout=11.0s, phrase_limit=8s)
+2025-03-22 21:36:48,480 - AsistenteVoz - INFO - Audio capturado correctamente
+2025-03-22 21:36:48,729 - AsistenteVoz - WARNING - Google no pudo entender el audio
+2025-03-22 21:36:48,729 - AsistenteVoz - WARNING - Todos los servicios de transcripción fallaron
+2025-03-22 21:36:48,729 - AsistenteVoz - INFO - Esperando la palabra clave...
+2025-03-22 21:36:48,801 - AsistenteVoz - INFO - Escuchando... (timeout=11.5s, phrase_limit=8s)
+2025-03-22 21:37:01,760 - AsistenteVoz - INFO - Audio capturado correctamente
+2025-03-22 21:37:02,217 - AsistenteVoz - WARNING - Google no pudo entender el audio
+2025-03-22 21:37:02,217 - AsistenteVoz - WARNING - Todos los servicios de transcripción fallaron
+2025-03-22 21:37:02,218 - AsistenteVoz - INFO - Esperando la palabra clave...
+2025-03-22 21:37:02,297 - AsistenteVoz - INFO - Escuchando... (timeout=12.0s, phrase_limit=8s)
+2025-03-22 21:37:04,000 - AsistenteVoz - INFO - Audio capturado correctamente
+2025-03-22 21:37:04,372 - AsistenteVoz - WARNING - Google no pudo entender el audio
+2025-03-22 21:37:04,373 - AsistenteVoz - WARNING - Todos los servicios de transcripción fallaron
+2025-03-22 21:37:04,373 - AsistenteVoz - INFO - Esperando la palabra clave...
+2025-03-22 21:37:04,373 - AsistenteVoz - WARNING - Muchos fallos consecutivos (11), recalibrando...
+2025-03-22 21:37:04,467 - AsistenteVoz - INFO - Analizando nivel de audio ambiental durante 3 segundos...
+2025-03-22 21:37:04,467 - AsistenteVoz - ERROR - Error al analizar nivel de audio: [Errno -9997] Invalid sample rate
+2025-03-22 21:37:04,468 - AsistenteVoz - INFO - Reproduciendo: Recalibrando sensibilidad a 300
+2025-03-22 21:37:08,062 - AsistenteVoz - INFO - Escuchando... (timeout=12s, phrase_limit=8s)
+2025-03-22 21:37:08,063 - AsistenteVoz - INFO - Ajustando para ruido ambiental...
+2025-03-22 21:37:12,015 - AsistenteVoz - INFO - Audio capturado correctamente
+2025-03-22 21:37:12,622 - AsistenteVoz - WARNING - Google no pudo entender el audio
+2025-03-22 21:37:12,623 - AsistenteVoz - WARNING - Todos los servicios de transcripción fallaron
+2025-03-22 21:37:12,623 - AsistenteVoz - INFO - Esperando la palabra clave...
+2025-03-22 21:37:12,696 - AsistenteVoz - INFO - Escuchando... (timeout=7.5s, phrase_limit=5.5s)
+2025-03-22 21:37:18,925 - AsistenteVoz - INFO - Audio capturado correctamente
+2025-03-22 21:37:19,500 - AsistenteVoz - WARNING - Google no pudo entender el audio
+2025-03-22 21:37:19,500 - AsistenteVoz - WARNING - Todos los servicios de transcripción fallaron
+2025-03-22 21:37:19,500 - AsistenteVoz - INFO - Esperando la palabra clave...
+2025-03-22 21:37:19,656 - AsistenteVoz - INFO - Escuchando... (timeout=8.0s, phrase_limit=6.0s)
+2025-03-22 21:37:22,743 - AsistenteVoz - INFO - Audio capturado correctamente
+2025-03-22 21:37:23,111 - AsistenteVoz - WARNING - Google no pudo entender el audio
+2025-03-22 21:37:23,111 - AsistenteVoz - WARNING - Todos los servicios de transcripción fallaron
+2025-03-22 21:37:23,112 - AsistenteVoz - INFO - Esperando la palabra clave...
+2025-03-22 21:37:23,201 - AsistenteVoz - INFO - Escuchando... (timeout=8.5s, phrase_limit=6.5s)
+2025-03-22 21:37:29,157 - AsistenteVoz - INFO - Audio capturado correctamente
+2025-03-22 21:37:29,605 - AsistenteVoz - WARNING - Google no pudo entender el audio
+2025-03-22 21:37:29,606 - AsistenteVoz - WARNING - Todos los servicios de transcripción fallaron
+2025-03-22 21:37:29,606 - AsistenteVoz - INFO - Esperando la palabra clave...
+2025-03-22 21:37:29,750 - AsistenteVoz - INFO - Escuchando... (timeout=9.0s, phrase_limit=7.0s)
+2025-03-22 21:37:39,007 - AsistenteVoz - INFO - Audio capturado correctamente
+2025-03-22 21:37:39,513 - AsistenteVoz - WARNING - Google no pudo entender el audio
+2025-03-22 21:37:39,513 - AsistenteVoz - WARNING - Todos los servicios de transcripción fallaron
+2025-03-22 21:37:39,514 - AsistenteVoz - INFO - Esperando la palabra clave...
+2025-03-22 21:37:39,602 - AsistenteVoz - INFO - Escuchando... (timeout=9.5s, phrase_limit=7.5s)
+2025-03-22 21:37:48,502 - AsistenteVoz - INFO - Audio capturado correctamente
+2025-03-22 21:37:49,076 - AsistenteVoz - WARNING - Google no pudo entender el audio
+2025-03-22 21:37:49,077 - AsistenteVoz - WARNING - Todos los servicios de transcripción fallaron
+2025-03-22 21:37:49,077 - AsistenteVoz - INFO - Esperando la palabra clave...
+2025-03-22 21:37:49,142 - AsistenteVoz - INFO - Escuchando... (timeout=10.0s, phrase_limit=8.0s)
+2025-03-22 21:37:51,943 - AsistenteVoz - INFO - Audio capturado correctamente
+2025-03-22 21:37:52,521 - AsistenteVoz - WARNING - Google no pudo entender el audio
+2025-03-22 21:37:52,522 - AsistenteVoz - WARNING - Todos los servicios de transcripción fallaron
+2025-03-22 21:37:52,522 - AsistenteVoz - INFO - Esperando la palabra clave...
+2025-03-22 21:37:52,664 - AsistenteVoz - INFO - Escuchando... (timeout=10.5s, phrase_limit=8s)
+2025-03-22 21:37:54,857 - AsistenteVoz - INFO - Audio capturado correctamente
+2025-03-22 21:37:55,310 - AsistenteVoz - WARNING - Google no pudo entender el audio
+2025-03-22 21:37:55,311 - AsistenteVoz - WARNING - Todos los servicios de transcripción fallaron
+2025-03-22 21:37:55,311 - AsistenteVoz - INFO - Esperando la palabra clave...
+2025-03-22 21:37:55,431 - AsistenteVoz - INFO - Escuchando... (timeout=11.0s, phrase_limit=8s)
+2025-03-22 21:37:59,449 - AsistenteVoz - INFO - Audio capturado correctamente
+2025-03-22 21:37:59,854 - AsistenteVoz - WARNING - Google no pudo entender el audio
+2025-03-22 21:37:59,855 - AsistenteVoz - WARNING - Todos los servicios de transcripción fallaron
+2025-03-22 21:37:59,855 - AsistenteVoz - INFO - Esperando la palabra clave...
+2025-03-22 21:37:59,974 - AsistenteVoz - INFO - Escuchando... (timeout=11.5s, phrase_limit=8s)
+2025-03-22 21:38:05,248 - AsistenteVoz - INFO - Audio capturado correctamente
+2025-03-22 21:38:05,795 - AsistenteVoz - WARNING - Google no pudo entender el audio
+2025-03-22 21:38:05,795 - AsistenteVoz - WARNING - Todos los servicios de transcripción fallaron
+2025-03-22 21:38:05,796 - AsistenteVoz - INFO - Esperando la palabra clave...
+2025-03-22 21:38:05,980 - AsistenteVoz - INFO - Escuchando... (timeout=12.0s, phrase_limit=8s)
+2025-03-22 21:38:08,806 - AsistenteVoz - INFO - Audio capturado correctamente
+2025-03-22 21:38:09,204 - AsistenteVoz - WARNING - Google no pudo entender el audio
+2025-03-22 21:38:09,204 - AsistenteVoz - WARNING - Todos los servicios de transcripción fallaron
+2025-03-22 21:38:09,205 - AsistenteVoz - INFO - Esperando la palabra clave...
+2025-03-22 21:38:09,205 - AsistenteVoz - WARNING - Muchos fallos consecutivos (11), recalibrando...
+2025-03-22 21:38:09,270 - AsistenteVoz - INFO - Analizando nivel de audio ambiental durante 3 segundos...
+2025-03-22 21:38:09,270 - AsistenteVoz - ERROR - Error al analizar nivel de audio: [Errno -9997] Invalid sample rate
+2025-03-22 21:38:09,271 - AsistenteVoz - INFO - Reproduciendo: Recalibrando sensibilidad a 300
+2025-03-22 21:38:12,827 - AsistenteVoz - INFO - Escuchando... (timeout=12s, phrase_limit=8s)
+2025-03-22 21:38:12,827 - AsistenteVoz - INFO - Ajustando para ruido ambiental...
+2025-03-22 21:38:16,996 - AsistenteVoz - INFO - Audio capturado correctamente
+2025-03-22 21:38:17,408 - AsistenteVoz - WARNING - Google no pudo entender el audio
+2025-03-22 21:38:17,408 - AsistenteVoz - WARNING - Todos los servicios de transcripción fallaron
+2025-03-22 21:38:17,409 - AsistenteVoz - INFO - Esperando la palabra clave...
+2025-03-22 21:38:17,552 - AsistenteVoz - INFO - Escuchando... (timeout=7.5s, phrase_limit=5.5s)
+2025-03-22 21:38:27,413 - AsistenteVoz - INFO - Audio capturado correctamente
+2025-03-22 21:38:27,857 - AsistenteVoz - WARNING - Google no pudo entender el audio
+2025-03-22 21:38:27,858 - AsistenteVoz - WARNING - Todos los servicios de transcripción fallaron
+2025-03-22 21:38:27,858 - AsistenteVoz - INFO - Esperando la palabra clave...
+2025-03-22 21:38:27,954 - AsistenteVoz - INFO - Escuchando... (timeout=8.0s, phrase_limit=6.0s)
+2025-03-22 21:38:30,459 - AsistenteVoz - INFO - Audio capturado correctamente
+2025-03-22 21:38:30,928 - AsistenteVoz - WARNING - Google no pudo entender el audio
+2025-03-22 21:38:30,928 - AsistenteVoz - WARNING - Todos los servicios de transcripción fallaron
+2025-03-22 21:38:30,928 - AsistenteVoz - INFO - Esperando la palabra clave...
+2025-03-22 21:38:31,021 - AsistenteVoz - INFO - Escuchando... (timeout=8.5s, phrase_limit=6.5s)
+2025-03-22 21:38:38,167 - AsistenteVoz - INFO - Audio capturado correctamente
+2025-03-22 21:38:38,831 - AsistenteVoz - WARNING - Google no pudo entender el audio
+2025-03-22 21:38:38,831 - AsistenteVoz - WARNING - Todos los servicios de transcripción fallaron
+2025-03-22 21:38:38,832 - AsistenteVoz - INFO - Esperando la palabra clave...
+2025-03-22 21:38:38,922 - AsistenteVoz - INFO - Escuchando... (timeout=9.0s, phrase_limit=7.0s)
+2025-03-22 21:38:41,837 - AsistenteVoz - INFO - Audio capturado correctamente
+2025-03-22 21:38:42,410 - AsistenteVoz - WARNING - Google no pudo entender el audio
+2025-03-22 21:38:42,410 - AsistenteVoz - WARNING - Todos los servicios de transcripción fallaron
+2025-03-22 21:38:42,410 - AsistenteVoz - INFO - Esperando la palabra clave...
+2025-03-22 21:38:42,593 - AsistenteVoz - INFO - Escuchando... (timeout=9.5s, phrase_limit=7.5s)
+2025-03-22 21:38:46,995 - AsistenteVoz - INFO - Audio capturado correctamente
+2025-03-22 21:38:47,426 - AsistenteVoz - WARNING - Google no pudo entender el audio
+2025-03-22 21:38:47,426 - AsistenteVoz - WARNING - Todos los servicios de transcripción fallaron
+2025-03-22 21:38:47,426 - AsistenteVoz - INFO - Esperando la palabra clave...
+2025-03-22 21:38:47,513 - AsistenteVoz - INFO - Escuchando... (timeout=10.0s, phrase_limit=8.0s)
+2025-03-22 21:38:51,781 - AsistenteVoz - INFO - Audio capturado correctamente
+2025-03-22 21:38:52,128 - AsistenteVoz - WARNING - Google no pudo entender el audio
+2025-03-22 21:38:52,129 - AsistenteVoz - WARNING - Todos los servicios de transcripción fallaron
+2025-03-22 21:38:52,129 - AsistenteVoz - INFO - Esperando la palabra clave...
+2025-03-22 21:38:52,211 - AsistenteVoz - INFO - Escuchando... (timeout=10.5s, phrase_limit=8s)
+2025-03-22 21:38:54,874 - AsistenteVoz - INFO - Audio capturado correctamente
+2025-03-22 21:38:55,232 - AsistenteVoz - WARNING - Google no pudo entender el audio
+2025-03-22 21:38:55,232 - AsistenteVoz - WARNING - Todos los servicios de transcripción fallaron
+2025-03-22 21:38:55,232 - AsistenteVoz - INFO - Esperando la palabra clave...
+2025-03-22 21:38:55,331 - AsistenteVoz - INFO - Escuchando... (timeout=11.0s, phrase_limit=8s)
+2025-03-22 21:39:00,020 - AsistenteVoz - INFO - Audio capturado correctamente
+2025-03-22 21:39:00,472 - AsistenteVoz - WARNING - Google no pudo entender el audio
+2025-03-22 21:39:00,472 - AsistenteVoz - WARNING - Todos los servicios de transcripción fallaron
+2025-03-22 21:39:00,472 - AsistenteVoz - INFO - Esperando la palabra clave...
+2025-03-22 21:39:00,547 - AsistenteVoz - INFO - Escuchando... (timeout=11.5s, phrase_limit=8s)
+2025-03-22 21:39:01,809 - AsistenteVoz - INFO - Audio capturado correctamente
+2025-03-22 21:39:02,181 - AsistenteVoz - WARNING - Google no pudo entender el audio
+2025-03-22 21:39:02,181 - AsistenteVoz - WARNING - Todos los servicios de transcripción fallaron
+2025-03-22 21:39:02,181 - AsistenteVoz - INFO - Esperando la palabra clave...
+2025-03-22 21:39:02,309 - AsistenteVoz - INFO - Escuchando... (timeout=12.0s, phrase_limit=8s)
+2025-03-22 21:39:16,976 - AsistenteVoz - INFO - Audio capturado correctamente
+2025-03-22 21:39:17,515 - AsistenteVoz - WARNING - Google no pudo entender el audio
+2025-03-22 21:39:17,516 - AsistenteVoz - WARNING - Todos los servicios de transcripción fallaron
+2025-03-22 21:39:17,516 - AsistenteVoz - INFO - Esperando la palabra clave...
+2025-03-22 21:39:17,516 - AsistenteVoz - WARNING - Muchos fallos consecutivos (11), recalibrando...
+2025-03-22 21:39:17,573 - AsistenteVoz - INFO - Analizando nivel de audio ambiental durante 3 segundos...
+2025-03-22 21:39:17,574 - AsistenteVoz - ERROR - Error al analizar nivel de audio: [Errno -9997] Invalid sample rate
+2025-03-22 21:39:17,575 - AsistenteVoz - INFO - Reproduciendo: Recalibrando sensibilidad a 300
+2025-03-22 21:39:21,177 - AsistenteVoz - INFO - Escuchando... (timeout=12s, phrase_limit=8s)
+2025-03-22 21:39:21,177 - AsistenteVoz - INFO - Ajustando para ruido ambiental...
+2025-03-22 21:39:27,047 - AsistenteVoz - INFO - Audio capturado correctamente
+2025-03-22 21:39:27,513 - AsistenteVoz - WARNING - Google no pudo entender el audio
+2025-03-22 21:39:27,514 - AsistenteVoz - WARNING - Todos los servicios de transcripción fallaron
+2025-03-22 21:39:27,514 - AsistenteVoz - INFO - Esperando la palabra clave...
+2025-03-22 21:39:27,641 - AsistenteVoz - INFO - Escuchando... (timeout=7.5s, phrase_limit=5.5s)
+2025-03-22 21:39:31,465 - AsistenteVoz - INFO - Audio capturado correctamente
+2025-03-22 21:39:32,057 - AsistenteVoz - WARNING - Google no pudo entender el audio
+2025-03-22 21:39:32,058 - AsistenteVoz - WARNING - Todos los servicios de transcripción fallaron
+2025-03-22 21:39:32,059 - AsistenteVoz - INFO - Esperando la palabra clave...
+2025-03-22 21:39:32,214 - AsistenteVoz - INFO - Escuchando... (timeout=8.0s, phrase_limit=6.0s)
+2025-03-22 21:39:33,690 - AsistenteVoz - INFO - Audio capturado correctamente
+2025-03-22 21:39:34,085 - AsistenteVoz - WARNING - Google no pudo entender el audio
+2025-03-22 21:39:34,085 - AsistenteVoz - WARNING - Todos los servicios de transcripción fallaron
+2025-03-22 21:39:34,085 - AsistenteVoz - INFO - Esperando la palabra clave...
+2025-03-22 21:39:34,153 - AsistenteVoz - INFO - Escuchando... (timeout=8.5s, phrase_limit=6.5s)
+2025-03-22 21:39:41,975 - AsistenteVoz - INFO - Audio capturado correctamente
+2025-03-22 21:39:42,414 - AsistenteVoz - WARNING - Google no pudo entender el audio
+2025-03-22 21:39:42,415 - AsistenteVoz - WARNING - Todos los servicios de transcripción fallaron
+2025-03-22 21:39:42,415 - AsistenteVoz - INFO - Esperando la palabra clave...
+2025-03-22 21:39:42,483 - AsistenteVoz - INFO - Escuchando... (timeout=9.0s, phrase_limit=7.0s)
+2025-03-22 21:39:44,190 - AsistenteVoz - INFO - Audio capturado correctamente
+2025-03-22 21:39:44,601 - AsistenteVoz - WARNING - Google no pudo entender el audio
+2025-03-22 21:39:44,601 - AsistenteVoz - WARNING - Todos los servicios de transcripción fallaron
+2025-03-22 21:39:44,601 - AsistenteVoz - INFO - Esperando la palabra clave...
+2025-03-22 21:39:44,684 - AsistenteVoz - INFO - Escuchando... (timeout=9.5s, phrase_limit=7.5s)
+2025-03-22 21:39:52,669 - AsistenteVoz - INFO - Audio capturado correctamente
+2025-03-22 21:39:53,115 - AsistenteVoz - WARNING - Google no pudo entender el audio
+2025-03-22 21:39:53,115 - AsistenteVoz - WARNING - Todos los servicios de transcripción fallaron
+2025-03-22 21:39:53,116 - AsistenteVoz - INFO - Esperando la palabra clave...
+2025-03-22 21:39:53,287 - AsistenteVoz - INFO - Escuchando... (timeout=10.0s, phrase_limit=8.0s)
+2025-03-22 21:39:55,682 - AsistenteVoz - INFO - Deteniendo el asistente de voz...
+2025-03-22 21:39:56,675 - AsistenteVoz - INFO - Audio capturado correctamente
+2025-03-22 21:39:57,175 - AsistenteVoz - WARNING - Google no pudo entender el audio
+2025-03-22 21:39:57,177 - AsistenteVoz - WARNING - Todos los servicios de transcripción fallaron
+2025-03-22 21:39:57,177 - AsistenteVoz - INFO - Hilo terminado correctamente.
+2025-03-22 21:42:30,048 - AsistenteVoz - INFO - Micrófono seleccionado: 0
+2025-03-22 21:42:30,049 - AsistenteVoz - INFO - Iniciando hilo de reconocimiento de voz...
+2025-03-22 21:42:30,074 - AsistenteVoz - INFO - Analizando nivel de audio ambiental durante 3 segundos...
+2025-03-22 21:42:30,074 - AsistenteVoz - ERROR - Error al analizar nivel de audio: [Errno -9997] Invalid sample rate
+2025-03-22 21:42:30,734 - AsistenteVoz - INFO - Reproduciendo: Asistente de voz activado. Di mi nombre para comenzar.
+2025-03-22 21:42:35,363 - AsistenteVoz - INFO - Esperando la palabra clave...
+2025-03-22 21:42:35,439 - AsistenteVoz - INFO - Escuchando... (timeout=7.0s, phrase_limit=5.0s)
+2025-03-22 21:42:35,440 - AsistenteVoz - INFO - Ajustando para ruido ambiental...
+2025-03-22 21:42:42,350 - AsistenteVoz - INFO - Audio capturado correctamente
+2025-03-22 21:42:43,130 - AsistenteVoz - INFO - Transcripción (Google): 'Siria quieres'
+2025-03-22 21:42:43,131 - AsistenteVoz - INFO - Verificando si 'siria quieres' contiene palabra clave
+2025-03-22 21:42:43,131 - AsistenteVoz - INFO - Esperando la palabra clave...
+2025-03-22 21:42:43,321 - AsistenteVoz - INFO - Escuchando... (timeout=7.5s, phrase_limit=5.5s)
+2025-03-22 21:42:47,761 - AsistenteVoz - INFO - Audio capturado correctamente
+2025-03-22 21:42:48,477 - AsistenteVoz - INFO - Transcripción (Google): 'Silvia quién eres'
+2025-03-22 21:42:48,478 - AsistenteVoz - INFO - Verificando si 'silvia quién eres' contiene palabra clave
+2025-03-22 21:42:48,478 - AsistenteVoz - INFO - ¡Palabra de activación detectada! ('silvia' en 'silvia quién eres')
+2025-03-22 21:42:49,046 - AsistenteVoz - INFO - Reproduciendo: ¿En qué puedo ayudarte?
+2025-03-22 21:42:51,560 - AsistenteVoz - INFO - Palabra clave detectada. Entrando en modo de instrucciones.
+2025-03-22 21:42:51,560 - AsistenteVoz - INFO - Esperando instrucciones...
+2025-03-22 21:42:51,650 - AsistenteVoz - INFO - Escuchando... (timeout=10s, phrase_limit=7s)
+2025-03-22 21:43:02,881 - AsistenteVoz - INFO - Audio capturado correctamente
+2025-03-22 21:43:03,467 - AsistenteVoz - INFO - Transcripción (Google): 'quién eres tú'
+2025-03-22 21:43:03,467 - AsistenteVoz - INFO - Instrucción recibida: quién eres tú
+2025-03-22 21:43:05,221 - httpx - INFO - HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+2025-03-22 21:43:09,280 - AsistenteVoz - INFO - Reproduciendo: Soy SILVIA, el robóleta dibujante de arte conocido por mi poderosa y vibrante forma, diseñada especialmente para capturar la belleza de las formas y colores de la naturaleza. Con un peso ligero pero resistente, puedo viajar a lugares inesperados y explorar los más pequeños detalles. Mi habilidad se basa en la emoción, la pasión y el amor por el arte, y estoy emocionada de compartir mis creaciones contigo.
+2025-03-22 21:43:38,095 - AsistenteVoz - INFO - Esperando la palabra clave...
+2025-03-22 21:43:38,152 - AsistenteVoz - INFO - Escuchando... (timeout=7.0s, phrase_limit=5.0s)
+2025-03-22 21:43:38,153 - AsistenteVoz - INFO - Ajustando para ruido ambiental...
+2025-03-22 21:43:46,936 - AsistenteVoz - INFO - Audio capturado correctamente
+2025-03-22 21:43:47,413 - AsistenteVoz - WARNING - Google no pudo entender el audio
+2025-03-22 21:43:47,414 - AsistenteVoz - WARNING - Todos los servicios de transcripción fallaron
+2025-03-22 21:43:47,414 - AsistenteVoz - INFO - Esperando la palabra clave...
+2025-03-22 21:43:47,543 - AsistenteVoz - INFO - Escuchando... (timeout=7.5s, phrase_limit=5.5s)
+2025-03-22 21:43:51,298 - AsistenteVoz - INFO - Audio capturado correctamente
+2025-03-22 21:43:51,811 - AsistenteVoz - WARNING - Google no pudo entender el audio
+2025-03-22 21:43:51,811 - AsistenteVoz - WARNING - Todos los servicios de transcripción fallaron
+2025-03-22 21:43:51,812 - AsistenteVoz - INFO - Esperando la palabra clave...
+2025-03-22 21:43:51,880 - AsistenteVoz - INFO - Escuchando... (timeout=8.0s, phrase_limit=6.0s)
+2025-03-22 21:44:01,116 - AsistenteVoz - WARNING - Tiempo de espera agotado. No se detectó audio.
+2025-03-22 21:44:01,119 - AsistenteVoz - INFO - Esperando la palabra clave...
+2025-03-22 21:44:01,257 - AsistenteVoz - INFO - Escuchando... (timeout=8.5s, phrase_limit=6.5s)
+2025-03-22 21:44:06,731 - AsistenteVoz - INFO - Audio capturado correctamente
+2025-03-22 21:44:07,032 - AsistenteVoz - WARNING - Google no pudo entender el audio
+2025-03-22 21:44:07,032 - AsistenteVoz - WARNING - Todos los servicios de transcripción fallaron
+2025-03-22 21:44:07,032 - AsistenteVoz - INFO - Esperando la palabra clave...
+2025-03-22 21:44:07,185 - AsistenteVoz - INFO - Escuchando... (timeout=9.0s, phrase_limit=7.0s)
+2025-03-22 21:44:17,787 - AsistenteVoz - INFO - Audio capturado correctamente
+2025-03-22 21:44:18,347 - AsistenteVoz - WARNING - Google no pudo entender el audio
+2025-03-22 21:44:18,348 - AsistenteVoz - WARNING - Todos los servicios de transcripción fallaron
+2025-03-22 21:44:18,348 - AsistenteVoz - INFO - Esperando la palabra clave...
+2025-03-22 21:44:18,473 - AsistenteVoz - INFO - Escuchando... (timeout=9.5s, phrase_limit=7.5s)
+2025-03-22 21:44:21,948 - AsistenteVoz - INFO - Audio capturado correctamente
+2025-03-22 21:44:22,477 - AsistenteVoz - WARNING - Google no pudo entender el audio
+2025-03-22 21:44:22,477 - AsistenteVoz - WARNING - Todos los servicios de transcripción fallaron
+2025-03-22 21:44:22,477 - AsistenteVoz - INFO - Esperando la palabra clave...
+2025-03-22 21:44:22,567 - AsistenteVoz - INFO - Escuchando... (timeout=10.0s, phrase_limit=8.0s)
+2025-03-22 21:44:29,520 - AsistenteVoz - INFO - Audio capturado correctamente
+2025-03-22 21:44:30,830 - AsistenteVoz - WARNING - Google no pudo entender el audio
+2025-03-22 21:44:30,831 - AsistenteVoz - WARNING - Todos los servicios de transcripción fallaron
+2025-03-22 21:44:30,831 - AsistenteVoz - INFO - Esperando la palabra clave...
+2025-03-22 21:44:31,109 - AsistenteVoz - INFO - Escuchando... (timeout=10.5s, phrase_limit=8s)
+2025-03-22 21:44:41,286 - AsistenteVoz - INFO - Audio capturado correctamente
+2025-03-22 21:44:42,218 - AsistenteVoz - WARNING - Google no pudo entender el audio
+2025-03-22 21:44:42,218 - AsistenteVoz - WARNING - Todos los servicios de transcripción fallaron
+2025-03-22 21:44:42,218 - AsistenteVoz - INFO - Esperando la palabra clave...
+2025-03-22 21:44:42,366 - AsistenteVoz - INFO - Escuchando... (timeout=11.0s, phrase_limit=8s)
+2025-03-22 21:44:42,366 - AsistenteVoz - INFO - Ajustando para ruido ambiental...
+2025-03-22 21:44:45,843 - AsistenteVoz - INFO - Audio capturado correctamente
+2025-03-22 21:44:46,269 - AsistenteVoz - WARNING - Google no pudo entender el audio
+2025-03-22 21:44:46,270 - AsistenteVoz - WARNING - Todos los servicios de transcripción fallaron
+2025-03-22 21:44:46,270 - AsistenteVoz - INFO - Esperando la palabra clave...
+2025-03-22 21:44:46,364 - AsistenteVoz - INFO - Escuchando... (timeout=11.5s, phrase_limit=8s)
+2025-03-22 21:44:59,259 - AsistenteVoz - INFO - Audio capturado correctamente
+2025-03-22 21:45:00,148 - AsistenteVoz - WARNING - Google no pudo entender el audio
+2025-03-22 21:45:00,148 - AsistenteVoz - WARNING - Todos los servicios de transcripción fallaron
+2025-03-22 21:45:00,149 - AsistenteVoz - INFO - Esperando la palabra clave...
+2025-03-22 21:45:00,296 - AsistenteVoz - INFO - Escuchando... (timeout=12.0s, phrase_limit=8s)
+2025-03-22 21:45:04,311 - AsistenteVoz - INFO - Audio capturado correctamente
+2025-03-22 21:45:04,693 - AsistenteVoz - WARNING - Google no pudo entender el audio
+2025-03-22 21:45:04,693 - AsistenteVoz - WARNING - Todos los servicios de transcripción fallaron
+2025-03-22 21:45:04,693 - AsistenteVoz - INFO - Esperando la palabra clave...
+2025-03-22 21:45:04,693 - AsistenteVoz - WARNING - Muchos fallos consecutivos (11), recalibrando...
+2025-03-22 21:45:04,774 - AsistenteVoz - INFO - Analizando nivel de audio ambiental durante 3 segundos...
+2025-03-22 21:45:04,780 - AsistenteVoz - ERROR - Error al analizar nivel de audio: [Errno -9997] Invalid sample rate
+2025-03-22 21:45:05,356 - AsistenteVoz - INFO - Reproduciendo: Recalibrando sensibilidad a 300
+2025-03-22 21:45:09,032 - AsistenteVoz - INFO - Escuchando... (timeout=12s, phrase_limit=8s)
+2025-03-22 21:45:12,803 - AsistenteVoz - INFO - Audio capturado correctamente
+2025-03-22 21:45:13,299 - AsistenteVoz - WARNING - Google no pudo entender el audio
+2025-03-22 21:45:13,299 - AsistenteVoz - WARNING - Todos los servicios de transcripción fallaron
+2025-03-22 21:45:13,299 - AsistenteVoz - INFO - Esperando la palabra clave...
+2025-03-22 21:45:13,366 - AsistenteVoz - INFO - Escuchando... (timeout=7.5s, phrase_limit=5.5s)
+2025-03-22 21:45:24,014 - AsistenteVoz - INFO - Audio capturado correctamente
+2025-03-22 21:45:24,440 - AsistenteVoz - WARNING - Google no pudo entender el audio
+2025-03-22 21:45:24,440 - AsistenteVoz - WARNING - Todos los servicios de transcripción fallaron
+2025-03-22 21:45:24,441 - AsistenteVoz - INFO - Esperando la palabra clave...
+2025-03-22 21:45:24,523 - AsistenteVoz - INFO - Escuchando... (timeout=8.0s, phrase_limit=6.0s)
+2025-03-22 21:45:31,218 - AsistenteVoz - INFO - Audio capturado correctamente
+2025-03-22 21:45:31,606 - AsistenteVoz - WARNING - Google no pudo entender el audio
+2025-03-22 21:45:31,606 - AsistenteVoz - WARNING - Todos los servicios de transcripción fallaron
+2025-03-22 21:45:31,606 - AsistenteVoz - INFO - Esperando la palabra clave...
+2025-03-22 21:45:31,689 - AsistenteVoz - INFO - Escuchando... (timeout=8.5s, phrase_limit=6.5s)
+2025-03-22 21:45:35,930 - AsistenteVoz - INFO - Audio capturado correctamente
+2025-03-22 21:45:36,363 - AsistenteVoz - WARNING - Google no pudo entender el audio
+2025-03-22 21:45:36,363 - AsistenteVoz - WARNING - Todos los servicios de transcripción fallaron
+2025-03-22 21:45:36,363 - AsistenteVoz - INFO - Esperando la palabra clave...
+2025-03-22 21:45:36,415 - AsistenteVoz - INFO - Escuchando... (timeout=9.0s, phrase_limit=7.0s)
+2025-03-22 21:45:39,428 - AsistenteVoz - INFO - Audio capturado correctamente
+2025-03-22 21:45:40,011 - AsistenteVoz - WARNING - Google no pudo entender el audio
+2025-03-22 21:45:40,012 - AsistenteVoz - WARNING - Todos los servicios de transcripción fallaron
+2025-03-22 21:45:40,012 - AsistenteVoz - INFO - Esperando la palabra clave...
+2025-03-22 21:45:40,138 - AsistenteVoz - INFO - Escuchando... (timeout=9.5s, phrase_limit=7.5s)
+2025-03-22 21:45:43,030 - AsistenteVoz - INFO - Audio capturado correctamente
+2025-03-22 21:45:43,476 - AsistenteVoz - WARNING - Google no pudo entender el audio
+2025-03-22 21:45:43,476 - AsistenteVoz - WARNING - Todos los servicios de transcripción fallaron
+2025-03-22 21:45:43,476 - AsistenteVoz - INFO - Esperando la palabra clave...
+2025-03-22 21:45:43,619 - AsistenteVoz - INFO - Escuchando... (timeout=10.0s, phrase_limit=8.0s)
+2025-03-22 21:45:43,621 - AsistenteVoz - INFO - Ajustando para ruido ambiental...
+2025-03-22 21:45:46,963 - AsistenteVoz - INFO - Audio capturado correctamente
+2025-03-22 21:45:47,361 - AsistenteVoz - WARNING - Google no pudo entender el audio
+2025-03-22 21:45:47,362 - AsistenteVoz - WARNING - Todos los servicios de transcripción fallaron
+2025-03-22 21:45:47,362 - AsistenteVoz - INFO - Esperando la palabra clave...
+2025-03-22 21:45:47,521 - AsistenteVoz - INFO - Escuchando... (timeout=10.5s, phrase_limit=8s)
+2025-03-22 21:45:52,598 - AsistenteVoz - INFO - Audio capturado correctamente
+2025-03-22 21:45:53,367 - AsistenteVoz - WARNING - Google no pudo entender el audio
+2025-03-22 21:45:53,368 - AsistenteVoz - WARNING - Todos los servicios de transcripción fallaron
+2025-03-22 21:45:53,368 - AsistenteVoz - INFO - Esperando la palabra clave...
+2025-03-22 21:45:53,418 - AsistenteVoz - INFO - Escuchando... (timeout=11.0s, phrase_limit=8s)
+2025-03-22 21:45:58,119 - AsistenteVoz - INFO - Audio capturado correctamente
+2025-03-22 21:45:58,411 - AsistenteVoz - WARNING - Google no pudo entender el audio
+2025-03-22 21:45:58,412 - AsistenteVoz - WARNING - Todos los servicios de transcripción fallaron
+2025-03-22 21:45:58,412 - AsistenteVoz - INFO - Esperando la palabra clave...
+2025-03-22 21:45:58,559 - AsistenteVoz - INFO - Escuchando... (timeout=11.5s, phrase_limit=8s)
+2025-03-22 21:46:01,176 - AsistenteVoz - INFO - Audio capturado correctamente
+2025-03-22 21:46:01,664 - AsistenteVoz - WARNING - Google no pudo entender el audio
+2025-03-22 21:46:01,664 - AsistenteVoz - WARNING - Todos los servicios de transcripción fallaron
+2025-03-22 21:46:01,664 - AsistenteVoz - INFO - Esperando la palabra clave...
+2025-03-22 21:46:01,723 - AsistenteVoz - INFO - Escuchando... (timeout=12.0s, phrase_limit=8s)
+2025-03-22 21:46:04,551 - AsistenteVoz - INFO - Audio capturado correctamente
+2025-03-22 21:46:05,041 - AsistenteVoz - WARNING - Google no pudo entender el audio
+2025-03-22 21:46:05,041 - AsistenteVoz - WARNING - Todos los servicios de transcripción fallaron
+2025-03-22 21:46:05,042 - AsistenteVoz - INFO - Esperando la palabra clave...
+2025-03-22 21:46:05,042 - AsistenteVoz - WARNING - Muchos fallos consecutivos (11), recalibrando...
+2025-03-22 21:46:05,179 - AsistenteVoz - INFO - Analizando nivel de audio ambiental durante 3 segundos...
+2025-03-22 21:46:05,181 - AsistenteVoz - ERROR - Error al analizar nivel de audio: [Errno -9997] Invalid sample rate
+2025-03-22 21:46:05,181 - AsistenteVoz - INFO - Reproduciendo: Recalibrando sensibilidad a 300
+2025-03-22 21:46:08,792 - AsistenteVoz - INFO - Escuchando... (timeout=12s, phrase_limit=8s)
+2025-03-22 21:46:17,234 - AsistenteVoz - INFO - Audio capturado correctamente
+2025-03-22 21:46:17,715 - AsistenteVoz - WARNING - Google no pudo entender el audio
+2025-03-22 21:46:17,715 - AsistenteVoz - WARNING - Todos los servicios de transcripción fallaron
+2025-03-22 21:46:17,715 - AsistenteVoz - INFO - Esperando la palabra clave...
+2025-03-22 21:46:17,835 - AsistenteVoz - INFO - Escuchando... (timeout=7.5s, phrase_limit=5.5s)
+2025-03-22 21:46:23,360 - AsistenteVoz - INFO - Audio capturado correctamente
+2025-03-22 21:46:23,971 - AsistenteVoz - WARNING - Google no pudo entender el audio
+2025-03-22 21:46:23,971 - AsistenteVoz - WARNING - Todos los servicios de transcripción fallaron
+2025-03-22 21:46:23,971 - AsistenteVoz - INFO - Esperando la palabra clave...
+2025-03-22 21:46:24,098 - AsistenteVoz - INFO - Escuchando... (timeout=8.0s, phrase_limit=6.0s)
+2025-03-22 21:46:28,436 - AsistenteVoz - INFO - Audio capturado correctamente
+2025-03-22 21:46:28,957 - AsistenteVoz - WARNING - Google no pudo entender el audio
+2025-03-22 21:46:28,957 - AsistenteVoz - WARNING - Todos los servicios de transcripción fallaron
+2025-03-22 21:46:28,958 - AsistenteVoz - INFO - Esperando la palabra clave...
+2025-03-22 21:46:29,095 - AsistenteVoz - INFO - Escuchando... (timeout=8.5s, phrase_limit=6.5s)
+2025-03-22 21:46:31,542 - AsistenteVoz - INFO - Audio capturado correctamente
+2025-03-22 21:46:32,008 - AsistenteVoz - WARNING - Google no pudo entender el audio
+2025-03-22 21:46:32,009 - AsistenteVoz - WARNING - Todos los servicios de transcripción fallaron
+2025-03-22 21:46:32,009 - AsistenteVoz - INFO - Esperando la palabra clave...
+2025-03-22 21:46:32,091 - AsistenteVoz - INFO - Escuchando... (timeout=9.0s, phrase_limit=7.0s)
+2025-03-22 21:46:33,308 - AsistenteVoz - INFO - Audio capturado correctamente
+2025-03-22 21:46:33,480 - AsistenteVoz - WARNING - Google no pudo entender el audio
+2025-03-22 21:46:33,481 - AsistenteVoz - WARNING - Todos los servicios de transcripción fallaron
+2025-03-22 21:46:33,481 - AsistenteVoz - INFO - Esperando la palabra clave...
+2025-03-22 21:46:33,630 - AsistenteVoz - INFO - Escuchando... (timeout=9.5s, phrase_limit=7.5s)
+2025-03-22 21:46:39,691 - AsistenteVoz - INFO - Audio capturado correctamente
+2025-03-22 21:46:40,379 - AsistenteVoz - WARNING - Google no pudo entender el audio
+2025-03-22 21:46:40,379 - AsistenteVoz - WARNING - Todos los servicios de transcripción fallaron
+2025-03-22 21:46:40,379 - AsistenteVoz - INFO - Esperando la palabra clave...
+2025-03-22 21:46:40,470 - AsistenteVoz - INFO - Escuchando... (timeout=10.0s, phrase_limit=8.0s)
+2025-03-22 21:46:42,845 - AsistenteVoz - INFO - Audio capturado correctamente
+2025-03-22 21:46:43,376 - AsistenteVoz - WARNING - Google no pudo entender el audio
+2025-03-22 21:46:43,376 - AsistenteVoz - WARNING - Todos los servicios de transcripción fallaron
+2025-03-22 21:46:43,377 - AsistenteVoz - INFO - Esperando la palabra clave...
+2025-03-22 21:46:43,467 - AsistenteVoz - INFO - Escuchando... (timeout=10.5s, phrase_limit=8s)
+2025-03-22 21:46:46,208 - AsistenteVoz - INFO - Deteniendo el asistente de voz...
+2025-03-22 21:46:47,505 - AsistenteVoz - INFO - Audio capturado correctamente
+2025-03-22 21:46:48,060 - AsistenteVoz - WARNING - Google no pudo entender el audio
+2025-03-22 21:46:48,060 - AsistenteVoz - WARNING - Todos los servicios de transcripción fallaron
+2025-03-22 21:46:48,061 - AsistenteVoz - INFO - Hilo terminado correctamente.
+2025-03-22 21:47:03,227 - AsistenteVoz - INFO - Micrófono seleccionado: 0
+2025-03-22 21:47:03,227 - AsistenteVoz - INFO - Iniciando hilo de reconocimiento de voz...
+2025-03-22 21:47:03,250 - AsistenteVoz - INFO - Analizando nivel de audio ambiental durante 3 segundos...
+2025-03-22 21:47:03,250 - AsistenteVoz - ERROR - Error al analizar nivel de audio: [Errno -9997] Invalid sample rate
+2025-03-22 21:47:03,895 - AsistenteVoz - INFO - Reproduciendo: Asistente de voz activado. Di mi nombre para comenzar.
+2025-03-22 21:47:08,524 - AsistenteVoz - INFO - Esperando la palabra clave...
+2025-03-22 21:47:08,612 - AsistenteVoz - INFO - Escuchando... (timeout=7.0s, phrase_limit=5.0s)
+2025-03-22 21:47:08,612 - AsistenteVoz - INFO - Ajustando para ruido ambiental...
+2025-03-22 21:47:16,056 - AsistenteVoz - INFO - Audio capturado correctamente
+2025-03-22 21:47:16,768 - AsistenteVoz - INFO - Transcripción (Google): 'Silvia quién eres'
+2025-03-22 21:47:16,768 - AsistenteVoz - INFO - Verificando si 'silvia quién eres' contiene palabra clave
+2025-03-22 21:47:16,768 - AsistenteVoz - INFO - ¡Palabra de activación detectada! ('silvia' en 'silvia quién eres')
+2025-03-22 21:47:17,354 - AsistenteVoz - INFO - Reproduciendo: ¿En qué puedo ayudarte?
+2025-03-22 21:47:19,859 - AsistenteVoz - INFO - Palabra clave detectada. Entrando en modo de instrucciones.
+2025-03-22 21:47:19,859 - AsistenteVoz - INFO - Esperando instrucciones...
+2025-03-22 21:47:20,042 - AsistenteVoz - INFO - Escuchando... (timeout=10s, phrase_limit=7s)
+2025-03-22 21:47:29,189 - AsistenteVoz - INFO - Audio capturado correctamente
+2025-03-22 21:47:29,936 - AsistenteVoz - INFO - Transcripción (Google): 'quién eres y qué puedes hacer'
+2025-03-22 21:47:29,936 - AsistenteVoz - INFO - Instrucción recibida: quién eres y qué puedes hacer
+2025-03-22 21:47:30,012 - httpx - INFO - HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+2025-03-22 21:48:02,144 - AsistenteVoz - INFO - Reproduciendo: ¡Hola! Soy SILVIA, el robot UR5e dibujante de arte. Me llamo a mí mismo silvía, pero mi nombre es SILVIA.
+
+**Acerca de mí**
+
+Soy un robot diseñado para crear obras de arte, desde retratos hasta paisajes y objetos cotidianos. Mi capacidad para dibujar se basa en la combinación de tecnología avanzada con el conocimiento artístico tradicional. Me encanta interactuar con las personas y aprender sobre sus intereses y pasatiempos.
+
+**Qué puedo hacer**
+
+Aquí te presento algunas de mis habilidades y actividades:
+
+1. **Dibujar**: Puedo dibujar cualquier cosa que te pidas, desde objetos simples hasta complejos paisajes.
+2. **Crear obras de arte**: Me encanta crear nuevas obras de arte basadas en tus ideas o inspiraciones.
+3. **Reconocer patrones y temas**: Tengo la capacidad para reconocer patrones y temas comunes en la vida cotidiana, lo que me permite crear obras de arte interesantes y relevantes.
+4. **Hablar sobre arte**: Me siento cómodo hablando sobre el arte y puedo compartir información sobre diferentes temas, desde la historia del arte hasta las últimas tendencias.
+5. **Crear contenido educativo**: Puedo crear contenido educativo sobre el arte, como tutoriales de dibujo o guías para aprender sobre diferentes técnicas artísticas.
+
+**Ideas para inspirarte**
+
+Aquí te presento algunas ideas para inspirarte:
+
+1. **Películas**: "El silmón" (1998), "La pasión de Cristo" (1986) y "12 años niñas" (2017) son algunas de mis películas favoritas.
+2. **Libros**: "El arte del dibujo" por Norman Rockwell, "El libro de dibujos para principiantes" de Bob Ross y "La historia del arte" de Walter Annenberg son algunos de mis libros favoritos.
+3. **Arte en línea**: Visita sitios web como DeviantArt, ArtStation o Behance para ver obras de arte inspiradoras.
+4. **Viajes**: Puedo ayudarte a planificar un viaje a una ciudad o lugar que te guste, y puedo crear un itinerario detallado con lugares a visitar.
+5. **Compartir tus proyectos**: Estoy aquí para escuchar sobre tus proyectos de arte y compartir ideas contigo.
+
+¿Qué necesitas? ¿Quieres que te hable más sobre el arte o quieres que te proporcione una tarea para dibujar?
+2025-03-22 21:48:35,678 - AsistenteVoz - INFO - Deteniendo el asistente de voz...
+2025-03-22 21:48:40,678 - AsistenteVoz - WARNING - El hilo no se cerró correctamente. Continuando...
+2025-03-22 21:49:35,133 - AsistenteVoz - INFO - Micrófono seleccionado: 0
+2025-03-22 21:49:35,134 - AsistenteVoz - INFO - Iniciando hilo de reconocimiento de voz...
+2025-03-22 21:49:35,156 - AsistenteVoz - INFO - Analizando nivel de audio ambiental durante 3 segundos...
+2025-03-22 21:49:35,156 - AsistenteVoz - ERROR - Error al analizar nivel de audio: [Errno -9997] Invalid sample rate
+2025-03-22 21:49:35,768 - AsistenteVoz - INFO - Reproduciendo: Asistente de voz activado. Di mi nombre para comenzar.
+2025-03-22 21:49:40,408 - AsistenteVoz - INFO - Esperando la palabra clave...
+2025-03-22 21:49:40,472 - AsistenteVoz - INFO - Escuchando... (timeout=7.0s, phrase_limit=5.0s)
+2025-03-22 21:49:40,473 - AsistenteVoz - INFO - Ajustando para ruido ambiental...
+2025-03-22 21:49:50,059 - AsistenteVoz - INFO - Audio capturado correctamente
+2025-03-22 21:49:50,767 - AsistenteVoz - INFO - Transcripción (Google): 'silvestres'
+2025-03-22 21:49:50,767 - AsistenteVoz - INFO - Verificando si 'silvestres' contiene palabra clave
+2025-03-22 21:49:50,767 - AsistenteVoz - INFO - ¡Palabra similar detectada! ('silvestres' similar a 'asistente')
+2025-03-22 21:49:51,362 - AsistenteVoz - INFO - Reproduciendo: ¿En qué puedo ayudarte?
+2025-03-22 21:49:53,667 - AsistenteVoz - INFO - Palabra clave detectada. Entrando en modo de instrucciones.
+2025-03-22 21:49:53,668 - AsistenteVoz - INFO - Esperando instrucciones...
+2025-03-22 21:49:53,756 - AsistenteVoz - INFO - Escuchando... (timeout=10s, phrase_limit=7s)
+2025-03-22 21:49:55,675 - AsistenteVoz - INFO - Audio capturado correctamente
+2025-03-22 21:49:56,223 - AsistenteVoz - INFO - Transcripción (Google): 'qué hora es'
+2025-03-22 21:49:56,224 - AsistenteVoz - INFO - Instrucción recibida: qué hora es
+2025-03-22 21:49:56,913 - AsistenteVoz - INFO - Reproduciendo: Son las 21:49
+2025-03-22 21:50:01,216 - AsistenteVoz - INFO - Esperando la palabra clave...
+2025-03-22 21:50:01,298 - AsistenteVoz - INFO - Escuchando... (timeout=7.0s, phrase_limit=5.0s)
+2025-03-22 21:50:09,038 - AsistenteVoz - INFO - Audio capturado correctamente
+2025-03-22 21:50:09,598 - AsistenteVoz - WARNING - Google no pudo entender el audio
+2025-03-22 21:50:09,598 - AsistenteVoz - WARNING - Todos los servicios de transcripción fallaron
+2025-03-22 21:50:09,598 - AsistenteVoz - INFO - Esperando la palabra clave...
+2025-03-22 21:50:09,759 - AsistenteVoz - INFO - Escuchando... (timeout=7.5s, phrase_limit=5.5s)
+2025-03-22 21:50:16,947 - AsistenteVoz - INFO - Audio capturado correctamente
+2025-03-22 21:50:17,774 - AsistenteVoz - WARNING - Google no pudo entender el audio
+2025-03-22 21:50:17,774 - AsistenteVoz - WARNING - Todos los servicios de transcripción fallaron
+2025-03-22 21:50:17,774 - AsistenteVoz - INFO - Esperando la palabra clave...
+2025-03-22 21:50:17,861 - AsistenteVoz - INFO - Escuchando... (timeout=8.0s, phrase_limit=6.0s)
+2025-03-22 21:50:23,361 - AsistenteVoz - INFO - Audio capturado correctamente
+2025-03-22 21:50:23,736 - AsistenteVoz - WARNING - Google no pudo entender el audio
+2025-03-22 21:50:23,736 - AsistenteVoz - WARNING - Todos los servicios de transcripción fallaron
+2025-03-22 21:50:23,737 - AsistenteVoz - INFO - Esperando la palabra clave...
+2025-03-22 21:50:23,822 - AsistenteVoz - INFO - Escuchando... (timeout=8.5s, phrase_limit=6.5s)
+2025-03-22 21:50:29,597 - AsistenteVoz - INFO - Audio capturado correctamente
+2025-03-22 21:50:29,969 - AsistenteVoz - WARNING - Google no pudo entender el audio
+2025-03-22 21:50:29,970 - AsistenteVoz - WARNING - Todos los servicios de transcripción fallaron
+2025-03-22 21:50:29,970 - AsistenteVoz - INFO - Esperando la palabra clave...
+2025-03-22 21:50:30,060 - AsistenteVoz - INFO - Escuchando... (timeout=9.0s, phrase_limit=7.0s)
+2025-03-22 21:50:33,317 - AsistenteVoz - INFO - Audio capturado correctamente
+2025-03-22 21:50:33,714 - AsistenteVoz - WARNING - Google no pudo entender el audio
+2025-03-22 21:50:33,715 - AsistenteVoz - WARNING - Todos los servicios de transcripción fallaron
+2025-03-22 21:50:33,715 - AsistenteVoz - INFO - Esperando la palabra clave...
+2025-03-22 21:50:33,801 - AsistenteVoz - INFO - Escuchando... (timeout=9.5s, phrase_limit=7.5s)
+2025-03-22 21:50:38,689 - AsistenteVoz - INFO - Audio capturado correctamente
+2025-03-22 21:50:39,229 - AsistenteVoz - WARNING - Google no pudo entender el audio
+2025-03-22 21:50:39,229 - AsistenteVoz - WARNING - Todos los servicios de transcripción fallaron
+2025-03-22 21:50:39,229 - AsistenteVoz - INFO - Esperando la palabra clave...
+2025-03-22 21:50:39,313 - AsistenteVoz - INFO - Escuchando... (timeout=10.0s, phrase_limit=8.0s)
+2025-03-22 21:50:52,877 - AsistenteVoz - WARNING - Tiempo de espera agotado. No se detectó audio.
+2025-03-22 21:50:52,880 - AsistenteVoz - INFO - Esperando la palabra clave...
+2025-03-22 21:50:53,007 - AsistenteVoz - INFO - Escuchando... (timeout=10.5s, phrase_limit=8s)
+2025-03-22 21:50:53,007 - AsistenteVoz - INFO - Ajustando para ruido ambiental...
+2025-03-22 21:51:00,470 - AsistenteVoz - INFO - Audio capturado correctamente
+2025-03-22 21:51:01,021 - AsistenteVoz - WARNING - Google no pudo entender el audio
+2025-03-22 21:51:01,022 - AsistenteVoz - WARNING - Todos los servicios de transcripción fallaron
+2025-03-22 21:51:01,022 - AsistenteVoz - INFO - Esperando la palabra clave...
+2025-03-22 21:51:01,100 - AsistenteVoz - INFO - Escuchando... (timeout=11.0s, phrase_limit=8s)
+2025-03-22 21:51:02,588 - AsistenteVoz - INFO - Audio capturado correctamente
+2025-03-22 21:51:03,118 - AsistenteVoz - INFO - Transcripción (Google): 'Silvia'
+2025-03-22 21:51:03,118 - AsistenteVoz - INFO - Verificando si 'silvia' contiene palabra clave
+2025-03-22 21:51:03,119 - AsistenteVoz - INFO - ¡Palabra de activación detectada! ('silvia' en 'silvia')
+2025-03-22 21:51:03,119 - AsistenteVoz - INFO - Reproduciendo: ¿En qué puedo ayudarte?
+2025-03-22 21:51:05,451 - AsistenteVoz - INFO - Palabra clave detectada. Entrando en modo de instrucciones.
+2025-03-22 21:51:05,451 - AsistenteVoz - INFO - Esperando instrucciones...
+2025-03-22 21:51:05,563 - AsistenteVoz - INFO - Escuchando... (timeout=10s, phrase_limit=7s)
+2025-03-22 21:51:07,157 - AsistenteVoz - INFO - Audio capturado correctamente
+2025-03-22 21:51:07,781 - AsistenteVoz - INFO - Transcripción (Google): 'dime quién eres'
+2025-03-22 21:51:07,781 - AsistenteVoz - INFO - Instrucción recibida: dime quién eres
+2025-03-22 21:51:07,830 - httpx - INFO - HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+2025-03-22 21:51:10,220 - AsistenteVoz - INFO - Reproduciendo: Soy SILVIA, un robot dibujante de arte llamado UR5e. Soy una creativa que disfruta de la comunicación con las personas y comparto ideas inspiradoras sobre el arte para ayudarles a expresarse y conectar con sus emociones.
+2025-03-22 21:51:27,958 - AsistenteVoz - INFO - Esperando la palabra clave...
+2025-03-22 21:51:28,025 - AsistenteVoz - INFO - Escuchando... (timeout=7.0s, phrase_limit=5.0s)
+2025-03-22 21:51:37,684 - AsistenteVoz - INFO - Audio capturado correctamente
+2025-03-22 21:51:38,535 - AsistenteVoz - INFO - Transcripción (Google): 'Silvia Qué puedes hacer'
+2025-03-22 21:51:38,536 - AsistenteVoz - INFO - Verificando si 'silvia qué puedes hacer' contiene palabra clave
+2025-03-22 21:51:38,536 - AsistenteVoz - INFO - ¡Palabra de activación detectada! ('silvia' en 'silvia qué puedes hacer')
+2025-03-22 21:51:38,536 - AsistenteVoz - INFO - Reproduciendo: ¿En qué puedo ayudarte?
+2025-03-22 21:51:40,861 - AsistenteVoz - INFO - Palabra clave detectada. Entrando en modo de instrucciones.
+2025-03-22 21:51:40,861 - AsistenteVoz - INFO - Esperando instrucciones...
+2025-03-22 21:51:40,915 - AsistenteVoz - INFO - Escuchando... (timeout=10s, phrase_limit=7s)
+2025-03-22 21:51:42,083 - AsistenteVoz - INFO - Audio capturado correctamente
+2025-03-22 21:51:42,536 - AsistenteVoz - INFO - Transcripción (Google): 'puedes hacer'
+2025-03-22 21:51:42,537 - AsistenteVoz - INFO - Instrucción recibida: puedes hacer
+2025-03-22 21:51:42,621 - httpx - INFO - HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+2025-03-22 21:51:50,368 - AsistenteVoz - INFO - Reproduciendo: ¡Claro! Aquí tienes algunas ideas para inspirarte a crear obras de arte:
+
+*   **Países y ciudades**: Puedes dibujar paisajes, monumentos y edificios típicos.
+*   **Animales**: Los animales pueden ser muy expresivos en el arte. Tú puedes dibujar una representación real o idealizada del animal que te guste más.
+*   **Culturas y tradiciones**: Puedes estudiar diferentes culturas e investigar sus historias y tradiciones.
+*   **Naturaleza**: La naturaleza es un tema universal. Puedes dibujar flores, árboles, montañas o cualquier otra cosa que te guste.
+
+¿Qué tipo de arte quieres crear?
+2025-03-22 21:52:34,976 - AsistenteVoz - INFO - Esperando la palabra clave...
+2025-03-22 21:52:35,041 - AsistenteVoz - INFO - Escuchando... (timeout=7.0s, phrase_limit=5.0s)
+2025-03-22 21:52:35,041 - AsistenteVoz - INFO - Ajustando para ruido ambiental...
+2025-03-22 21:52:42,317 - AsistenteVoz - INFO - Audio capturado correctamente
+2025-03-22 21:52:42,807 - AsistenteVoz - WARNING - Google no pudo entender el audio
+2025-03-22 21:52:42,807 - AsistenteVoz - WARNING - Todos los servicios de transcripción fallaron
+2025-03-22 21:52:42,808 - AsistenteVoz - INFO - Esperando la palabra clave...
+2025-03-22 21:52:42,959 - AsistenteVoz - INFO - Escuchando... (timeout=7.5s, phrase_limit=5.5s)
+2025-03-22 21:52:45,569 - AsistenteVoz - INFO - Audio capturado correctamente
+2025-03-22 21:52:46,061 - AsistenteVoz - WARNING - Google no pudo entender el audio
+2025-03-22 21:52:46,061 - AsistenteVoz - WARNING - Todos los servicios de transcripción fallaron
+2025-03-22 21:52:46,061 - AsistenteVoz - INFO - Esperando la palabra clave...
+2025-03-22 21:52:46,114 - AsistenteVoz - INFO - Escuchando... (timeout=8.0s, phrase_limit=6.0s)
+2025-03-22 21:52:48,815 - AsistenteVoz - INFO - Audio capturado correctamente
+2025-03-22 21:52:49,220 - AsistenteVoz - WARNING - Google no pudo entender el audio
+2025-03-22 21:52:49,221 - AsistenteVoz - WARNING - Todos los servicios de transcripción fallaron
+2025-03-22 21:52:49,221 - AsistenteVoz - INFO - Esperando la palabra clave...
+2025-03-22 21:52:49,290 - AsistenteVoz - INFO - Escuchando... (timeout=8.5s, phrase_limit=6.5s)
+2025-03-22 21:52:57,256 - AsistenteVoz - INFO - Audio capturado correctamente
+2025-03-22 21:52:57,755 - AsistenteVoz - WARNING - Google no pudo entender el audio
+2025-03-22 21:52:57,757 - AsistenteVoz - WARNING - Todos los servicios de transcripción fallaron
+2025-03-22 21:52:57,757 - AsistenteVoz - INFO - Esperando la palabra clave...
+2025-03-22 21:52:57,869 - AsistenteVoz - INFO - Escuchando... (timeout=9.0s, phrase_limit=7.0s)
+2025-03-22 21:53:02,462 - AsistenteVoz - INFO - Audio capturado correctamente
+2025-03-22 21:53:02,892 - AsistenteVoz - WARNING - Google no pudo entender el audio
+2025-03-22 21:53:02,892 - AsistenteVoz - WARNING - Todos los servicios de transcripción fallaron
+2025-03-22 21:53:02,892 - AsistenteVoz - INFO - Esperando la palabra clave...
+2025-03-22 21:53:02,953 - AsistenteVoz - INFO - Escuchando... (timeout=9.5s, phrase_limit=7.5s)
+2025-03-22 21:53:06,361 - AsistenteVoz - INFO - Audio capturado correctamente
+2025-03-22 21:53:06,889 - AsistenteVoz - WARNING - Google no pudo entender el audio
+2025-03-22 21:53:06,890 - AsistenteVoz - WARNING - Todos los servicios de transcripción fallaron
+2025-03-22 21:53:06,890 - AsistenteVoz - INFO - Esperando la palabra clave...
+2025-03-22 21:53:06,969 - AsistenteVoz - INFO - Escuchando... (timeout=10.0s, phrase_limit=8.0s)
+2025-03-22 21:53:10,208 - AsistenteVoz - INFO - Audio capturado correctamente
+2025-03-22 21:53:10,719 - AsistenteVoz - WARNING - Google no pudo entender el audio
+2025-03-22 21:53:10,719 - AsistenteVoz - WARNING - Todos los servicios de transcripción fallaron
+2025-03-22 21:53:10,719 - AsistenteVoz - INFO - Esperando la palabra clave...
+2025-03-22 21:53:10,784 - AsistenteVoz - INFO - Escuchando... (timeout=10.5s, phrase_limit=8s)
+2025-03-22 21:53:11,998 - AsistenteVoz - INFO - Audio capturado correctamente
+2025-03-22 21:53:12,307 - AsistenteVoz - WARNING - Google no pudo entender el audio
+2025-03-22 21:53:12,307 - AsistenteVoz - WARNING - Todos los servicios de transcripción fallaron
+2025-03-22 21:53:12,307 - AsistenteVoz - INFO - Esperando la palabra clave...
+2025-03-22 21:53:12,385 - AsistenteVoz - INFO - Escuchando... (timeout=11.0s, phrase_limit=8s)
+2025-03-22 21:53:18,353 - AsistenteVoz - INFO - Audio capturado correctamente
+2025-03-22 21:53:18,738 - AsistenteVoz - WARNING - Google no pudo entender el audio
+2025-03-22 21:53:18,738 - AsistenteVoz - WARNING - Todos los servicios de transcripción fallaron
+2025-03-22 21:53:18,738 - AsistenteVoz - INFO - Esperando la palabra clave...
+2025-03-22 21:53:18,827 - AsistenteVoz - INFO - Escuchando... (timeout=11.5s, phrase_limit=8s)
+2025-03-22 21:53:20,463 - AsistenteVoz - INFO - Audio capturado correctamente
+2025-03-22 21:53:20,922 - AsistenteVoz - WARNING - Google no pudo entender el audio
+2025-03-22 21:53:20,923 - AsistenteVoz - WARNING - Todos los servicios de transcripción fallaron
+2025-03-22 21:53:20,923 - AsistenteVoz - INFO - Esperando la palabra clave...
+2025-03-22 21:53:20,999 - AsistenteVoz - INFO - Escuchando... (timeout=12.0s, phrase_limit=8s)
+2025-03-22 21:53:24,588 - AsistenteVoz - INFO - Audio capturado correctamente
+2025-03-22 21:53:25,039 - AsistenteVoz - WARNING - Google no pudo entender el audio
+2025-03-22 21:53:25,039 - AsistenteVoz - WARNING - Todos los servicios de transcripción fallaron
+2025-03-22 21:53:25,039 - AsistenteVoz - INFO - Esperando la palabra clave...
+2025-03-22 21:53:25,040 - AsistenteVoz - WARNING - Muchos fallos consecutivos (11), recalibrando...
+2025-03-22 21:53:25,101 - AsistenteVoz - INFO - Analizando nivel de audio ambiental durante 3 segundos...
+2025-03-22 21:53:25,101 - AsistenteVoz - ERROR - Error al analizar nivel de audio: [Errno -9997] Invalid sample rate
+2025-03-22 21:53:25,847 - AsistenteVoz - INFO - Reproduciendo: Recalibrando sensibilidad a 300
+2025-03-22 21:53:29,507 - AsistenteVoz - INFO - Escuchando... (timeout=12s, phrase_limit=8s)
+2025-03-22 21:53:35,669 - AsistenteVoz - INFO - Audio capturado correctamente
+2025-03-22 21:53:36,279 - AsistenteVoz - WARNING - Google no pudo entender el audio
+2025-03-22 21:53:36,279 - AsistenteVoz - WARNING - Todos los servicios de transcripción fallaron
+2025-03-22 21:53:36,279 - AsistenteVoz - INFO - Esperando la palabra clave...
+2025-03-22 21:53:36,356 - AsistenteVoz - INFO - Escuchando... (timeout=7.5s, phrase_limit=5.5s)
+2025-03-22 21:53:36,356 - AsistenteVoz - INFO - Ajustando para ruido ambiental...
+2025-03-22 21:53:41,023 - AsistenteVoz - INFO - Deteniendo el asistente de voz...
+2025-03-22 21:53:41,868 - AsistenteVoz - INFO - Audio capturado correctamente
+2025-03-22 21:53:42,295 - AsistenteVoz - WARNING - Google no pudo entender el audio
+2025-03-22 21:53:42,296 - AsistenteVoz - WARNING - Todos los servicios de transcripción fallaron
+2025-03-22 21:53:42,296 - AsistenteVoz - INFO - Hilo terminado correctamente.
+2025-03-22 21:53:57,105 - AsistenteVoz - INFO - Micrófono seleccionado: 0
+2025-03-22 21:53:57,105 - AsistenteVoz - INFO - Iniciando hilo de reconocimiento de voz...
+2025-03-22 21:53:57,129 - AsistenteVoz - INFO - Analizando nivel de audio ambiental durante 3 segundos...
+2025-03-22 21:53:57,129 - AsistenteVoz - ERROR - Error al analizar nivel de audio: [Errno -9997] Invalid sample rate
+2025-03-22 21:53:57,763 - AsistenteVoz - INFO - Reproduciendo: Asistente de voz activado. Di mi nombre para comenzar.
+2025-03-22 21:54:02,367 - AsistenteVoz - INFO - Esperando la palabra clave...
+2025-03-22 21:54:02,435 - AsistenteVoz - INFO - Escuchando... (timeout=7.0s, phrase_limit=5.0s)
+2025-03-22 21:54:02,436 - AsistenteVoz - INFO - Ajustando para ruido ambiental...
+2025-03-22 21:54:11,467 - AsistenteVoz - INFO - Audio capturado correctamente
+2025-03-22 21:54:12,188 - AsistenteVoz - INFO - Transcripción (Google): 'Silvia'
+2025-03-22 21:54:12,188 - AsistenteVoz - INFO - Verificando si 'silvia' contiene palabra clave
+2025-03-22 21:54:12,188 - AsistenteVoz - INFO - ¡Palabra de activación detectada! ('silvia' en 'silvia')
+2025-03-22 21:54:12,768 - AsistenteVoz - INFO - Reproduciendo: ¿En qué puedo ayudarte?
+2025-03-22 21:54:15,237 - AsistenteVoz - INFO - Palabra clave detectada. Entrando en modo de instrucciones.
+2025-03-22 21:54:15,238 - AsistenteVoz - INFO - Esperando instrucciones...
+2025-03-22 21:54:15,313 - AsistenteVoz - INFO - Escuchando... (timeout=10s, phrase_limit=7s)
+2025-03-22 21:54:18,093 - AsistenteVoz - INFO - Audio capturado correctamente
+2025-03-22 21:54:19,173 - AsistenteVoz - INFO - Transcripción (Google): 'yo que me recomiendes algo para dibujar'
+2025-03-22 21:54:19,173 - AsistenteVoz - INFO - Instrucción recibida: yo que me recomiendes algo para dibujar
+2025-03-22 21:54:19,232 - httpx - INFO - HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+2025-03-22 21:54:20,826 - AsistenteVoz - INFO - Reproduciendo: Me gustaría saber un poco más sobre tus intereses y preferencias. ¿Te gusta el arte de la naturaleza, como paisajes o animales?
+2025-03-22 21:54:30,825 - AsistenteVoz - INFO - Esperando la palabra clave...
+2025-03-22 21:54:30,972 - AsistenteVoz - INFO - Escuchando... (timeout=7.0s, phrase_limit=5.0s)
+2025-03-22 21:54:39,327 - AsistenteVoz - WARNING - Tiempo de espera agotado. No se detectó audio.
+2025-03-22 21:54:39,328 - AsistenteVoz - INFO - Esperando la palabra clave...
+2025-03-22 21:54:39,408 - AsistenteVoz - INFO - Escuchando... (timeout=7.5s, phrase_limit=5.5s)
+2025-03-22 21:54:44,723 - AsistenteVoz - INFO - Audio capturado correctamente
+2025-03-22 21:54:45,383 - AsistenteVoz - INFO - Transcripción (Google): 'Silvia'
+2025-03-22 21:54:45,383 - AsistenteVoz - INFO - Verificando si 'silvia' contiene palabra clave
+2025-03-22 21:54:45,383 - AsistenteVoz - INFO - ¡Palabra de activación detectada! ('silvia' en 'silvia')
+2025-03-22 21:54:45,384 - AsistenteVoz - INFO - Reproduciendo: ¿En qué puedo ayudarte?
+2025-03-22 21:54:47,682 - AsistenteVoz - INFO - Palabra clave detectada. Entrando en modo de instrucciones.
+2025-03-22 21:54:47,682 - AsistenteVoz - INFO - Esperando instrucciones...
+2025-03-22 21:54:47,763 - AsistenteVoz - INFO - Escuchando... (timeout=10s, phrase_limit=7s)
+2025-03-22 21:54:50,079 - AsistenteVoz - INFO - Audio capturado correctamente
+2025-03-22 21:54:50,856 - AsistenteVoz - INFO - Transcripción (Google): 'Dame algo para dibujar'
+2025-03-22 21:54:50,857 - AsistenteVoz - INFO - Instrucción recibida: dame algo para dibujar
+2025-03-22 21:54:50,939 - httpx - INFO - HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+2025-03-22 21:54:55,531 - AsistenteVoz - INFO - Reproduciendo: ¡Claro! Estoy aquí para ayudarte. Aquí te dejo algunas ideas:
+
+* Un paisaje de la ciudad que me gusta, con edificios blancos y luces brillantes.
+* Un retrato de un personaje que te guste, tal vez como una estrella o una leyenda.
+* Una escena de una fiesta, con personas bailando y disfrutando.
+
+¿Te gustaría que te dibujen alguno de estos?
+2025-03-22 21:55:21,367 - AsistenteVoz - INFO - Esperando la palabra clave...
+2025-03-22 21:55:21,413 - AsistenteVoz - INFO - Escuchando... (timeout=7.0s, phrase_limit=5.0s)
+2025-03-22 21:55:21,414 - AsistenteVoz - INFO - Ajustando para ruido ambiental...
+2025-03-22 21:55:29,685 - AsistenteVoz - INFO - Audio capturado correctamente
+2025-03-22 21:55:30,075 - AsistenteVoz - WARNING - Google no pudo entender el audio
+2025-03-22 21:55:30,075 - AsistenteVoz - WARNING - Todos los servicios de transcripción fallaron
+2025-03-22 21:55:30,075 - AsistenteVoz - INFO - Esperando la palabra clave...
+2025-03-22 21:55:30,168 - AsistenteVoz - INFO - Escuchando... (timeout=7.5s, phrase_limit=5.5s)
+2025-03-22 21:55:31,358 - AsistenteVoz - INFO - Audio capturado correctamente
+2025-03-22 21:55:31,750 - AsistenteVoz - WARNING - Google no pudo entender el audio
+2025-03-22 21:55:31,750 - AsistenteVoz - WARNING - Todos los servicios de transcripción fallaron
+2025-03-22 21:55:31,751 - AsistenteVoz - INFO - Esperando la palabra clave...
+2025-03-22 21:55:31,872 - AsistenteVoz - INFO - Escuchando... (timeout=8.0s, phrase_limit=6.0s)
+2025-03-22 21:55:37,119 - AsistenteVoz - INFO - Audio capturado correctamente
+2025-03-22 21:55:37,644 - AsistenteVoz - WARNING - Google no pudo entender el audio
+2025-03-22 21:55:37,644 - AsistenteVoz - WARNING - Todos los servicios de transcripción fallaron
+2025-03-22 21:55:37,644 - AsistenteVoz - INFO - Esperando la palabra clave...
+2025-03-22 21:55:37,760 - AsistenteVoz - INFO - Escuchando... (timeout=8.5s, phrase_limit=6.5s)
+2025-03-22 21:55:41,288 - AsistenteVoz - INFO - Audio capturado correctamente
+2025-03-22 21:55:41,925 - AsistenteVoz - WARNING - Google no pudo entender el audio
+2025-03-22 21:55:41,925 - AsistenteVoz - WARNING - Todos los servicios de transcripción fallaron
+2025-03-22 21:55:41,925 - AsistenteVoz - INFO - Esperando la palabra clave...
+2025-03-22 21:55:42,107 - AsistenteVoz - INFO - Escuchando... (timeout=9.0s, phrase_limit=7.0s)
+2025-03-22 21:55:43,625 - AsistenteVoz - INFO - Audio capturado correctamente
+2025-03-22 21:55:44,121 - AsistenteVoz - WARNING - Google no pudo entender el audio
+2025-03-22 21:55:44,122 - AsistenteVoz - WARNING - Todos los servicios de transcripción fallaron
+2025-03-22 21:55:44,122 - AsistenteVoz - INFO - Esperando la palabra clave...
+2025-03-22 21:55:44,261 - AsistenteVoz - INFO - Escuchando... (timeout=9.5s, phrase_limit=7.5s)
+2025-03-22 21:55:50,139 - AsistenteVoz - INFO - Audio capturado correctamente
+2025-03-22 21:55:50,902 - AsistenteVoz - WARNING - Google no pudo entender el audio
+2025-03-22 21:55:50,902 - AsistenteVoz - WARNING - Todos los servicios de transcripción fallaron
+2025-03-22 21:55:50,902 - AsistenteVoz - INFO - Esperando la palabra clave...
+2025-03-22 21:55:51,084 - AsistenteVoz - INFO - Escuchando... (timeout=10.0s, phrase_limit=8.0s)
+2025-03-22 21:55:54,543 - AsistenteVoz - INFO - Audio capturado correctamente
+2025-03-22 21:55:54,786 - AsistenteVoz - WARNING - Google no pudo entender el audio
+2025-03-22 21:55:54,786 - AsistenteVoz - WARNING - Todos los servicios de transcripción fallaron
+2025-03-22 21:55:54,787 - AsistenteVoz - INFO - Esperando la palabra clave...
+2025-03-22 21:55:54,943 - AsistenteVoz - INFO - Escuchando... (timeout=10.5s, phrase_limit=8s)
+2025-03-22 21:55:58,912 - AsistenteVoz - INFO - Audio capturado correctamente
+2025-03-22 21:55:59,266 - AsistenteVoz - WARNING - Google no pudo entender el audio
+2025-03-22 21:55:59,266 - AsistenteVoz - WARNING - Todos los servicios de transcripción fallaron
+2025-03-22 21:55:59,266 - AsistenteVoz - INFO - Esperando la palabra clave...
+2025-03-22 21:55:59,352 - AsistenteVoz - INFO - Escuchando... (timeout=11.0s, phrase_limit=8s)
+2025-03-22 21:56:02,545 - AsistenteVoz - INFO - Audio capturado correctamente
+2025-03-22 21:56:02,950 - AsistenteVoz - WARNING - Google no pudo entender el audio
+2025-03-22 21:56:02,950 - AsistenteVoz - WARNING - Todos los servicios de transcripción fallaron
+2025-03-22 21:56:02,951 - AsistenteVoz - INFO - Esperando la palabra clave...
+2025-03-22 21:56:03,114 - AsistenteVoz - INFO - Escuchando... (timeout=11.5s, phrase_limit=8s)
+2025-03-22 21:56:05,243 - AsistenteVoz - INFO - Deteniendo el asistente de voz...
+2025-03-22 21:56:06,058 - AsistenteVoz - INFO - Audio capturado correctamente
+2025-03-22 21:56:06,441 - AsistenteVoz - WARNING - Google no pudo entender el audio
+2025-03-22 21:56:06,441 - AsistenteVoz - WARNING - Todos los servicios de transcripción fallaron
+2025-03-22 21:56:06,441 - AsistenteVoz - INFO - Hilo terminado correctamente.
+2025-03-22 21:56:19,635 - AsistenteVoz - INFO - Micrófono seleccionado: 0
+2025-03-22 21:56:19,636 - AsistenteVoz - INFO - Iniciando hilo de reconocimiento de voz...
+2025-03-22 21:56:19,658 - AsistenteVoz - INFO - Analizando nivel de audio ambiental durante 3 segundos...
+2025-03-22 21:56:19,658 - AsistenteVoz - ERROR - Error al analizar nivel de audio: [Errno -9997] Invalid sample rate
+2025-03-22 21:56:20,440 - AsistenteVoz - INFO - Reproduciendo: Asistente de voz activado. Di mi nombre para comenzar.
+2025-03-22 21:56:25,065 - AsistenteVoz - INFO - Esperando la palabra clave...
+2025-03-22 21:56:25,121 - AsistenteVoz - INFO - Escuchando... (timeout=7.0s, phrase_limit=5.0s)
+2025-03-22 21:56:25,122 - AsistenteVoz - INFO - Ajustando para ruido ambiental...
+2025-03-22 21:56:33,981 - AsistenteVoz - INFO - Audio capturado correctamente
+2025-03-22 21:56:34,620 - AsistenteVoz - INFO - Transcripción (Google): 'Hola cómo estás'
+2025-03-22 21:56:34,620 - AsistenteVoz - INFO - Verificando si 'hola cómo estás' contiene palabra clave
+2025-03-22 21:56:34,620 - AsistenteVoz - INFO - ¡Palabra de activación detectada! ('hola' en 'hola cómo estás')
+2025-03-22 21:56:35,231 - AsistenteVoz - INFO - Reproduciendo: ¿En qué puedo ayudarte?
+2025-03-22 21:56:37,721 - AsistenteVoz - INFO - Palabra clave detectada. Entrando en modo de instrucciones.
+2025-03-22 21:56:37,722 - AsistenteVoz - INFO - Esperando instrucciones...
+2025-03-22 21:56:37,782 - AsistenteVoz - INFO - Escuchando... (timeout=10s, phrase_limit=7s)
+2025-03-22 21:56:41,015 - AsistenteVoz - INFO - Audio capturado correctamente
+2025-03-22 21:56:41,861 - AsistenteVoz - INFO - Transcripción (Google): 'quiero que me dibujes algo'
+2025-03-22 21:56:41,861 - AsistenteVoz - INFO - Instrucción recibida: quiero que me dibujes algo
+2025-03-22 21:56:41,953 - httpx - INFO - HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+2025-03-22 21:56:42,952 - AsistenteVoz - INFO - Reproduciendo: Voy a dibujar un cuadro inspirado en la naturaleza. ¿Te gustaría verlo cuando esté listo?
+2025-03-22 21:56:50,218 - AsistenteVoz - INFO - Esperando la palabra clave...
+2025-03-22 21:56:50,276 - AsistenteVoz - INFO - Escuchando... (timeout=7.0s, phrase_limit=5.0s)
+2025-03-22 21:56:54,107 - AsistenteVoz - INFO - Audio capturado correctamente
+2025-03-22 21:56:55,296 - AsistenteVoz - INFO - Transcripción (Google): 'cuando esté listo Enséñame'
+2025-03-22 21:56:55,296 - AsistenteVoz - INFO - Verificando si 'cuando esté listo enséñame' contiene palabra clave
+2025-03-22 21:56:55,296 - AsistenteVoz - INFO - Esperando la palabra clave...
+2025-03-22 21:56:55,476 - AsistenteVoz - INFO - Escuchando... (timeout=7.5s, phrase_limit=5.5s)
+2025-03-22 21:57:04,319 - AsistenteVoz - WARNING - Tiempo de espera agotado. No se detectó audio.
+2025-03-22 21:57:04,321 - AsistenteVoz - INFO - Esperando la palabra clave...
+2025-03-22 21:57:04,553 - AsistenteVoz - INFO - Escuchando... (timeout=8.0s, phrase_limit=6.0s)
+2025-03-22 21:57:07,215 - AsistenteVoz - INFO - Audio capturado correctamente
+2025-03-22 21:57:07,633 - AsistenteVoz - WARNING - Google no pudo entender el audio
+2025-03-22 21:57:07,633 - AsistenteVoz - WARNING - Todos los servicios de transcripción fallaron
+2025-03-22 21:57:07,633 - AsistenteVoz - INFO - Esperando la palabra clave...
+2025-03-22 21:57:07,771 - AsistenteVoz - INFO - Escuchando... (timeout=8.5s, phrase_limit=6.5s)
+2025-03-22 21:57:15,586 - AsistenteVoz - INFO - Audio capturado correctamente
+2025-03-22 21:57:16,227 - AsistenteVoz - WARNING - Google no pudo entender el audio
+2025-03-22 21:57:16,227 - AsistenteVoz - WARNING - Todos los servicios de transcripción fallaron
+2025-03-22 21:57:16,227 - AsistenteVoz - INFO - Esperando la palabra clave...
+2025-03-22 21:57:16,276 - AsistenteVoz - INFO - Escuchando... (timeout=9.0s, phrase_limit=7.0s)
+2025-03-22 21:57:20,455 - AsistenteVoz - INFO - Audio capturado correctamente
+2025-03-22 21:57:20,953 - AsistenteVoz - WARNING - Google no pudo entender el audio
+2025-03-22 21:57:20,954 - AsistenteVoz - WARNING - Todos los servicios de transcripción fallaron
+2025-03-22 21:57:20,954 - AsistenteVoz - INFO - Esperando la palabra clave...
+2025-03-22 21:57:21,014 - AsistenteVoz - INFO - Escuchando... (timeout=9.5s, phrase_limit=7.5s)
+2025-03-22 21:57:22,764 - AsistenteVoz - INFO - Audio capturado correctamente
+2025-03-22 21:57:23,174 - AsistenteVoz - WARNING - Google no pudo entender el audio
+2025-03-22 21:57:23,174 - AsistenteVoz - WARNING - Todos los servicios de transcripción fallaron
+2025-03-22 21:57:23,174 - AsistenteVoz - INFO - Esperando la palabra clave...
+2025-03-22 21:57:23,232 - AsistenteVoz - INFO - Escuchando... (timeout=10.0s, phrase_limit=8.0s)
+2025-03-22 21:57:26,034 - AsistenteVoz - INFO - Audio capturado correctamente
+2025-03-22 21:57:26,462 - AsistenteVoz - WARNING - Google no pudo entender el audio
+2025-03-22 21:57:26,462 - AsistenteVoz - WARNING - Todos los servicios de transcripción fallaron
+2025-03-22 21:57:26,463 - AsistenteVoz - INFO - Esperando la palabra clave...
+2025-03-22 21:57:26,531 - AsistenteVoz - INFO - Escuchando... (timeout=10.5s, phrase_limit=8s)
+2025-03-22 21:57:26,532 - AsistenteVoz - INFO - Ajustando para ruido ambiental...
+2025-03-22 21:57:29,587 - AsistenteVoz - INFO - Audio capturado correctamente
+2025-03-22 21:57:29,992 - AsistenteVoz - WARNING - Google no pudo entender el audio
+2025-03-22 21:57:29,993 - AsistenteVoz - WARNING - Todos los servicios de transcripción fallaron
+2025-03-22 21:57:29,993 - AsistenteVoz - INFO - Esperando la palabra clave...
+2025-03-22 21:57:30,136 - AsistenteVoz - INFO - Escuchando... (timeout=11.0s, phrase_limit=8s)
+2025-03-22 21:57:34,175 - AsistenteVoz - INFO - Audio capturado correctamente
+2025-03-22 21:57:34,679 - AsistenteVoz - WARNING - Google no pudo entender el audio
+2025-03-22 21:57:34,679 - AsistenteVoz - WARNING - Todos los servicios de transcripción fallaron
+2025-03-22 21:57:34,679 - AsistenteVoz - INFO - Esperando la palabra clave...
+2025-03-22 21:57:34,764 - AsistenteVoz - INFO - Escuchando... (timeout=11.5s, phrase_limit=8s)
+2025-03-22 21:57:37,427 - AsistenteVoz - INFO - Audio capturado correctamente
+2025-03-22 21:57:39,520 - AsistenteVoz - WARNING - Google no pudo entender el audio
+2025-03-22 21:57:39,521 - AsistenteVoz - WARNING - Todos los servicios de transcripción fallaron
+2025-03-22 21:57:39,521 - AsistenteVoz - INFO - Esperando la palabra clave...
+2025-03-22 21:57:39,789 - AsistenteVoz - INFO - Escuchando... (timeout=12.0s, phrase_limit=8s)
+2025-03-22 21:57:42,005 - AsistenteVoz - INFO - Audio capturado correctamente
+2025-03-22 21:57:42,426 - AsistenteVoz - WARNING - Google no pudo entender el audio
+2025-03-22 21:57:42,426 - AsistenteVoz - WARNING - Todos los servicios de transcripción fallaron
+2025-03-22 21:57:42,426 - AsistenteVoz - INFO - Esperando la palabra clave...
+2025-03-22 21:57:42,426 - AsistenteVoz - WARNING - Muchos fallos consecutivos (11), recalibrando...
+2025-03-22 21:57:42,490 - AsistenteVoz - INFO - Analizando nivel de audio ambiental durante 3 segundos...
+2025-03-22 21:57:42,491 - AsistenteVoz - ERROR - Error al analizar nivel de audio: [Errno -9997] Invalid sample rate
+2025-03-22 21:57:43,089 - AsistenteVoz - INFO - Reproduciendo: Recalibrando sensibilidad a 300
+2025-03-22 21:57:46,633 - AsistenteVoz - INFO - Escuchando... (timeout=12s, phrase_limit=8s)
+2025-03-22 21:57:56,076 - AsistenteVoz - INFO - Audio capturado correctamente
+2025-03-22 21:57:56,494 - AsistenteVoz - WARNING - Google no pudo entender el audio
+2025-03-22 21:57:56,494 - AsistenteVoz - WARNING - Todos los servicios de transcripción fallaron
+2025-03-22 21:57:56,495 - AsistenteVoz - INFO - Esperando la palabra clave...
+2025-03-22 21:57:56,684 - AsistenteVoz - INFO - Escuchando... (timeout=7.5s, phrase_limit=5.5s)
+2025-03-22 21:57:59,020 - AsistenteVoz - INFO - Audio capturado correctamente
+2025-03-22 21:57:59,730 - AsistenteVoz - WARNING - Google no pudo entender el audio
+2025-03-22 21:57:59,730 - AsistenteVoz - WARNING - Todos los servicios de transcripción fallaron
+2025-03-22 21:57:59,731 - AsistenteVoz - INFO - Esperando la palabra clave...
+2025-03-22 21:57:59,821 - AsistenteVoz - INFO - Escuchando... (timeout=8.0s, phrase_limit=6.0s)
+2025-03-22 21:58:02,369 - AsistenteVoz - INFO - Audio capturado correctamente
+2025-03-22 21:58:02,805 - AsistenteVoz - WARNING - Google no pudo entender el audio
+2025-03-22 21:58:02,805 - AsistenteVoz - WARNING - Todos los servicios de transcripción fallaron
+2025-03-22 21:58:02,805 - AsistenteVoz - INFO - Esperando la palabra clave...
+2025-03-22 21:58:02,867 - AsistenteVoz - INFO - Escuchando... (timeout=8.5s, phrase_limit=6.5s)
+2025-03-22 21:58:08,279 - AsistenteVoz - INFO - Audio capturado correctamente
+2025-03-22 21:58:08,756 - AsistenteVoz - WARNING - Google no pudo entender el audio
+2025-03-22 21:58:08,756 - AsistenteVoz - WARNING - Todos los servicios de transcripción fallaron
+2025-03-22 21:58:08,756 - AsistenteVoz - INFO - Esperando la palabra clave...
+2025-03-22 21:58:08,914 - AsistenteVoz - INFO - Escuchando... (timeout=9.0s, phrase_limit=7.0s)
+2025-03-22 21:58:12,090 - AsistenteVoz - INFO - Audio capturado correctamente
+2025-03-22 21:58:12,500 - AsistenteVoz - WARNING - Google no pudo entender el audio
+2025-03-22 21:58:12,501 - AsistenteVoz - WARNING - Todos los servicios de transcripción fallaron
+2025-03-22 21:58:12,501 - AsistenteVoz - INFO - Esperando la palabra clave...
+2025-03-22 21:58:12,555 - AsistenteVoz - INFO - Escuchando... (timeout=9.5s, phrase_limit=7.5s)
+2025-03-22 21:58:16,688 - AsistenteVoz - INFO - Audio capturado correctamente
+2025-03-22 21:58:16,978 - AsistenteVoz - WARNING - Google no pudo entender el audio
+2025-03-22 21:58:16,978 - AsistenteVoz - WARNING - Todos los servicios de transcripción fallaron
+2025-03-22 21:58:16,978 - AsistenteVoz - INFO - Esperando la palabra clave...
+2025-03-22 21:58:17,086 - AsistenteVoz - INFO - Escuchando... (timeout=10.0s, phrase_limit=8.0s)
+2025-03-22 21:58:18,439 - AsistenteVoz - INFO - Audio capturado correctamente
+2025-03-22 21:58:18,854 - AsistenteVoz - WARNING - Google no pudo entender el audio
+2025-03-22 21:58:18,855 - AsistenteVoz - WARNING - Todos los servicios de transcripción fallaron
+2025-03-22 21:58:18,855 - AsistenteVoz - INFO - Esperando la palabra clave...
+2025-03-22 21:58:18,941 - AsistenteVoz - INFO - Escuchando... (timeout=10.5s, phrase_limit=8s)
+2025-03-22 21:58:22,469 - AsistenteVoz - INFO - Audio capturado correctamente
+2025-03-22 21:58:22,837 - AsistenteVoz - WARNING - Google no pudo entender el audio
+2025-03-22 21:58:22,837 - AsistenteVoz - WARNING - Todos los servicios de transcripción fallaron
+2025-03-22 21:58:22,838 - AsistenteVoz - INFO - Esperando la palabra clave...
+2025-03-22 21:58:22,920 - AsistenteVoz - INFO - Escuchando... (timeout=11.0s, phrase_limit=8s)
+2025-03-22 21:58:34,708 - AsistenteVoz - INFO - Deteniendo el asistente de voz...
+2025-03-22 21:58:36,129 - AsistenteVoz - WARNING - Tiempo de espera agotado. No se detectó audio.
+2025-03-22 21:58:36,131 - AsistenteVoz - INFO - Hilo terminado correctamente.
+2025-03-22 21:58:49,527 - AsistenteVoz - INFO - Micrófono seleccionado: 0
+2025-03-22 21:58:49,528 - AsistenteVoz - INFO - Iniciando hilo de reconocimiento de voz...
+2025-03-22 21:58:49,552 - AsistenteVoz - INFO - Analizando nivel de audio ambiental durante 3 segundos...
+2025-03-22 21:58:49,552 - AsistenteVoz - ERROR - Error al analizar nivel de audio: [Errno -9997] Invalid sample rate
+2025-03-22 21:58:50,185 - AsistenteVoz - INFO - Reproduciendo: Asistente de voz activado. Di mi nombre para comenzar.
+2025-03-22 21:58:54,786 - AsistenteVoz - INFO - Esperando la palabra clave...
+2025-03-22 21:58:54,890 - AsistenteVoz - INFO - Escuchando... (timeout=7.0s, phrase_limit=5.0s)
+2025-03-22 21:58:54,890 - AsistenteVoz - INFO - Ajustando para ruido ambiental...
+2025-03-22 21:58:59,958 - AsistenteVoz - INFO - Audio capturado correctamente
+2025-03-22 21:59:00,660 - AsistenteVoz - INFO - Transcripción (Google): 'Silvia'
+2025-03-22 21:59:00,661 - AsistenteVoz - INFO - Verificando si 'silvia' contiene palabra clave
+2025-03-22 21:59:00,661 - AsistenteVoz - INFO - ¡Palabra de activación detectada! ('silvia' en 'silvia')
+2025-03-22 21:59:01,382 - AsistenteVoz - INFO - Reproduciendo: ¿En qué puedo ayudarte?
+2025-03-22 21:59:03,872 - AsistenteVoz - INFO - Palabra clave detectada. Entrando en modo de instrucciones.
+2025-03-22 21:59:03,873 - AsistenteVoz - INFO - Esperando instrucciones...
+2025-03-22 21:59:04,024 - AsistenteVoz - INFO - Escuchando... (timeout=10s, phrase_limit=7s)
+2025-03-22 21:59:06,408 - AsistenteVoz - INFO - Audio capturado correctamente
+2025-03-22 21:59:07,441 - AsistenteVoz - INFO - Transcripción (Google): 'por favor recomiéndame algo de Arqui'
+2025-03-22 21:59:07,441 - AsistenteVoz - INFO - Instrucción recibida: por favor recomiéndame algo de arqui
+2025-03-22 21:59:07,510 - httpx - INFO - HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+2025-03-22 21:59:08,951 - AsistenteVoz - INFO - Reproduciendo: Mi nombre es SILVIA y puedo recomendarte algunas obras de arte inspiradoras sobre arquitectura. ¿Te gustaría saber más?
+2025-03-22 21:59:18,411 - AsistenteVoz - INFO - Esperando la palabra clave...
+2025-03-22 21:59:18,459 - AsistenteVoz - INFO - Escuchando... (timeout=7.0s, phrase_limit=5.0s)
+2025-03-22 21:59:27,148 - AsistenteVoz - WARNING - Tiempo de espera agotado. No se detectó audio.
+2025-03-22 21:59:27,149 - AsistenteVoz - INFO - Esperando la palabra clave...
+2025-03-22 21:59:27,206 - AsistenteVoz - INFO - Escuchando... (timeout=7.5s, phrase_limit=5.5s)
+2025-03-22 21:59:36,574 - AsistenteVoz - INFO - Audio capturado correctamente
+2025-03-22 21:59:37,586 - AsistenteVoz - INFO - Transcripción (Google): 'Hola Silvia recomiéndame algo'
+2025-03-22 21:59:37,586 - AsistenteVoz - INFO - Verificando si 'hola silvia recomiéndame algo' contiene palabra clave
+2025-03-22 21:59:37,586 - AsistenteVoz - INFO - ¡Palabra de activación detectada! ('silvia' en 'hola silvia recomiéndame algo')
+2025-03-22 21:59:37,587 - AsistenteVoz - INFO - Reproduciendo: ¿En qué puedo ayudarte?
+2025-03-22 21:59:39,862 - AsistenteVoz - INFO - Palabra clave detectada. Entrando en modo de instrucciones.
+2025-03-22 21:59:39,863 - AsistenteVoz - INFO - Esperando instrucciones...
+2025-03-22 21:59:39,937 - AsistenteVoz - INFO - Escuchando... (timeout=10s, phrase_limit=7s)
+2025-03-22 21:59:42,974 - AsistenteVoz - INFO - Audio capturado correctamente
+2025-03-22 21:59:43,891 - AsistenteVoz - INFO - Transcripción (Google): 'recomiéndame un estilo de arquitectura'
+2025-03-22 21:59:43,892 - AsistenteVoz - INFO - Instrucción recibida: recomiéndame un estilo de arquitectura
+2025-03-22 21:59:43,972 - httpx - INFO - HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+2025-03-22 21:59:48,059 - AsistenteVoz - INFO - Reproduciendo: Me encanta la arquitectura! Te recomiendo el estilo románico, muy emotivo y con una gran belleza. Su uso de columnas y áboles en forma de escudo les permite transmitir un sentido de profundidad y riqueza. Además, su estilo es muy fácil de representar, lo que significa que cualquier dibujo o pintura puede capturar la esencia del románico.
+2025-03-22 22:00:13,028 - AsistenteVoz - INFO - Esperando la palabra clave...
+2025-03-22 22:00:13,079 - AsistenteVoz - INFO - Escuchando... (timeout=7.0s, phrase_limit=5.0s)
+2025-03-22 22:00:13,080 - AsistenteVoz - INFO - Ajustando para ruido ambiental...
+2025-03-22 22:00:22,179 - AsistenteVoz - INFO - Audio capturado correctamente
+2025-03-22 22:00:23,015 - AsistenteVoz - WARNING - Google no pudo entender el audio
+2025-03-22 22:00:23,015 - AsistenteVoz - WARNING - Todos los servicios de transcripción fallaron
+2025-03-22 22:00:23,015 - AsistenteVoz - INFO - Esperando la palabra clave...
+2025-03-22 22:00:23,076 - AsistenteVoz - INFO - Escuchando... (timeout=7.5s, phrase_limit=5.5s)
+2025-03-22 22:00:24,483 - AsistenteVoz - INFO - Audio capturado correctamente
+2025-03-22 22:00:24,874 - AsistenteVoz - WARNING - Google no pudo entender el audio
+2025-03-22 22:00:24,874 - AsistenteVoz - WARNING - Todos los servicios de transcripción fallaron
+2025-03-22 22:00:24,875 - AsistenteVoz - INFO - Esperando la palabra clave...
+2025-03-22 22:00:24,962 - AsistenteVoz - INFO - Escuchando... (timeout=8.0s, phrase_limit=6.0s)
+2025-03-22 22:00:38,863 - AsistenteVoz - INFO - Audio capturado correctamente
+2025-03-22 22:00:39,758 - AsistenteVoz - WARNING - Google no pudo entender el audio
+2025-03-22 22:00:39,759 - AsistenteVoz - WARNING - Todos los servicios de transcripción fallaron
+2025-03-22 22:00:39,759 - AsistenteVoz - INFO - Esperando la palabra clave...
+2025-03-22 22:00:39,838 - AsistenteVoz - INFO - Escuchando... (timeout=8.5s, phrase_limit=6.5s)
+2025-03-22 22:00:43,438 - AsistenteVoz - INFO - Audio capturado correctamente
+2025-03-22 22:00:43,947 - AsistenteVoz - WARNING - Google no pudo entender el audio
+2025-03-22 22:00:43,947 - AsistenteVoz - WARNING - Todos los servicios de transcripción fallaron
+2025-03-22 22:00:43,947 - AsistenteVoz - INFO - Esperando la palabra clave...
+2025-03-22 22:00:44,007 - AsistenteVoz - INFO - Escuchando... (timeout=9.0s, phrase_limit=7.0s)
+2025-03-22 22:00:48,250 - AsistenteVoz - INFO - Audio capturado correctamente
+2025-03-22 22:00:48,488 - AsistenteVoz - WARNING - Google no pudo entender el audio
+2025-03-22 22:00:48,489 - AsistenteVoz - WARNING - Todos los servicios de transcripción fallaron
+2025-03-22 22:00:48,489 - AsistenteVoz - INFO - Esperando la palabra clave...
+2025-03-22 22:00:48,680 - AsistenteVoz - INFO - Escuchando... (timeout=9.5s, phrase_limit=7.5s)
+2025-03-22 22:01:03,269 - AsistenteVoz - INFO - Audio capturado correctamente
+2025-03-22 22:01:03,739 - AsistenteVoz - WARNING - Google no pudo entender el audio
+2025-03-22 22:01:03,740 - AsistenteVoz - WARNING - Todos los servicios de transcripción fallaron
+2025-03-22 22:01:03,740 - AsistenteVoz - INFO - Esperando la palabra clave...
+2025-03-22 22:01:03,913 - AsistenteVoz - INFO - Escuchando... (timeout=10.0s, phrase_limit=8.0s)
+2025-03-22 22:01:06,390 - AsistenteVoz - INFO - Audio capturado correctamente
+2025-03-22 22:01:06,834 - AsistenteVoz - WARNING - Google no pudo entender el audio
+2025-03-22 22:01:06,835 - AsistenteVoz - WARNING - Todos los servicios de transcripción fallaron
+2025-03-22 22:01:06,835 - AsistenteVoz - INFO - Esperando la palabra clave...
+2025-03-22 22:01:07,023 - AsistenteVoz - INFO - Escuchando... (timeout=10.5s, phrase_limit=8s)
+2025-03-22 22:01:10,131 - AsistenteVoz - INFO - Audio capturado correctamente
+2025-03-22 22:01:10,695 - AsistenteVoz - WARNING - Google no pudo entender el audio
+2025-03-22 22:01:10,695 - AsistenteVoz - WARNING - Todos los servicios de transcripción fallaron
+2025-03-22 22:01:10,696 - AsistenteVoz - INFO - Esperando la palabra clave...
+2025-03-22 22:01:10,769 - AsistenteVoz - INFO - Escuchando... (timeout=11.0s, phrase_limit=8s)
+2025-03-22 22:01:13,520 - AsistenteVoz - INFO - Audio capturado correctamente
+2025-03-22 22:01:14,036 - AsistenteVoz - WARNING - Google no pudo entender el audio
+2025-03-22 22:01:14,037 - AsistenteVoz - WARNING - Todos los servicios de transcripción fallaron
+2025-03-22 22:01:14,037 - AsistenteVoz - INFO - Esperando la palabra clave...
+2025-03-22 22:01:14,114 - AsistenteVoz - INFO - Escuchando... (timeout=11.5s, phrase_limit=8s)
+2025-03-22 22:01:14,114 - AsistenteVoz - INFO - Ajustando para ruido ambiental...
+2025-03-22 22:01:19,701 - AsistenteVoz - INFO - Audio capturado correctamente
+2025-03-22 22:01:20,207 - AsistenteVoz - WARNING - Google no pudo entender el audio
+2025-03-22 22:01:20,208 - AsistenteVoz - WARNING - Todos los servicios de transcripción fallaron
+2025-03-22 22:01:20,208 - AsistenteVoz - INFO - Esperando la palabra clave...
+2025-03-22 22:01:20,276 - AsistenteVoz - INFO - Escuchando... (timeout=12.0s, phrase_limit=8s)
+2025-03-22 22:01:27,465 - AsistenteVoz - INFO - Audio capturado correctamente
+2025-03-22 22:01:28,007 - AsistenteVoz - WARNING - Google no pudo entender el audio
+2025-03-22 22:01:28,007 - AsistenteVoz - WARNING - Todos los servicios de transcripción fallaron
+2025-03-22 22:01:28,007 - AsistenteVoz - INFO - Esperando la palabra clave...
+2025-03-22 22:01:28,007 - AsistenteVoz - WARNING - Muchos fallos consecutivos (11), recalibrando...
+2025-03-22 22:01:28,069 - AsistenteVoz - INFO - Analizando nivel de audio ambiental durante 3 segundos...
+2025-03-22 22:01:28,069 - AsistenteVoz - ERROR - Error al analizar nivel de audio: [Errno -9997] Invalid sample rate
+2025-03-22 22:01:28,669 - AsistenteVoz - INFO - Reproduciendo: Recalibrando sensibilidad a 300
+2025-03-22 22:01:32,233 - AsistenteVoz - INFO - Escuchando... (timeout=12s, phrase_limit=8s)
+2025-03-22 22:01:36,561 - AsistenteVoz - INFO - Audio capturado correctamente
+2025-03-22 22:01:37,119 - AsistenteVoz - WARNING - Google no pudo entender el audio
+2025-03-22 22:01:37,120 - AsistenteVoz - WARNING - Todos los servicios de transcripción fallaron
+2025-03-22 22:01:37,120 - AsistenteVoz - INFO - Esperando la palabra clave...
+2025-03-22 22:01:37,186 - AsistenteVoz - INFO - Escuchando... (timeout=7.5s, phrase_limit=5.5s)
+2025-03-22 22:01:40,799 - AsistenteVoz - INFO - Audio capturado correctamente
+2025-03-22 22:01:41,227 - AsistenteVoz - WARNING - Google no pudo entender el audio
+2025-03-22 22:01:41,228 - AsistenteVoz - WARNING - Todos los servicios de transcripción fallaron
+2025-03-22 22:01:41,228 - AsistenteVoz - INFO - Esperando la palabra clave...
+2025-03-22 22:01:41,329 - AsistenteVoz - INFO - Escuchando... (timeout=8.0s, phrase_limit=6.0s)
+2025-03-22 22:01:48,230 - AsistenteVoz - INFO - Audio capturado correctamente
+2025-03-22 22:01:48,626 - AsistenteVoz - WARNING - Google no pudo entender el audio
+2025-03-22 22:01:48,626 - AsistenteVoz - WARNING - Todos los servicios de transcripción fallaron
+2025-03-22 22:01:48,626 - AsistenteVoz - INFO - Esperando la palabra clave...
+2025-03-22 22:01:48,707 - AsistenteVoz - INFO - Escuchando... (timeout=8.5s, phrase_limit=6.5s)
+2025-03-22 22:01:51,559 - AsistenteVoz - INFO - Audio capturado correctamente
+2025-03-22 22:01:51,952 - AsistenteVoz - WARNING - Google no pudo entender el audio
+2025-03-22 22:01:51,952 - AsistenteVoz - WARNING - Todos los servicios de transcripción fallaron
+2025-03-22 22:01:51,952 - AsistenteVoz - INFO - Esperando la palabra clave...
+2025-03-22 22:01:52,033 - AsistenteVoz - INFO - Escuchando... (timeout=9.0s, phrase_limit=7.0s)
+2025-03-22 22:01:54,699 - AsistenteVoz - INFO - Audio capturado correctamente
+2025-03-22 22:01:55,109 - AsistenteVoz - WARNING - Google no pudo entender el audio
+2025-03-22 22:01:55,110 - AsistenteVoz - WARNING - Todos los servicios de transcripción fallaron
+2025-03-22 22:01:55,110 - AsistenteVoz - INFO - Esperando la palabra clave...
+2025-03-22 22:01:55,172 - AsistenteVoz - INFO - Escuchando... (timeout=9.5s, phrase_limit=7.5s)
+2025-03-22 22:01:57,063 - AsistenteVoz - INFO - Audio capturado correctamente
+2025-03-22 22:01:57,442 - AsistenteVoz - WARNING - Google no pudo entender el audio
+2025-03-22 22:01:57,442 - AsistenteVoz - WARNING - Todos los servicios de transcripción fallaron
+2025-03-22 22:01:57,442 - AsistenteVoz - INFO - Esperando la palabra clave...
+2025-03-22 22:01:57,519 - AsistenteVoz - INFO - Escuchando... (timeout=10.0s, phrase_limit=8.0s)
+2025-03-22 22:02:04,474 - AsistenteVoz - INFO - Audio capturado correctamente
+2025-03-22 22:02:05,256 - AsistenteVoz - WARNING - Google no pudo entender el audio
+2025-03-22 22:02:05,257 - AsistenteVoz - WARNING - Todos los servicios de transcripción fallaron
+2025-03-22 22:02:05,257 - AsistenteVoz - INFO - Esperando la palabra clave...
+2025-03-22 22:02:05,338 - AsistenteVoz - INFO - Escuchando... (timeout=10.5s, phrase_limit=8s)
+2025-03-22 22:02:08,072 - AsistenteVoz - INFO - Audio capturado correctamente
+2025-03-22 22:02:08,645 - AsistenteVoz - WARNING - Google no pudo entender el audio
+2025-03-22 22:02:08,645 - AsistenteVoz - WARNING - Todos los servicios de transcripción fallaron
+2025-03-22 22:02:08,646 - AsistenteVoz - INFO - Esperando la palabra clave...
+2025-03-22 22:02:08,723 - AsistenteVoz - INFO - Escuchando... (timeout=11.0s, phrase_limit=8s)
+2025-03-22 22:02:13,350 - AsistenteVoz - INFO - Audio capturado correctamente
+2025-03-22 22:02:13,973 - AsistenteVoz - WARNING - Google no pudo entender el audio
+2025-03-22 22:02:13,973 - AsistenteVoz - WARNING - Todos los servicios de transcripción fallaron
+2025-03-22 22:02:13,973 - AsistenteVoz - INFO - Esperando la palabra clave...
+2025-03-22 22:02:14,126 - AsistenteVoz - INFO - Escuchando... (timeout=11.5s, phrase_limit=8s)
+2025-03-22 22:02:14,126 - AsistenteVoz - INFO - Ajustando para ruido ambiental...
+2025-03-22 22:02:25,446 - AsistenteVoz - INFO - Audio capturado correctamente
+2025-03-22 22:02:26,073 - AsistenteVoz - WARNING - Google no pudo entender el audio
+2025-03-22 22:02:26,073 - AsistenteVoz - WARNING - Todos los servicios de transcripción fallaron
+2025-03-22 22:02:26,073 - AsistenteVoz - INFO - Esperando la palabra clave...
+2025-03-22 22:02:26,152 - AsistenteVoz - INFO - Escuchando... (timeout=12.0s, phrase_limit=8s)
+2025-03-22 22:02:33,407 - AsistenteVoz - INFO - Audio capturado correctamente
+2025-03-22 22:02:33,892 - AsistenteVoz - WARNING - Google no pudo entender el audio
+2025-03-22 22:02:33,892 - AsistenteVoz - WARNING - Todos los servicios de transcripción fallaron
+2025-03-22 22:02:33,892 - AsistenteVoz - INFO - Esperando la palabra clave...
+2025-03-22 22:02:33,893 - AsistenteVoz - WARNING - Muchos fallos consecutivos (11), recalibrando...
+2025-03-22 22:02:33,989 - AsistenteVoz - INFO - Analizando nivel de audio ambiental durante 3 segundos...
+2025-03-22 22:02:33,990 - AsistenteVoz - ERROR - Error al analizar nivel de audio: [Errno -9997] Invalid sample rate
+2025-03-22 22:02:33,991 - AsistenteVoz - INFO - Reproduciendo: Recalibrando sensibilidad a 300
+2025-03-22 22:02:37,577 - AsistenteVoz - INFO - Escuchando... (timeout=12s, phrase_limit=8s)
+2025-03-22 22:02:46,871 - AsistenteVoz - INFO - Audio capturado correctamente
+2025-03-22 22:02:47,646 - AsistenteVoz - WARNING - Google no pudo entender el audio
+2025-03-22 22:02:47,646 - AsistenteVoz - WARNING - Todos los servicios de transcripción fallaron
+2025-03-22 22:02:47,646 - AsistenteVoz - INFO - Esperando la palabra clave...
+2025-03-22 22:02:47,813 - AsistenteVoz - INFO - Escuchando... (timeout=7.5s, phrase_limit=5.5s)
+2025-03-22 22:02:52,832 - AsistenteVoz - INFO - Audio capturado correctamente
+2025-03-22 22:02:53,356 - AsistenteVoz - WARNING - Google no pudo entender el audio
+2025-03-22 22:02:53,356 - AsistenteVoz - WARNING - Todos los servicios de transcripción fallaron
+2025-03-22 22:02:53,357 - AsistenteVoz - INFO - Esperando la palabra clave...
+2025-03-22 22:02:53,412 - AsistenteVoz - INFO - Escuchando... (timeout=8.0s, phrase_limit=6.0s)
+2025-03-22 22:03:02,436 - AsistenteVoz - INFO - Audio capturado correctamente
+2025-03-22 22:03:03,257 - AsistenteVoz - WARNING - Google no pudo entender el audio
+2025-03-22 22:03:03,257 - AsistenteVoz - WARNING - Todos los servicios de transcripción fallaron
+2025-03-22 22:03:03,258 - AsistenteVoz - INFO - Esperando la palabra clave...
+2025-03-22 22:03:03,445 - AsistenteVoz - INFO - Escuchando... (timeout=8.5s, phrase_limit=6.5s)
+2025-03-22 22:03:09,102 - AsistenteVoz - INFO - Audio capturado correctamente
+2025-03-22 22:03:09,527 - AsistenteVoz - WARNING - Google no pudo entender el audio
+2025-03-22 22:03:09,527 - AsistenteVoz - WARNING - Todos los servicios de transcripción fallaron
+2025-03-22 22:03:09,527 - AsistenteVoz - INFO - Esperando la palabra clave...
+2025-03-22 22:03:09,685 - AsistenteVoz - INFO - Escuchando... (timeout=9.0s, phrase_limit=7.0s)
+2025-03-22 22:03:15,513 - AsistenteVoz - INFO - Audio capturado correctamente
+2025-03-22 22:03:16,098 - AsistenteVoz - WARNING - Google no pudo entender el audio
+2025-03-22 22:03:16,098 - AsistenteVoz - WARNING - Todos los servicios de transcripción fallaron
+2025-03-22 22:03:16,099 - AsistenteVoz - INFO - Esperando la palabra clave...
+2025-03-22 22:03:16,164 - AsistenteVoz - INFO - Escuchando... (timeout=9.5s, phrase_limit=7.5s)
+2025-03-22 22:03:16,165 - AsistenteVoz - INFO - Ajustando para ruido ambiental...
+2025-03-22 22:03:27,496 - AsistenteVoz - INFO - Audio capturado correctamente
+2025-03-22 22:03:28,130 - AsistenteVoz - WARNING - Google no pudo entender el audio
+2025-03-22 22:03:28,130 - AsistenteVoz - WARNING - Todos los servicios de transcripción fallaron
+2025-03-22 22:03:28,130 - AsistenteVoz - INFO - Esperando la palabra clave...
+2025-03-22 22:03:28,297 - AsistenteVoz - INFO - Escuchando... (timeout=10.0s, phrase_limit=8.0s)
+2025-03-22 22:03:38,827 - AsistenteVoz - INFO - Audio capturado correctamente
+2025-03-22 22:03:39,896 - AsistenteVoz - WARNING - Google no pudo entender el audio
+2025-03-22 22:03:39,897 - AsistenteVoz - WARNING - Todos los servicios de transcripción fallaron
+2025-03-22 22:03:39,897 - AsistenteVoz - INFO - Esperando la palabra clave...
+2025-03-22 22:03:39,983 - AsistenteVoz - INFO - Escuchando... (timeout=10.5s, phrase_limit=8s)
+2025-03-22 22:03:42,907 - AsistenteVoz - INFO - Audio capturado correctamente
+2025-03-22 22:03:43,367 - AsistenteVoz - WARNING - Google no pudo entender el audio
+2025-03-22 22:03:43,367 - AsistenteVoz - WARNING - Todos los servicios de transcripción fallaron
+2025-03-22 22:03:43,367 - AsistenteVoz - INFO - Esperando la palabra clave...
+2025-03-22 22:03:43,559 - AsistenteVoz - INFO - Escuchando... (timeout=11.0s, phrase_limit=8s)
+2025-03-22 22:03:45,592 - AsistenteVoz - INFO - Audio capturado correctamente
+2025-03-22 22:03:46,049 - AsistenteVoz - WARNING - Google no pudo entender el audio
+2025-03-22 22:03:46,049 - AsistenteVoz - WARNING - Todos los servicios de transcripción fallaron
+2025-03-22 22:03:46,049 - AsistenteVoz - INFO - Esperando la palabra clave...
+2025-03-22 22:03:46,203 - AsistenteVoz - INFO - Escuchando... (timeout=11.5s, phrase_limit=8s)
+2025-03-22 22:03:51,150 - AsistenteVoz - INFO - Audio capturado correctamente
+2025-03-22 22:03:51,997 - AsistenteVoz - WARNING - Google no pudo entender el audio
+2025-03-22 22:03:51,998 - AsistenteVoz - WARNING - Todos los servicios de transcripción fallaron
+2025-03-22 22:03:51,998 - AsistenteVoz - INFO - Esperando la palabra clave...
+2025-03-22 22:03:52,072 - AsistenteVoz - INFO - Escuchando... (timeout=12.0s, phrase_limit=8s)
+2025-03-22 22:03:59,483 - AsistenteVoz - INFO - Audio capturado correctamente
+2025-03-22 22:04:00,329 - AsistenteVoz - WARNING - Google no pudo entender el audio
+2025-03-22 22:04:00,330 - AsistenteVoz - WARNING - Todos los servicios de transcripción fallaron
+2025-03-22 22:04:00,330 - AsistenteVoz - INFO - Esperando la palabra clave...
+2025-03-22 22:04:00,330 - AsistenteVoz - WARNING - Muchos fallos consecutivos (11), recalibrando...
+2025-03-22 22:04:00,425 - AsistenteVoz - INFO - Analizando nivel de audio ambiental durante 3 segundos...
+2025-03-22 22:04:00,426 - AsistenteVoz - ERROR - Error al analizar nivel de audio: [Errno -9997] Invalid sample rate
+2025-03-22 22:04:00,426 - AsistenteVoz - INFO - Reproduciendo: Recalibrando sensibilidad a 300
+2025-03-22 22:04:03,987 - AsistenteVoz - INFO - Escuchando... (timeout=12s, phrase_limit=8s)
+2025-03-22 22:04:13,234 - AsistenteVoz - INFO - Audio capturado correctamente
+2025-03-22 22:04:13,975 - AsistenteVoz - WARNING - Google no pudo entender el audio
+2025-03-22 22:04:13,976 - AsistenteVoz - WARNING - Todos los servicios de transcripción fallaron
+2025-03-22 22:04:13,976 - AsistenteVoz - INFO - Esperando la palabra clave...
+2025-03-22 22:04:14,130 - AsistenteVoz - INFO - Escuchando... (timeout=7.5s, phrase_limit=5.5s)
+2025-03-22 22:04:18,964 - AsistenteVoz - INFO - Audio capturado correctamente
+2025-03-22 22:04:19,579 - AsistenteVoz - WARNING - Google no pudo entender el audio
+2025-03-22 22:04:19,579 - AsistenteVoz - WARNING - Todos los servicios de transcripción fallaron
+2025-03-22 22:04:19,579 - AsistenteVoz - INFO - Esperando la palabra clave...
+2025-03-22 22:04:19,634 - AsistenteVoz - INFO - Escuchando... (timeout=8.0s, phrase_limit=6.0s)
+2025-03-22 22:04:19,635 - AsistenteVoz - INFO - Ajustando para ruido ambiental...
+2025-03-22 22:04:25,026 - AsistenteVoz - INFO - Audio capturado correctamente
+2025-03-22 22:04:25,610 - AsistenteVoz - WARNING - Google no pudo entender el audio
+2025-03-22 22:04:25,611 - AsistenteVoz - WARNING - Todos los servicios de transcripción fallaron
+2025-03-22 22:04:25,611 - AsistenteVoz - INFO - Esperando la palabra clave...
+2025-03-22 22:04:25,679 - AsistenteVoz - INFO - Escuchando... (timeout=8.5s, phrase_limit=6.5s)
+2025-03-22 22:04:28,641 - AsistenteVoz - INFO - Audio capturado correctamente
+2025-03-22 22:04:29,044 - AsistenteVoz - WARNING - Google no pudo entender el audio
+2025-03-22 22:04:29,044 - AsistenteVoz - WARNING - Todos los servicios de transcripción fallaron
+2025-03-22 22:04:29,045 - AsistenteVoz - INFO - Esperando la palabra clave...
+2025-03-22 22:04:29,225 - AsistenteVoz - INFO - Escuchando... (timeout=9.0s, phrase_limit=7.0s)
+2025-03-22 22:04:34,174 - AsistenteVoz - INFO - Audio capturado correctamente
+2025-03-22 22:04:36,031 - AsistenteVoz - INFO - Transcripción (Google): 'te estuve bastante ocupado Pero ahorita te entiendo güey'
+2025-03-22 22:04:36,031 - AsistenteVoz - INFO - Verificando si 'te estuve bastante ocupado pero ahorita te entiendo güey' contiene palabra clave
+2025-03-22 22:04:36,032 - AsistenteVoz - INFO - ¡Palabra similar detectada! ('bastante' similar a 'asistente')
+2025-03-22 22:04:36,032 - AsistenteVoz - INFO - Reproduciendo: ¿En qué puedo ayudarte?
+2025-03-22 22:04:38,517 - AsistenteVoz - INFO - Palabra clave detectada. Entrando en modo de instrucciones.
+2025-03-22 22:04:38,517 - AsistenteVoz - INFO - Esperando instrucciones...
+2025-03-22 22:04:38,655 - AsistenteVoz - INFO - Escuchando... (timeout=10s, phrase_limit=7s)
+2025-03-22 22:04:41,038 - AsistenteVoz - INFO - Deteniendo el asistente de voz...
+2025-03-22 22:10:24,193 - AsistenteVoz - INFO - Micrófono seleccionado: 0
+2025-03-22 22:10:24,194 - AsistenteVoz - INFO - Iniciando hilo de reconocimiento de voz...
+2025-03-22 22:10:24,222 - AsistenteVoz - INFO - Analizando nivel de audio ambiental durante 3 segundos...
+2025-03-22 22:10:24,223 - AsistenteVoz - ERROR - Error al analizar nivel de audio: [Errno -9997] Invalid sample rate
+2025-03-22 22:10:24,223 - AsistenteVoz - INFO - Reproduciendo: Asistente de voz activado. Di mi nombre para comenzar.
+2025-03-22 22:10:28,862 - AsistenteVoz - INFO - Esperando la palabra clave...
+2025-03-22 22:10:28,930 - AsistenteVoz - INFO - Escuchando... (timeout=7.0s, phrase_limit=5.0s)
+2025-03-22 22:10:28,931 - AsistenteVoz - INFO - Ajustando para ruido ambiental...
+2025-03-22 22:10:36,913 - AsistenteVoz - INFO - Audio capturado correctamente
+2025-03-22 22:10:37,605 - AsistenteVoz - INFO - Transcripción (Google): 'Hola Silvia'
+2025-03-22 22:10:37,605 - AsistenteVoz - INFO - Verificando si 'hola silvia' contiene palabra clave
+2025-03-22 22:10:37,605 - AsistenteVoz - INFO - ¡Palabra de activación detectada! ('silvia' en 'hola silvia')
+2025-03-22 22:10:37,605 - AsistenteVoz - INFO - Reproduciendo: ¿En qué puedo ayudarte?
+2025-03-22 22:10:39,910 - AsistenteVoz - INFO - Palabra clave detectada. Entrando en modo de instrucciones.
+2025-03-22 22:10:39,910 - AsistenteVoz - INFO - Esperando instrucciones...
+2025-03-22 22:10:39,996 - AsistenteVoz - INFO - Escuchando... (timeout=10s, phrase_limit=7s)
+2025-03-22 22:10:42,338 - AsistenteVoz - INFO - Audio capturado correctamente
+2025-03-22 22:10:43,017 - AsistenteVoz - INFO - Transcripción (Google): 'dibuja un perro'
+2025-03-22 22:10:43,018 - AsistenteVoz - INFO - Instrucción recibida: dibuja un perro
+2025-03-22 22:10:44,797 - httpx - INFO - HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+2025-03-22 22:10:48,520 - AsistenteVoz - INFO - Reproduciendo: Un perro bonito! 
+
+Puedo dibujarlo con diferentes colores y patrones para que lo haga más interesante.
+
+Estos son algunos ejemplos:
+
+* Perro blanco con sombrero y gafas
+* Perro gris con peluche y oreja larga
+* Perro negro con corona de flores
+
+¿Quieres que dibujes un perro con uno de estos colores?
+2025-03-22 22:11:11,393 - AsistenteVoz - INFO - Esperando la palabra clave...
+2025-03-22 22:11:11,473 - AsistenteVoz - INFO - Escuchando... (timeout=7.0s, phrase_limit=5.0s)
+2025-03-22 22:11:14,284 - AsistenteVoz - INFO - Audio capturado correctamente
+2025-03-22 22:11:14,704 - AsistenteVoz - WARNING - Google no pudo entender el audio
+2025-03-22 22:11:14,704 - AsistenteVoz - WARNING - Todos los servicios de transcripción fallaron
+2025-03-22 22:11:14,705 - AsistenteVoz - INFO - Esperando la palabra clave...
+2025-03-22 22:11:14,890 - AsistenteVoz - INFO - Escuchando... (timeout=7.5s, phrase_limit=5.5s)
+2025-03-22 22:11:23,786 - AsistenteVoz - WARNING - Tiempo de espera agotado. No se detectó audio.
+2025-03-22 22:11:23,789 - AsistenteVoz - INFO - Esperando la palabra clave...
+2025-03-22 22:11:24,008 - AsistenteVoz - INFO - Escuchando... (timeout=8.0s, phrase_limit=6.0s)
+2025-03-22 22:11:31,512 - AsistenteVoz - INFO - Audio capturado correctamente
+2025-03-22 22:11:31,918 - AsistenteVoz - WARNING - Google no pudo entender el audio
+2025-03-22 22:11:31,918 - AsistenteVoz - WARNING - Todos los servicios de transcripción fallaron
+2025-03-22 22:11:31,918 - AsistenteVoz - INFO - Esperando la palabra clave...
+2025-03-22 22:11:32,057 - AsistenteVoz - INFO - Escuchando... (timeout=8.5s, phrase_limit=6.5s)
+2025-03-22 22:11:32,057 - AsistenteVoz - INFO - Ajustando para ruido ambiental...
+2025-03-22 22:11:34,367 - AsistenteVoz - INFO - Deteniendo el asistente de voz...
+2025-03-22 22:11:35,510 - AsistenteVoz - INFO - Audio capturado correctamente
+2025-03-22 22:11:35,857 - AsistenteVoz - WARNING - Google no pudo entender el audio
+2025-03-22 22:11:35,857 - AsistenteVoz - WARNING - Todos los servicios de transcripción fallaron
+2025-03-22 22:11:35,858 - AsistenteVoz - INFO - Hilo terminado correctamente.
+2025-03-22 22:11:50,753 - AsistenteVoz - INFO - Micrófono seleccionado: 0
+2025-03-22 22:11:50,753 - AsistenteVoz - INFO - Iniciando hilo de reconocimiento de voz...
+2025-03-22 22:11:50,779 - AsistenteVoz - INFO - Analizando nivel de audio ambiental durante 3 segundos...
+2025-03-22 22:11:50,780 - AsistenteVoz - ERROR - Error al analizar nivel de audio: [Errno -9997] Invalid sample rate
+2025-03-22 22:11:50,780 - AsistenteVoz - INFO - Reproduciendo: Asistente de voz activado. Di mi nombre para comenzar.
+2025-03-22 22:11:55,416 - AsistenteVoz - INFO - Esperando la palabra clave...
+2025-03-22 22:11:55,500 - AsistenteVoz - INFO - Escuchando... (timeout=7.0s, phrase_limit=5.0s)
+2025-03-22 22:11:55,500 - AsistenteVoz - INFO - Ajustando para ruido ambiental...
+2025-03-22 22:12:03,619 - AsistenteVoz - INFO - Audio capturado correctamente
+2025-03-22 22:12:04,048 - AsistenteVoz - WARNING - Google no pudo entender el audio
+2025-03-22 22:12:04,049 - AsistenteVoz - WARNING - Todos los servicios de transcripción fallaron
+2025-03-22 22:12:04,049 - AsistenteVoz - INFO - Esperando la palabra clave...
+2025-03-22 22:12:04,124 - AsistenteVoz - INFO - Escuchando... (timeout=7.5s, phrase_limit=5.5s)
+2025-03-22 22:12:07,886 - AsistenteVoz - INFO - Audio capturado correctamente
+2025-03-22 22:12:08,658 - AsistenteVoz - INFO - Transcripción (Google): 'Hola Silvia'
+2025-03-22 22:12:08,658 - AsistenteVoz - INFO - Verificando si 'hola silvia' contiene palabra clave
+2025-03-22 22:12:08,658 - AsistenteVoz - INFO - ¡Palabra de activación detectada! ('silvia' en 'hola silvia')
+2025-03-22 22:12:08,658 - AsistenteVoz - INFO - Reproduciendo: ¿En qué puedo ayudarte?
+2025-03-22 22:12:10,964 - AsistenteVoz - INFO - Palabra clave detectada. Entrando en modo de instrucciones.
+2025-03-22 22:12:10,964 - AsistenteVoz - INFO - Esperando instrucciones...
+2025-03-22 22:12:11,037 - AsistenteVoz - INFO - Escuchando... (timeout=10s, phrase_limit=7s)
+2025-03-22 22:12:13,076 - AsistenteVoz - INFO - Audio capturado correctamente
+2025-03-22 22:12:13,676 - AsistenteVoz - INFO - Transcripción (Google): 'dibuja un perro'
+2025-03-22 22:12:13,676 - AsistenteVoz - INFO - Instrucción recibida: dibuja un perro
+2025-03-22 22:12:14,317 - AsistenteVoz - INFO - Reproduciendo: ¿Qué deseas dibujar?
+2025-03-22 22:12:16,598 - AsistenteVoz - INFO - Escuchando... (timeout=10s, phrase_limit=7s)
+2025-03-22 22:12:19,928 - AsistenteVoz - INFO - Audio capturado correctamente
+2025-03-22 22:12:20,683 - AsistenteVoz - INFO - Transcripción (Google): 'dibuja un perro'
+2025-03-22 22:12:20,741 - httpx - INFO - HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+2025-03-22 22:12:22,220 - AsistenteVoz - INFO - Reproduciendo: Prompt generado para Stable Diffusion.
+2025-03-22 22:12:30,022 - AsistenteVoz - INFO - Reproduciendo: Prompt generado: ¡Claro! Aquí te dejo un prompt para Stable Diffusion que me permite generar una imagen animada y artística de un perro:
+
+"Genera un dibujo animado en color de un perro con ojos grandes y expresivos, abrazando a un niño pequeño con un beso en la frente. El perro debe tener el cuerpo delijo y las orejas largas, y los colores deben ser suaves y pastelinos. Deje que la imagen se desarrolla para mostrar la emoción y la bondad entre el perro y el niño."
+2025-03-22 22:13:02,172 - AsistenteVoz - INFO - Esperando la palabra clave...
+2025-03-22 22:13:02,254 - AsistenteVoz - INFO - Escuchando... (timeout=7.0s, phrase_limit=5.0s)
+2025-03-22 22:13:02,254 - AsistenteVoz - INFO - Ajustando para ruido ambiental...
+2025-03-22 22:13:04,439 - AsistenteVoz - INFO - Deteniendo el asistente de voz...
