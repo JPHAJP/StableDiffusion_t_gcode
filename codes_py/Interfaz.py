@@ -134,7 +134,7 @@ def check_gcode_conditions(gcode_file, max_segment=700, max_lines=10000):
 
     return True
 
-def process_unified(final_prompt, uploaded_image, blur_kernel_size, min_contour_area, clahe_clip_limit, combine_with_original, progress=gr.Progress(track_tqdm=False)):
+def process_unified(final_prompt, uploaded_image, blur_kernel_size, min_contour_area, clahe_clip_limit, black_gcode, progress=gr.Progress(track_tqdm=False)):
     """
     Función unificada que procesa la entrada según el prompt final o imagen cargada.
     """
@@ -174,16 +174,21 @@ def process_unified(final_prompt, uploaded_image, blur_kernel_size, min_contour_
         blur_kernel_size=blur_kernel_size,
         min_contour_area=min_contour_area,
         clahe_clip_limit=clahe_clip_limit,
-        combine_with_original=combine_with_original
+        combine_with_original=True
     )
     yield (original, processed, None, f"Fuente: {image_source}\nPrompt usado: {final_prompt}\nImagen procesada para detección de bordes")
     progress(0.4, desc="Imagen procesada para detección de bordes")
+
+    if black_gcode:
+        black_gcode = "black"
+    else:
+        black_gcode = None
 
     # Generar G-code a partir de la imagen procesada
     convert_image_to_gcode(
         image_input="processed.png",
         output_gcode="out.nc",
-        edges_mode=None,
+        edges_mode=black_gcode,
         threshold=32,
         scale=1.0,
         simplify=0.8,
@@ -294,8 +299,8 @@ def main():
                 gr.Markdown("### Parámetros de procesamiento")
                 blur_kernel_size = gr.Number(label="Tamaño del kernel de desenfoque", value=3)
                 min_contour_area = gr.Number(label="Área mínima del contorno", value=5)
-                clahe_clip_limit = gr.Number(label="Límite de clip para CLAHE", value=1.5)
-                combine_with_original = gr.Checkbox(label="Combinar con original", value=True)
+                clahe_clip_limit = gr.Number(label="Límite de clip para CLAHE", value=0.5)
+                black_gcode = gr.Checkbox(label="Simplificación", value=True)
                 
                 # Botón único para procesar
                 process_button = gr.Button("Procesar", variant="primary", size="lg")
@@ -346,7 +351,7 @@ def main():
             inputs=[
                 final_prompt, image_input,
                 blur_kernel_size, min_contour_area, 
-                clahe_clip_limit, combine_with_original
+                clahe_clip_limit, black_gcode
             ],
             outputs=[original_output, processed_output, gcode_output, status_output],
             queue=True

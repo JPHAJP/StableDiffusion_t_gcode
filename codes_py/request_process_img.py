@@ -84,7 +84,7 @@ def process_image(
     clahe_grid_size=(8, 8),            # Tamaño de cuadrícula para CLAHE
     
     # Parámetros de detección de bordes
-    canny_threshold_min=70,            # Umbral mínimo para Canny
+    canny_threshold_min=100,            # Umbral mínimo para Canny
     canny_threshold_max=200,           # Umbral máximo para Canny
     
     # Parámetros de operaciones morfológicas
@@ -93,7 +93,7 @@ def process_image(
     
     # Parámetros de filtrado de contornos
     min_contour_area=5,                # Área mínima de contorno para filtrar ruido
-    contour_thickness=1,               # Grosor de línea al dibujar contornos
+    contour_thickness=2,               # Grosor de línea al dibujar contornos
     
     # Opciones adicionales
     combine_with_original=True,        # Combinar con bordes Canny originales
@@ -171,7 +171,11 @@ def process_image(
     # Filtrar contornos según el área mínima
     for contour in contours:
         if cv2.contourArea(contour) > min_contour_area:
-            cv2.drawContours(filtered_mask, [contour], 0, 255, contour_thickness)
+            cv2.drawContours(filtered_mask, [contour], -1, (255,255,255), contour_thickness)
+        epsilon = 0.002 * cv2.arcLength(contour, True)
+        approx_curve = cv2.approxPolyDP(contour, epsilon, True)
+        cv2.drawContours(filtered_mask, [approx_curve], -1, (255, 255, 255), contour_thickness)
+
     
     # 6. Combinar con la imagen original de Canny si se solicita
     if combine_with_original:
@@ -183,21 +187,19 @@ def process_image(
     if invert_output:
         result = cv2.bitwise_not(result)
     
-    print(f"Imagen procesada guardada como '{output_path}'")
-    # Define a 3x3 kernel
-    kernel = np.ones((3, 3), np.uint8)
-
-    # Erosion: The pixel value is set to the minimum value within the kernel's neighborhood
-    result = cv2.erode(result, kernel, iterations=2)
-
-    # Dilation: The pixel value is set to the maximum value within the kernel's neighborhood
+    #kernel = np.ones((3, 3), np.uint8)
+     # Erosion: The pixel value is set to the minimum value within the kernel's neighborhood
+    result = cv2.erode(result, kernel, iterations=1)
+     # Dilation: The pixel value is set to the maximum value within the kernel's neighborhood
     result = cv2.dilate(result, kernel, iterations=1)
+   
 
     # Convertir resultado a formato PIL para guardar
     result_pil = Image.fromarray(result)
+    
     # Guardar la imagen resultante
     result_pil.save(output_path)
-
+    print(f"Imagen procesada guardada como '{output_path}'")
     return result_pil
 
 if __name__ == '__main__':
