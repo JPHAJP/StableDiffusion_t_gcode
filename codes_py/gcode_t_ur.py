@@ -11,8 +11,8 @@ class NCtoURConverter:
         self.control = None
         self.receive = None
         self.io = None
-        self.drawing_plane_z = 0.015  # 15mm drawing plane
-        self.line_offset_z = 0.025    # 25mm offset between lines
+        self.drawing_plane_z = 0.016  # 16.5mm drawing plane
+        self.line_offset_z = .01  # 25mm offset between lines
         self.blend_radius = 0.005     # 5mm blend radius
         self.current_x = None
         self.current_y = None
@@ -23,8 +23,8 @@ class NCtoURConverter:
         self.move_speed = 0.5
         self.move_accel = 0.5
         # Add X and Y offset of -0.3 meters
-        self.x_offset =  0.1
-        self.y_offset = -0.5
+        self.x_offset = -0.1
+        self.y_offset = -0.2
         
     def initialize_robot(self):
         """Initialize connection to the UR robot"""
@@ -67,7 +67,7 @@ class NCtoURConverter:
         
         # UR5e workspace limits (in meters)
         UR5E_MAX_REACH = 0.85
-        UR5E_MIN_REACH = 0.30
+        UR5E_MIN_REACH = 0.18
         
         return UR5E_MIN_REACH <= distance <= UR5E_MAX_REACH
     
@@ -75,7 +75,7 @@ class NCtoURConverter:
         """Move the robot to a specified position while maintaining TCP orientation"""
         # Apply offset to x and y coordinates
         x = x + self.x_offset
-        y = y + self.y_offset
+        y = -y + self.y_offset
         
         # Handle cases where x or y is zero (maintain previous value)
         if x == self.x_offset and self.current_x is not None:
@@ -146,16 +146,16 @@ class NCtoURConverter:
             line = line.strip()
             if not line:
                 continue
-                
+                    
             # Parse G-code command
             g_match = re.match(r'G([01])\s', line)
             if not g_match:
                 print(f"Skipping unsupported command: {line}")
                 continue
-                
+                    
             g_code = int(g_match.group(1))
             is_rapid = (g_code == 0)  # G0 is rapid movement
-            
+                
             # Parse X, Y coordinates
             x_match = re.search(r'X([-\d.]+)', line)
             y_match = re.search(r'Y([-\d.]+)', line)
@@ -168,21 +168,45 @@ class NCtoURConverter:
                 # Set Z based on whether it's a drawing move or a rapid move
                 z = self.drawing_plane_z if not is_rapid else self.drawing_plane_z + self.line_offset_z
                 
-                print(f"Line {i+1}/{len(nc_lines)}: Moving to: X={x*1000:.2f}mm, Y={y*1000:.2f}mm, Z={z*1000:.2f}mm, {'Rapid' if is_rapid else 'Linear'}")
-                
-                # Execute the movement
-                success = self.move_robot(x, y, z, is_rapid)
-                if not success:
-                    print(f"Failed to execute movement: {line}")
+                # If the movement is rapid (G0), first move up, then perform rapid move
+                if is_rapid:
+                    print(f"Line {i+1}/{len(nc_lines)}: Moving up to Z={z + self.line_offset_z*1000:.2f}mm (for G0), then rapid movement to: X={x*1000:.2f}mm, Y={y*1000:.2f}mm")
+                    # Move linearly upward before rapid movement
+                    success = self.move_robot(x, y, z + self.line_offset_z, is_rapid=False)
+                    if not success:
+                        print(f"Failed to move linearly up before rapid move: {line}")
+                        continue
+                    
+                    # Perform rapid move (G0)
+                    success = self.move_robot(x, y, z, is_rapid=True)
+                    if not success:
+                        print(f"Failed to perform rapid movement: {line}")
+                        continue
+                    
+                    # After rapid move, go down to drawing plane
+                    success = self.move_robot(x, y, self.drawing_plane_z, is_rapid=False)
+                    if not success:
+                        print(f"Failed to move back to drawing plane: {line}")
+                        continue
+                    
+                else:
+                    # For linear movements (G1), just move directly
+                    print(f"Line {i+1}/{len(nc_lines)}: Moving to: X={x*1000:.2f}mm, Y={y*1000:.2f}mm, Z={z*1000:.2f}mm, Linear movement")
+                    
+                    # Execute the movement
+                    success = self.move_robot(x, y, z, is_rapid=False)
+                    if not success:
+                        print(f"Failed to execute movement: {line}")
             else:
                 print(f"Missing X or Y coordinate in command: {line}")
         
         print("NC code processing complete")
         return True
 
+
 def main():
     # Set default file path for NC code
-    default_nc_file = "graph5.nc"
+    default_nc_file = "out.nc"
     
     # Create NC to UR converter
     converter = NCtoURConverter(robot_ip="192.168.1.1")

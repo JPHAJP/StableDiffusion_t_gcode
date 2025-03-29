@@ -183,7 +183,7 @@ def process_unified(final_prompt, uploaded_image, blur_kernel_size, min_contour_
     convert_image_to_gcode(
         image_input="processed.png",
         output_gcode="out.nc",
-        edges_mode="black",
+        edges_mode=None,
         threshold=32,
         scale=1.0,
         simplify=0.8,
@@ -357,7 +357,7 @@ def main():
         send_status = gr.Textbox(label="Estado de envío")
         send_button.click(fn=send_gcode, inputs=[], outputs=send_status)
 
-        demo.queue().launch(share=True)
+        demo.queue().launch(share=False)
 
 if __name__ == "__main__":
     main()

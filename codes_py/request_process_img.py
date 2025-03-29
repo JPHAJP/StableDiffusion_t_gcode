@@ -183,13 +183,21 @@ def process_image(
     if invert_output:
         result = cv2.bitwise_not(result)
     
+    print(f"Imagen procesada guardada como '{output_path}'")
+    # Define a 3x3 kernel
+    kernel = np.ones((3, 3), np.uint8)
+
+    # Erosion: The pixel value is set to the minimum value within the kernel's neighborhood
+    result = cv2.erode(result, kernel, iterations=2)
+
+    # Dilation: The pixel value is set to the maximum value within the kernel's neighborhood
+    result = cv2.dilate(result, kernel, iterations=1)
+
     # Convertir resultado a formato PIL para guardar
     result_pil = Image.fromarray(result)
-    
     # Guardar la imagen resultante
     result_pil.save(output_path)
-    print(f"Imagen procesada guardada como '{output_path}'")
-    
+
     return result_pil
 
 if __name__ == '__main__':

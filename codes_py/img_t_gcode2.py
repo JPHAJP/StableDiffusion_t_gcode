@@ -46,7 +46,7 @@ class Graph:
     class Node:
         def __init__(self, point, index):
             # Intercambiamos para que x corresponda a la columna y y a la fila
-            self.x, self.y = point[1], -point[0]
+            self.x, self.y = -point[1], -point[0]
             self.index = index
             self.connections = {}
 
@@ -597,7 +597,7 @@ from PIL import Image
 def convert_image_to_gcode(
     image_input,
     output_gcode="out.nc",
-    edges_mode="black",
+    edges_mode=None,
     threshold=32,
     scale=1.0,
     simplify=0.5,
