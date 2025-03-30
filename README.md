@@ -32,7 +32,8 @@ Declarar variable de entorno
 export HF_AUTH_TOKEN="abc123"
 (debe ser tu propia apikey de hugingface)
 
-stable diffusion on docker API thks to #https://github.com/kiri-art/docker-diffusers-api/blob/dev
+stable diffusion on docker API thks to
+https://github.com/AbdBarho/stable-diffusion-webui-docker?tab=readme-ov-file
 
 image_to_gcode, thks to #https://github.com/Stypox/image-to-gcode
 #python3 image-to-gcode/image_to_gcode.py --input image.png --output graph.nc --threshold 100 --scale 1
@@ -40,3 +41,5 @@ image_to_gcode, thks to #https://github.com/Stypox/image-to-gcode
 
 Input example:
 An scary horror house with the moon at the back at night, simple, animated
+
+
