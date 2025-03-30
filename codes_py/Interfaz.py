@@ -19,7 +19,7 @@ from gcode_t_ur import main as send_gcode_to_ur
 # ====================================================
 # Función para generar imagen usando la API txt2img de AUTOMATIC1111
 # ====================================================
-def generate_image(prompt, negative_prompt="", steps=30, cfg_scale=7, width=512, height=512, sampler_index="Euler", seed=-1, batch_size=1, n_iter=1, send_images=True, save_images=False):
+def generate_image(prompt, negative_prompt="", steps=40, cfg_scale=7, width=812, height=812, sampler_index="Euler", seed=-1, batch_size=1, n_iter=1, send_images=True, save_images=False):
     url = "http://localhost:7860/sdapi/v1/txt2img"
     payload = {
         "prompt": prompt,
@@ -245,23 +245,22 @@ def get_gcode_preview():
 # ====================================================
 def main():
     with gr.Blocks(theme=gr.themes.Soft(), title="Sistema de Generación y Envío de G-code") as demo:
-        # Variables de estado - definidas fuera de pestañas para que sean accesibles a todas
+        # Variables de estado
         final_prompt = gr.State("")
         final_negative_prompt = gr.State("")
         original_image = gr.State(None)
         processed_image = gr.State(None)
         gcode_ready = gr.State(False)
-        # Variable de estado para controlar la pestaña activa
-        active_tab = gr.State(0)
-
+        
         gr.Markdown("# 🤖 Sistema de Generación y Envío de G-code a UR")
         gr.Markdown("### Genera imágenes, conviértelas a G-code y envíalas al robot UR")
         
-        with gr.Tabs() as tabs:
+        with gr.Tabs():
             # =============================================
             # Pestaña 1: Generación de Imagen
             # =============================================
-            with gr.Tab("📷 Generación de Imagen"):
+            with gr.TabItem("📷 Generación de Imagen"):
+                # --- (Contenido de la pestaña de generación de imagen) ---
                 with gr.Row():
                     with gr.Column(scale=1):
                         gr.Markdown("### 🎨 Generación de Prompts")
@@ -307,9 +306,8 @@ def main():
                 with gr.Row():
                     original_output = gr.Image(label="Imagen Original/Generada")
                     
-                with gr.Row():
-                    next_to_process_btn = gr.Button("Continuar a Procesamiento ➡️", variant="primary", visible=True)
-                    
+                gr.Markdown("*Para continuar, selecciona la pestaña '⚙️ Procesamiento de Imagen' en la parte superior.*")
+                
                 # Eventos para la pestaña 1
                 process_audio_btn.click(
                     fn=process_audio,
@@ -336,39 +334,21 @@ def main():
                     inputs=[final_prompt, final_negative_prompt, uploaded_image_input],
                     outputs=[original_output, status_image, original_image]
                 )
-                
-                # Función para cambiar pestaña corregida
-                def go_to_processing_tab():
-                    # Simplemente devuelve el índice de la pestaña a la que queremos ir
-                    return 1
-                
-                next_to_process_btn.click(
-                    fn=go_to_processing_tab,
-                    outputs=active_tab
-                )
             
             # =============================================
             # Pestaña 2: Procesamiento de Imagen
             # =============================================
-            with gr.Tab("⚙️ Procesamiento de Imagen"):
+            with gr.TabItem("⚙️ Procesamiento de Imagen"):
+                # --- (Contenido de la pestaña de procesamiento) ---
                 with gr.Row():
                     with gr.Column(scale=1):
                         gr.Markdown("### ⚙️ Parámetros de Procesamiento")
                         with gr.Row():
-                            blur_kernel_size = gr.Slider(
-                                minimum=1, maximum=9, value=3, step=2, 
-                                label="Kernel de Desenfoque"
-                            )
+                            blur_kernel_size = gr.Slider(minimum=1, maximum=20, value=3, step=2, label="Kernel de Desenfoque")
                         with gr.Row():
-                            min_contour_area = gr.Slider(
-                                minimum=1, maximum=50, value=5, step=1,
-                                label="Área Mínima de Contorno"
-                            )
+                            min_contour_area = gr.Slider(minimum=1, maximum=50, value=5, step=1, label="Área Mínima de Contorno")
                         with gr.Row():
-                            clahe_clip_limit = gr.Slider(
-                                minimum=0.1, maximum=5.0, value=0.5, step=0.1,
-                                label="Límite de Clip CLAHE"
-                            )
+                            clahe_clip_limit = gr.Slider(minimum=0.01, maximum=10.0, value=0.5, step=0.01, label="Límite de Clip CLAHE")
                         
                         proc_image_btn = gr.Button("Procesar Imagen", variant="primary")
                         status_process = gr.Textbox(label="Estado", lines=2)
@@ -378,10 +358,8 @@ def main():
                         processed_output = gr.Image(label="Imagen Procesada (Bordes)")
                 
                 with gr.Row():
-                    back_to_gen_btn = gr.Button("⬅️ Volver a Generación", variant="secondary")
-                    next_to_gcode_btn = gr.Button("Continuar a G-code ➡️", variant="primary")
+                    gr.Markdown("*Para volver a 'Generación de Imagen' o continuar a 'Generación de G-code', utiliza las pestañas de arriba.*")
                 
-                # Eventos para la pestaña 2
                 def process_and_update(original_img, blur, min_area, clahe):
                     img, status = step_process_image(original_img, blur, min_area, clahe)
                     return img, status, img
@@ -391,21 +369,12 @@ def main():
                     inputs=[original_image, blur_kernel_size, min_contour_area, clahe_clip_limit],
                     outputs=[processed_output, status_process, processed_image]
                 )
-                
-                back_to_gen_btn.click(
-                    fn=lambda: 0,  # Índice de la pestaña de generación
-                    outputs=active_tab
-                )
-                
-                next_to_gcode_btn.click(
-                    fn=lambda: 2,  # Índice de la pestaña de g-code
-                    outputs=active_tab
-                )
             
             # =============================================
             # Pestaña 3: Generación de G-code
             # =============================================
-            with gr.Tab("💾 Generación de G-code"):
+            with gr.TabItem("💾 Generación de G-code"):
+                # --- (Contenido de la pestaña de G-code) ---
                 with gr.Row():
                     with gr.Column(scale=1):
                         gr.Markdown("### ⚙️ Configuración de G-code")
@@ -437,10 +406,8 @@ def main():
                             )
                 
                 with gr.Row():
-                    back_to_process_btn = gr.Button("⬅️ Volver a Procesamiento", variant="secondary")
-                    next_to_send_btn = gr.Button("Continuar a Envío ➡️", variant="primary")
+                    gr.Markdown("*Para volver a 'Procesamiento de Imagen' o continuar a 'Envío al Robot', usa las pestañas de arriba.*")
                 
-                # Eventos para la pestaña 3
                 def generate_gcode_and_preview(black_gcode_option):
                     result, status = step_generate_gcode(black_gcode_option)
                     gcode_text = get_gcode_preview()
@@ -452,31 +419,34 @@ def main():
                     inputs=[black_gcode],
                     outputs=[gcode_output, status_gcode, gcode_preview, gcode_ready]
                 )
-                
-                back_to_process_btn.click(
-                    fn=lambda: 1,  # Índice de la pestaña de procesamiento
-                    outputs=active_tab
-                )
-                
-                next_to_send_btn.click(
-                    fn=lambda: 3,  # Índice de la pestaña de envío
-                    outputs=active_tab
-                )
             
             # =============================================
-            # Pestaña 4: Envío al Robot
+            # Pestaña 4: Envío al Robot UR
             # =============================================
-            with gr.Tab("🤖 Envío al Robot UR"):
+            # Agrega esta función junto a las otras funciones de procesamiento, por ejemplo, después de step_send_gcode
+            def load_images():
+                try:
+                    original = Image.open("original.png")
+                except Exception as e:
+                    original = None
+                try:
+                    gcode_img = Image.open("gcode_plot.png")
+                except Exception as e:
+                    gcode_img = None
+                return original, gcode_img
+
+            # ...
+
+            # En la pestaña 4: Envío al Robot UR
+            with gr.TabItem("🤖 Envío al Robot UR"):
                 with gr.Row(equal_height=True):
                     with gr.Column(scale=1):
                         gr.Markdown("### 📤 Envío de G-code al Robot")
-                        
                         robot_status = gr.Textbox(
                             label="Estado del Robot", 
                             value="Esperando para enviar G-code...",
                             interactive=False
                         )
-                        
                         with gr.Accordion("Configuración de Conexión", open=False):
                             robot_ip = gr.Textbox(
                                 label="IP del Robot", 
@@ -488,105 +458,29 @@ def main():
                                 value=30002,
                                 precision=0
                             )
-                        
                         send_button = gr.Button("Enviar G-code al Robot", variant="primary")
                         send_status = gr.Textbox(label="Estado de Envío", lines=2)
-                        
                     with gr.Column(scale=1):
                         gr.Markdown("### 📊 Resumen del Proceso")
-                        
                         with gr.Row():
                             with gr.Column(scale=1):
                                 gr.Markdown("#### Imagen Original")
-                                original_preview = gr.Image(
-                                    label="", 
-                                    interactive=False,
-                                    height=150
-                                )
+                                original_preview = gr.Image(label="", interactive=False, height=150)
                             with gr.Column(scale=1):
                                 gr.Markdown("#### G-code Generado")
-                                gcode_preview_small = gr.Image(
-                                    label="", 
-                                    interactive=False,
-                                    height=150
-                                )
+                                gcode_preview_small = gr.Image(label="", interactive=False, height=150)
+                        # Se agrega el botón para cargar imágenes
+                        load_images_btn = gr.Button("Cargar Imágenes", variant="secondary")
+                        progress = gr.Textbox(label="Progreso", value="Esperando envío...", interactive=False)
                         
-                        progress = gr.Textbox(
-                            label="Progreso", 
-                            value="Esperando envío...",
-                            interactive=False
+                        # Evento para el botón: actualiza las imágenes en el resumen
+                        load_images_btn.click(
+                            fn=load_images,
+                            outputs=[original_preview, gcode_preview_small]
                         )
-                
-                with gr.Row():
-                    back_to_gcode_btn = gr.Button("⬅️ Volver a G-code", variant="secondary")
-                    restart_btn = gr.Button("🔄 Reiniciar Proceso", variant="secondary")
-                
-                # Eventos para la pestaña 4
-                def update_send_tab():
-                    try:
-                        original = Image.open("original.png")
-                        gcode_img = Image.open("gcode_plot.png")
-                        return original, gcode_img
-                    except Exception as e:
-                        return None, None
-                
-                # Eliminado el evento problemático que usaba tabs como input
-                
-                send_button.click(
-                    fn=step_send_gcode,
-                    outputs=send_status
-                )
-                
-                back_to_gcode_btn.click(
-                    fn=lambda: 2,  # Índice de la pestaña de g-code
-                    outputs=active_tab
-                )
-                
-                def reset_state():
-                    # Devuelve valores por defecto para los estados
-                    return "", "", None, None, False, 0  # El último 0 es para ir a la primera pestaña
-                
-                restart_btn.click(
-                    fn=reset_state,
-                    outputs=[final_prompt, final_negative_prompt, original_image, processed_image, gcode_ready, active_tab]
-                )
-        
-                # Evento para cambiar de pestaña basado en active_tab
-        # Evento para cambiar de pestaña basado en active_tab
-        active_tab.change(
-            fn=lambda tab_idx: gr.update(selected=tab_idx),
-            inputs=active_tab,
-            outputs=tabs
-        )
 
-        # Nueva función para cargar las imágenes cuando se cambia a la pestaña de envío
-        def on_tab_change(tab_idx):
-            if tab_idx == 3:  # Si estamos yendo a la pestaña de envío
-                original_path = "original.png"
-                gcode_path = "gcode_plot.png"
-                
-                # Verificar si los archivos existen antes de intentar abrirlos
-                if not os.path.exists(original_path) or not os.path.exists(gcode_path):
-                    print(f"Advertencia: Uno o ambos archivos no existen: {original_path}, {gcode_path}")
-                    return None, None
-                
-                try:
-                    original = Image.open(original_path)
-                    gcode_img = Image.open(gcode_path)
-                    return original, gcode_img
-                except Exception as e:
-                    print(f"Error al cargar imágenes de previsualización: {str(e)}")
-                    return None, None
-            return None, None
+            
         
-        # Usamos el componente de estado active_tab para actualizar las imágenes de vista previa
-        active_tab.change(
-            fn=on_tab_change,
-            inputs=active_tab,
-            outputs=[original_preview, gcode_preview_small]
-        )
-        
-        # Mensaje de pie de página
         gr.Markdown("""
         ### 📝 Notas
         - Los archivos generados se guardan localmente: `original.png`, `processed.png`, `out.nc` y `gcode_plot.png`
@@ -594,7 +488,6 @@ def main():
         - La optimización de prompts requiere tener Ollama con llama3.1 instalado
         """)
     
-    # Iniciar la aplicación
     demo.queue().launch(share=False)
 
 if __name__ == "__main__":
