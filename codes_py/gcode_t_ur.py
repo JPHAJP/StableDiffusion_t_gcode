@@ -6,8 +6,11 @@ import rtde_receive
 import rtde_io
 
 class NCtoURConverter:
-    def __init__(self, robot_ip="192.168.1.1"):
+    def __init__(self, robot_ip="192.168.1.1", progress_callback=None):
         self.ip = robot_ip
+        self.progress_callback = progress_callback  # Función de callback para el progreso
+        # Resto del código sin cambios...
+        #self.ip = robot_ip
         self.control = None
         self.receive = None
         self.io = None
@@ -123,14 +126,22 @@ class NCtoURConverter:
                 with open(file_path, 'r') as f:
                     nc_lines = f.readlines()
                 print(f"Successfully loaded NC file: {file_path}")
+                if self.progress_callback:
+                    self.progress_callback(f"Archivo NC cargado: {file_path}")
             except Exception as e:
                 print(f"Error reading NC file: {e}")
+                if self.progress_callback:
+                    self.progress_callback(f"Error al leer archivo NC: {e}")
                 return False
         elif nc_code:
             nc_lines = nc_code.strip().split('\n')
             print("Processing NC code from string input")
+            if self.progress_callback:
+                self.progress_callback("Procesando código NC desde entrada de texto")
         else:
             print("Error: No NC code provided")
+            if self.progress_callback:
+                self.progress_callback("Error: No se ha proporcionado código NC")
             return False
         
         # Get current TCP pose to initialize values
@@ -139,9 +150,16 @@ class NCtoURConverter:
         self.current_y = tcp_pose[1]
         self.current_z = tcp_pose[2]
         
-        print(f"Starting NC code processing with {len(nc_lines)} lines")
+        # Filtrar solo las líneas de G-code válidas (G0 o G1)
+        valid_lines = [line.strip() for line in nc_lines if line.strip() and re.match(r'G[01]\s', line.strip())]
+        total_valid_lines = len(valid_lines)
+        
+        print(f"Starting NC code processing with {total_valid_lines} valid G-code lines")
+        if self.progress_callback:
+            self.progress_callback(f"Iniciando procesamiento de código NC con {total_valid_lines} líneas G-code válidas")
         
         # Process each line of NC code
+        processed_lines = 0
         for i, line in enumerate(nc_lines):
             line = line.strip()
             if not line:
@@ -155,6 +173,7 @@ class NCtoURConverter:
                     
             g_code = int(g_match.group(1))
             is_rapid = (g_code == 0)  # G0 is rapid movement
+            processed_lines += 1
                 
             # Parse X, Y coordinates
             x_match = re.search(r'X([-\d.]+)', line)
@@ -168,67 +187,60 @@ class NCtoURConverter:
                 # Set Z based on whether it's a drawing move or a rapid move
                 z = self.drawing_plane_z if not is_rapid else self.drawing_plane_z + self.line_offset_z
                 
-                # If the movement is rapid (G0), first move up, then perform rapid move
-                if is_rapid:
-                    print(f"Line {i+1}/{len(nc_lines)}: Moving up to Z={z + self.line_offset_z*1000:.2f}mm (for G0), then rapid movement to: X={x*1000:.2f}mm, Y={y*1000:.2f}mm")
-                    # Move linearly upward before rapid movement
-                    success = self.move_robot(x, y, z + self.line_offset_z, is_rapid=False)
-                    if not success:
-                        print(f"Failed to move linearly up before rapid move: {line}")
-                        continue
-                    
-                    # Perform rapid move (G0)
-                    success = self.move_robot(x, y, z, is_rapid=True)
-                    if not success:
-                        print(f"Failed to perform rapid movement: {line}")
-                        continue
-                    
-                    # After rapid move, go down to drawing plane
-                    success = self.move_robot(x, y, self.drawing_plane_z, is_rapid=False)
-                    if not success:
-                        print(f"Failed to move back to drawing plane: {line}")
-                        continue
-                    
-                else:
-                    # For linear movements (G1), just move directly
-                    print(f"Line {i+1}/{len(nc_lines)}: Moving to: X={x*1000:.2f}mm, Y={y*1000:.2f}mm, Z={z*1000:.2f}mm, Linear movement")
-                    
-                    # Execute the movement
-                    success = self.move_robot(x, y, z, is_rapid=False)
-                    if not success:
-                        print(f"Failed to execute movement: {line}")
-            else:
-                print(f"Missing X or Y coordinate in command: {line}")
+                # Progress update - Actualizamos en CADA línea para mejor seguimiento
+                progress_msg = f"Línea {processed_lines}/{total_valid_lines}: {'Movimiento rápido' if is_rapid else 'Movimiento lineal'} a X={x*1000:.2f}mm, Y={y*1000:.2f}mm"
+                print(progress_msg)
+                if self.progress_callback:
+                    self.progress_callback(progress_msg)
+                
+                # Execute the movement
+                if not self.move_robot(x, y, z, is_rapid):
+                    print(f"Warning: Movement to ({x:.3f}, {y:.3f}, {z:.3f}) failed!")
+                    if self.progress_callback:
+                        self.progress_callback(f"¡Advertencia! Movimiento a ({x*1000:.2f}mm, {y*1000:.2f}mm) falló")
         
         print("NC code processing complete")
+        if self.progress_callback:
+            self.progress_callback(f"Procesamiento de código NC completado. Se ejecutaron {processed_lines} líneas de {total_valid_lines}.")
         return True
 
-
-def main():
+def main(robot_ip="192.168.1.1", progress_callback=None):
     # Set default file path for NC code
     default_nc_file = "out.nc"
     
     # Create NC to UR converter
-    converter = NCtoURConverter(robot_ip="192.168.1.1")
+    converter = NCtoURConverter(robot_ip=robot_ip, progress_callback=progress_callback)
     
     # Initialize robot connection
     print("Initializing robot connection...")
+    if progress_callback:
+        progress_callback("Initializing robot connection...")
+    
     while not converter.initialize_robot():
         print("Retrying connection to robot...")
+        if progress_callback:
+            progress_callback("Retrying connection to robot...")
         time.sleep(1)
     
     # Move to home position
     print("Moving to home position...")
+    if progress_callback:
+        progress_callback("Moving to home position...")
     converter.go_home()
     time.sleep(2)
     
     # Process NC code from file
     print(f"Processing NC code from file: {default_nc_file}")
+    if progress_callback:
+        progress_callback(f"Processing NC code from file: {default_nc_file}")
+    
     # Check if file exists, otherwise use hardcoded NC code
     try:
         converter.process_nc_file(file_path=default_nc_file)
     except FileNotFoundError:
         print(f"File {default_nc_file} not found. Using hardcoded NC code.")
+        if progress_callback:
+            progress_callback(f"File {default_nc_file} not found. Using hardcoded NC code.")
         # Hardcoded NC code as fallback
         nc_code = """G0 X60.00 Y-2.00
 G1 X63.00 Y-1.00
@@ -238,8 +250,52 @@ G1 X64.00 Y-4.00
     
     # Return to home position when done
     print("Execution complete. Returning to home position...")
+    if progress_callback:
+        progress_callback("Execution complete. Returning to home position...")
     converter.go_home()
     print("Program finished")
+    if progress_callback:
+        progress_callback("Program finished")
+    return True
+
+
+
+# def main():
+#     # Set default file path for NC code
+#     default_nc_file = "out.nc"
+    
+#     # Create NC to UR converter
+#     converter = NCtoURConverter(robot_ip="192.168.1.1")
+    
+#     # Initialize robot connection
+#     print("Initializing robot connection...")
+#     while not converter.initialize_robot():
+#         print("Retrying connection to robot...")
+#         time.sleep(1)
+    
+#     # Move to home position
+#     print("Moving to home position...")
+#     converter.go_home()
+#     time.sleep(2)
+    
+#     # Process NC code from file
+#     print(f"Processing NC code from file: {default_nc_file}")
+#     # Check if file exists, otherwise use hardcoded NC code
+#     try:
+#         converter.process_nc_file(file_path=default_nc_file)
+#     except FileNotFoundError:
+#         print(f"File {default_nc_file} not found. Using hardcoded NC code.")
+#         # Hardcoded NC code as fallback
+#         nc_code = """G0 X60.00 Y-2.00
+# G1 X63.00 Y-1.00
+# G1 X64.00 Y-4.00
+# """
+#         converter.process_nc_file(nc_code=nc_code)
+    
+#     # Return to home position when done
+#     print("Execution complete. Returning to home position...")
+#     converter.go_home()
+#     print("Program finished")
 
 if __name__ == "__main__":
     main()

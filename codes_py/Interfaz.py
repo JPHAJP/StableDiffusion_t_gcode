@@ -202,16 +202,102 @@ def step_generate_gcode(black_gcode):
     except Exception as e:
         return None, f"Error al visualizar G-code: {str(e)}"
 
-def step_send_gcode():
+
+def check_gcode_exists():
+    """Verifica si el archivo out.nc existe y está listo para ser enviado"""
+    if os.path.exists("out.nc"):
+        try:
+            with open("out.nc", "r") as f:
+                lines = [l.strip() for l in f.readlines() if l.startswith("G0") or l.startswith("G1")]
+                if len(lines) > 0:
+                    return True
+        except:
+            pass
+    return False
+
+def step_send_gcode(robot_ip, robot_port):
     """
     Paso 4: Envía el G-code al robot UR.
+    Usa un generador para enviar actualizaciones incrementales a Gradio.
     """
+    if not os.path.exists("out.nc"):
+        yield "Error: No se encontró el archivo out.nc. Primero genera el G-code."
+        return
+    
+    # Contar el número total de líneas para mostrar el progreso
     try:
-        send_gcode_to_ur()
-        return "G-code enviado al robot UR exitosamente."
+        with open("out.nc", "r") as f:
+            total_lines = len([l for l in f.readlines() if l.strip() and (l.startswith("G0") or l.startswith("G1"))])
+        yield f"Archivo G-code cargado: {total_lines} líneas de código detectadas."
     except Exception as e:
-        return f"Error al enviar G-code: {e}"
+        yield f"Error al leer el archivo G-code: {str(e)}"
+        return
+    
+    progress_messages = []
+    current_line = 0
+    
+    def update_progress(message):
+        nonlocal current_line
+        progress_messages.append(message)
+        
+        # Actualizar contador de líneas si el mensaje contiene información de línea
+        if "Línea" in message and "/" in message:
+            try:
+                line_info = message.split("Línea ")[1].split("/")[0]
+                current_line = int(line_info.strip())
+            except:
+                pass
+        
+        # Crear texto de progreso con contador de líneas y porcentaje
+        progress_percent = round((current_line / total_lines) * 100, 1) if total_lines > 0 else 0
+        progress_header = f"Progreso: {current_line}/{total_lines} líneas ({progress_percent}%)\n"
+        progress_header += "=" * int(50 * progress_percent / 100) + ">" + " " * (50 - int(50 * progress_percent / 100)) + "\n\n"
+        
+        # Mostrar las últimas líneas de mensajes
+        progress_text = progress_header + "\n".join(progress_messages[-15:])
+        return progress_text
+    
+    try:
+        yield "Inicializando conexión con el robot..."
+        
+        # Define una función de callback para recibir actualizaciones de progreso
+        def progress_callback(msg):
+            return update_progress(msg)
+        
+        # Importar dinámicamente para evitar problemas de scope
+        from gcode_t_ur import NCtoURConverter
+        
+        # Crear instancia con la IP y callback proporcionados
+        converter = NCtoURConverter(robot_ip=robot_ip, progress_callback=progress_callback)
+        
+        yield update_progress("Intentando conectar con el robot...")
+        
+        # Inicializar robot
+        if not converter.initialize_robot():
+            yield update_progress("Error: No se pudo conectar con el robot. Verifica la IP y que el robot esté encendido.")
+            return
+        
+        yield update_progress("Conexión establecida. Moviendo a posición inicial...")
+        
+        # Mover a posición inicial
+        converter.go_home()
+        yield update_progress("Robot en posición inicial. Procesando G-code...")
+        
+        # Procesar G-code
+        if not converter.process_nc_file(file_path="out.nc"):
+            yield update_progress("Error: No se pudo procesar el archivo G-code.")
+            return
+        
+        yield update_progress("G-code procesado. Volviendo a posición inicial...")
+        
+        # Volver a posición inicial
+        converter.go_home()
+        
+        yield update_progress("¡Proceso completado con éxito! El robot ha ejecutado el G-code.")
+    except Exception as e:
+        yield update_progress(f"Error durante la ejecución: {str(e)}")
 
+        
 # Añadida función para verificar condiciones del G-code (faltaba en el código original)
 def check_gcode_conditions(gcode_file, max_segment=700, max_lines=10000):
     """
@@ -450,7 +536,7 @@ def main():
                         with gr.Accordion("Configuración de Conexión", open=False):
                             robot_ip = gr.Textbox(
                                 label="IP del Robot", 
-                                value="192.168.1.10",
+                                value="192.168.1.1",
                                 placeholder="Dirección IP del Robot UR"
                             )
                             robot_port = gr.Number(
@@ -459,7 +545,21 @@ def main():
                                 precision=0
                             )
                         send_button = gr.Button("Enviar G-code al Robot", variant="primary")
-                        send_status = gr.Textbox(label="Estado de Envío", lines=2)
+                        # Cambiamos Text por Textbox con más líneas para ver el progreso
+                        progress_log = gr.Textbox(
+                            label="Progreso de la Ejecución", 
+                            lines=10,  # Más líneas para ver una historia de progreso
+                            value="El progreso se mostrará aquí...",
+                            interactive=False
+                        )
+                        
+                        # Usamos el modo 'queue' para actualizaciones incrementales
+                        send_button.click(
+                            fn=step_send_gcode,
+                            inputs=[robot_ip, robot_port],
+                            outputs=[progress_log]
+                        )
+
                     with gr.Column(scale=1):
                         gr.Markdown("### 📊 Resumen del Proceso")
                         with gr.Row():
@@ -469,6 +569,7 @@ def main():
                             with gr.Column(scale=1):
                                 gr.Markdown("#### G-code Generado")
                                 gcode_preview_small = gr.Image(label="", interactive=False, height=150)
+                        
                         # Se agrega el botón para cargar imágenes
                         load_images_btn = gr.Button("Cargar Imágenes", variant="secondary")
                         progress = gr.Textbox(label="Progreso", value="Esperando envío...", interactive=False)
