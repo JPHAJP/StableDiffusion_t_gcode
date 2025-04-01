@@ -14,7 +14,7 @@ class NCtoURConverter:
         self.control = None
         self.receive = None
         self.io = None
-        self.drawing_plane_z = 0.016  # 16.5mm drawing plane
+        self.drawing_plane_z = 0.0045  # 16.5mm drawing plane
         self.line_offset_z = .01  # 25mm offset between lines
         self.blend_radius = 0.005     # 5mm blend radius
         self.current_x = None

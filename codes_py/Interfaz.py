@@ -10,16 +10,74 @@ import tempfile
 import requests
 import base64
 import io
+import threading
+import queue
+import socket
+import qrcode
+
 
 from request_process_img import process_image  
 from img_t_gcode2 import convert_image_to_gcode
 from gcode_t_img import plot_gcode
-from gcode_t_ur import main as send_gcode_to_ur
+from gcode_t_ur import NCtoURConverter
+
+
+def get_server_ip():
+    """
+    Obtiene la IP local del servidor para conexiones LAN.
+    Se conecta a un servidor público (8.8.8.8) para determinar la IP de salida.
+    """
+    s = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
+    try:
+        s.connect(('8.8.8.8', 80))
+        ip = s.getsockname()[0]
+    except Exception:
+        ip = '127.0.0.1'
+    finally:
+        s.close()
+    return ip
+
+def generate_qr_code(url):
+    """
+    Genera un código QR para la URL proporcionada y lo devuelve como una imagen PIL.
+    Convierte la imagen a un formato compatible con Gradio.
+    """
+    qr = qrcode.QRCode(
+        version=1,
+        error_correction=qrcode.constants.ERROR_CORRECT_L,
+        box_size=10,
+        border=4,
+    )
+    qr.add_data(url)
+    qr.make(fit=True)
+    
+    # Crea la imagen QR
+    img = qr.make_image(fill_color="black", back_color="white")
+    
+    # Convertir a formato PIL.Image.Image que Gradio puede manejar
+    if not isinstance(img, Image.Image):
+        # Si es un objeto PilImage especial de qrcode, convertirlo a PIL.Image
+        img = img.get_image()
+    
+    # Guardar temporalmente la imagen y cargarla para asegurar compatibilidad
+    buffer = io.BytesIO()
+    img.save(buffer, format="PNG")
+    buffer.seek(0)
+    pil_img = Image.open(buffer)
+    
+    return pil_img
+
+def update_qr_with_url(url):
+    """Actualiza el código QR con la URL proporcionada"""
+    if url and url.startswith("http"):
+        qr_img = generate_qr_code(url)
+        return qr_img, f"QR generado para: {url}"
+    return None, "Ingresa una URL válida que comience con http:// o https://"
 
 # ====================================================
 # Función para generar imagen usando la API txt2img de AUTOMATIC1111
 # ====================================================
-def generate_image(prompt, negative_prompt="", steps=40, cfg_scale=7, width=812, height=812, sampler_index="Euler", seed=-1, batch_size=1, n_iter=1, send_images=True, save_images=False):
+def generate_image(prompt, negative_prompt="", steps=30, cfg_scale=7, width=512, height=512, sampler_index="Euler", seed=-1, batch_size=1, n_iter=1, send_images=True, save_images=False):
     url = "http://localhost:7860/sdapi/v1/txt2img"
     payload = {
         "prompt": prompt,
@@ -59,11 +117,10 @@ def enhance_prompt(text, target_language="en"):
     Rules:
     1. The prompt MUST be in English.
     2. Focus on generating an animated image.
-    3. Keep the description simple but detailed.
-    4. Include aspects such as: art style, lighting, colors, perspective.
-    5. Final format: Just the prompt with no additional explanation.
-    6. Use no more than 75 words.
-    7. Do not mention that you are generating a prompt.
+    3. Keep the description very simple.
+    4. Final format: Just the prompt with no additional explanation.
+    5. Use no more than 25 words.
+    6. Do not mention that you are generating a prompt.
     """
     messages = [
         {"role": "system", "content": system_prompt},
@@ -84,7 +141,7 @@ def enhance_negative_prompt(text, target_language="en"):
     Convert the user description into a negative prompt optimized for image generation.
     Rules:
     1. The prompt MUST be in English.
-    2. Focus on describing what to avoid: low quality, blurry, distorted, artifacts, watermark, etc.
+    2. Focus on describing what to avoid: low quality, blurry, distorted, watermark, etc.
     3. Keep it concise and effective.
     4. Use no more than 50 words.
     5. Output only the negative prompt without additional explanation.
@@ -227,77 +284,128 @@ def step_send_gcode(robot_ip, robot_port):
     # Contar el número total de líneas para mostrar el progreso
     try:
         with open("out.nc", "r") as f:
-            total_lines = len([l for l in f.readlines() if l.strip() and (l.startswith("G0") or l.startswith("G1"))])
+            gcode_lines = [l for l in f.readlines() if l.strip() and (l.startswith("G0") or l.startswith("G1"))]
+            total_lines = len(gcode_lines)
         yield f"Archivo G-code cargado: {total_lines} líneas de código detectadas."
     except Exception as e:
         yield f"Error al leer el archivo G-code: {str(e)}"
         return
     
-    progress_messages = []
-    current_line = 0
+    # Cola de mensajes para comunicación entre hilos
+    message_queue = queue.Queue()
     
-    def update_progress(message):
-        nonlocal current_line
-        progress_messages.append(message)
-        
-        # Actualizar contador de líneas si el mensaje contiene información de línea
-        if "Línea" in message and "/" in message:
-            try:
-                line_info = message.split("Línea ")[1].split("/")[0]
-                current_line = int(line_info.strip())
-            except:
-                pass
-        
-        # Crear texto de progreso con contador de líneas y porcentaje
-        progress_percent = round((current_line / total_lines) * 100, 1) if total_lines > 0 else 0
-        progress_header = f"Progreso: {current_line}/{total_lines} líneas ({progress_percent}%)\n"
-        progress_header += "=" * int(50 * progress_percent / 100) + ">" + " " * (50 - int(50 * progress_percent / 100)) + "\n\n"
-        
-        # Mostrar las últimas líneas de mensajes
-        progress_text = progress_header + "\n".join(progress_messages[-15:])
-        return progress_text
+    # Variable para seguimiento de progreso
+    progress_data = {
+        "current_line": 0,
+        "total_lines": total_lines,
+        "messages": [],
+        "status": "iniciando"
+    }
     
-    try:
-        yield "Inicializando conexión con el robot..."
+    # Función de callback para recibir actualizaciones desde el robot
+    def progress_callback(message):
+        message_queue.put(message)
+        return message  # Necesario retornar para la clase NCtoURConverter
+    
+    # Función para el hilo de ejecución del robot
+    def robot_execution_thread():
+        try:
+            converter = NCtoURConverter(robot_ip=robot_ip, progress_callback=progress_callback)
+            
+            # Poner mensaje en la cola
+            message_queue.put("Intentando conectar con el robot...")
+            
+            # Inicializar robot
+            if not converter.initialize_robot():
+                message_queue.put("ERROR: No se pudo conectar con el robot. Verifica la IP y que el robot esté encendido.")
+                progress_data["status"] = "error"
+                return
+            
+            message_queue.put("Conexión establecida. Moviendo a posición inicial...")
+            
+            # Mover a posición inicial
+            converter.go_home()
+            message_queue.put("Robot en posición inicial. Procesando G-code...")
+            
+            # Procesar G-code
+            if not converter.process_nc_file(file_path="out.nc"):
+                message_queue.put("ERROR: No se pudo procesar el archivo G-code.")
+                progress_data["status"] = "error"
+                return
+            
+            message_queue.put("G-code procesado. Volviendo a posición inicial...")
+            
+            # Volver a posición inicial
+            converter.go_home()
+            
+            message_queue.put("¡Proceso completado con éxito! El robot ha ejecutado el G-code.")
+            progress_data["status"] = "completado"
+            
+        except Exception as e:
+            message_queue.put(f"ERROR durante la ejecución: {str(e)}")
+            progress_data["status"] = "error"
+    
+    # Iniciar el hilo de ejecución
+    thread = threading.Thread(target=robot_execution_thread)
+    thread.daemon = True
+    thread.start()
+    
+    # Bucle principal para enviar actualizaciones a Gradio en tiempo real
+    last_update_time = time.time()
+    
+    # Generamos una primera actualización
+    yield "Iniciando proceso de ejecución de G-code..."
+    
+    # Bucle para capturar mensajes y actualizar la interfaz
+    while thread.is_alive() or not message_queue.empty():
+        # Esperar un poco para no saturar la interfaz
+        time.sleep(0.1)
         
-        # Define una función de callback para recibir actualizaciones de progreso
-        def progress_callback(msg):
-            return update_progress(msg)
+        new_messages = []
+        # Recoger todos los mensajes disponibles desde la última vez
+        while not message_queue.empty():
+            msg = message_queue.get()
+            new_messages.append(msg)
+            progress_data["messages"].append(msg)
+            
+            # Actualizar el contador de líneas si el mensaje contiene información de línea
+            if "Línea" in msg and "/" in msg:
+                try:
+                    line_info = msg.split("Línea ")[1].split("/")[0]
+                    progress_data["current_line"] = int(line_info.strip())
+                except:
+                    pass
         
-        # Importar dinámicamente para evitar problemas de scope
-        from gcode_t_ur import NCtoURConverter
-        
-        # Crear instancia con la IP y callback proporcionados
-        converter = NCtoURConverter(robot_ip=robot_ip, progress_callback=progress_callback)
-        
-        yield update_progress("Intentando conectar con el robot...")
-        
-        # Inicializar robot
-        if not converter.initialize_robot():
-            yield update_progress("Error: No se pudo conectar con el robot. Verifica la IP y que el robot esté encendido.")
-            return
-        
-        yield update_progress("Conexión establecida. Moviendo a posición inicial...")
-        
-        # Mover a posición inicial
-        converter.go_home()
-        yield update_progress("Robot en posición inicial. Procesando G-code...")
-        
-        # Procesar G-code
-        if not converter.process_nc_file(file_path="out.nc"):
-            yield update_progress("Error: No se pudo procesar el archivo G-code.")
-            return
-        
-        yield update_progress("G-code procesado. Volviendo a posición inicial...")
-        
-        # Volver a posición inicial
-        converter.go_home()
-        
-        yield update_progress("¡Proceso completado con éxito! El robot ha ejecutado el G-code.")
-    except Exception as e:
-        yield update_progress(f"Error durante la ejecución: {str(e)}")
+        # Si hay nuevos mensajes o ha pasado suficiente tiempo, actualizar la interfaz
+        current_time = time.time()
+        if new_messages or (current_time - last_update_time) > 1:
+            # Crear texto de progreso con contador de líneas y porcentaje
+            current = progress_data["current_line"]
+            total = progress_data["total_lines"]
+            progress_percent = round((current / total) * 100, 1) if total > 0 else 0
+            
+            # Cabecera con barra de progreso
+            progress_header = f"Progreso: {current}/{total} líneas ({progress_percent}%)\n"
+            progress_bar = "=" * int(50 * progress_percent / 100) + ">" + " " * (50 - int(50 * progress_percent / 100))
+            progress_header += progress_bar + "\n\n"
+            
+            # Mostrar las últimas líneas de mensajes (limitado a 15 para no saturar)
+            messages_to_show = progress_data["messages"][-15:] if len(progress_data["messages"]) > 15 else progress_data["messages"]
+            progress_text = progress_header + "\n".join(messages_to_show)
+            
+            # Actualizar el tiempo de la última actualización
+            last_update_time = current_time
+            
+            # Yield para actualizar la interfaz de Gradio
+            yield progress_text
+    
+    # Mensaje final una vez que el thread ha terminado
+    if progress_data["status"] == "error":
+        yield "❌ Error en la ejecución del G-code. Revisa los mensajes anteriores para más detalles."
+    else:
+        yield "✅ Ejecución de G-code completada correctamente."
 
-        
+
 # Añadida función para verificar condiciones del G-code (faltaba en el código original)
 def check_gcode_conditions(gcode_file, max_segment=700, max_lines=10000):
     """
@@ -330,6 +438,12 @@ def get_gcode_preview():
 # Interfaz con Gradio REDISEÑADA: Con pestañas y mejor organización
 # ====================================================
 def main():
+    # Obtiene la IP del servidor para mostrar información de red local
+    server_ip = get_server_ip()
+    server_port = 7861  # Puerto predeterminado de Gradio
+    local_url = f"http://{server_ip}:{server_port}"
+    
+    # Inicia la interfaz de Gradio
     with gr.Blocks(theme=gr.themes.Soft(), title="Sistema de Generación y Envío de G-code") as demo:
         # Variables de estado
         final_prompt = gr.State("")
@@ -582,14 +696,38 @@ def main():
 
             
         
-        gr.Markdown("""
-        ### 📝 Notas
-        - Los archivos generados se guardan localmente: `original.png`, `processed.png`, `out.nc` y `gcode_plot.png`
-        - La generación de imágenes requiere tener AUTOMATIC1111 corriendo localmente en el puerto 7860
-        - La optimización de prompts requiere tener Ollama con llama3.1 instalado
-        """)
+        with gr.Row():
+            with gr.Column(scale=3):
+                gr.Markdown("""
+                ### 📝 Notas
+                - Los archivos generados se guardan localmente: `original.png`, `processed.png`, `out.nc` y `gcode_plot.png`
+                - La generación de imágenes requiere tener AUTOMATIC1111 corriendo localmente en el puerto 7860
+                - La optimización de prompts requiere tener Ollama con llama3.1 instalado
+                """)
+            with gr.Column(scale=2):
+                gr.Markdown(f"### 📱 Acceso remoto")
+                gr.Markdown(f"URL local: {local_url}")
+                
+                # Entrada para la URL de Gradio compartida
+                gr.Markdown("**Cuando Gradio muestre la URL pública, cópiala aquí:**")
+                gradio_url = gr.Textbox(
+                    label="URL compartida de Gradio",
+                    placeholder="https://xxx-xxx-xxx.gradio.live",
+                    interactive=True
+                )
+                generate_qr_btn = gr.Button("Generar código QR")
+                qr_image = gr.Image(label="Escanea para acceder remotamente")
+                status_text = gr.Textbox(label="Estado", interactive=False)
+                
+                # Evento para generar el QR
+                generate_qr_btn.click(
+                    fn=update_qr_with_url,
+                    inputs=[gradio_url],
+                    outputs=[qr_image, status_text]
+                )
     
-    demo.queue().launch(share=False)
+    
+    demo.queue().launch(share=True)
 
 if __name__ == "__main__":
     main()
