@@ -123,6 +123,11 @@ python3 image-to-gcode/image_to_gcode.py --input image.png --output graph.nc --t
 
 Make sure `image.png` is in the correct directory and adjust parameters as needed.
 
+## Improve with
+```
+https://pypi.org/project/pypotrace/
+```
+
 ## 🔮 Example Input
 
 Example prompt for generating an image with Stable Diffusion:
