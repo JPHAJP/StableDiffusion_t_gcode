@@ -165,7 +165,52 @@ def svg_to_gcode_with_arcs(svg_path: str, gcode_path: str, feed_rate=1000,
             contour_transitions += 1
 
         f.write(f"G0 Z{z_safe} ; Safe end\nM2 ; Program end\n")
-    print(f"G-code guardado en {{gcode_path}} con escala {scale}: {{arc_segments}} arcos, {{linear_segments}} lineales, {{contour_transitions}} contornos")
+    print(f"G-code guardado en {gcode_path} con escala {scale}: {arc_segments} arcos, {linear_segments} lineales, {contour_transitions} contornos")
+
+
+def convert_image_to_gcode(image_input, output_gcode, edges_mode=None, threshold=128, 
+                          scale=0.1, simplify=False, dot_output=None, feed_rate=1000,
+                          z_safe=5.0, z_cut=-1.0):
+    """
+    Función principal para convertir una imagen a G-code.
+    Esta es la función que se importará desde interfaz.py
+    """
+    # Generar nombres de archivos temporales para los pasos intermedios
+    base, _ = os.path.splitext(image_input)
+    pbm_path = f"{base}_temp.pbm"
+    svg_path = f"{base}_temp.svg"
+    
+    # Convertir la imagen a PBM
+    bitmap_to_pbm(image_input, pbm_path, threshold)
+    
+    # Configurar opciones de Potrace
+    potrace_opts = "-s"  # Base siempre -s (SVG)
+    if simplify:
+        potrace_opts += " -O 1.0 -t 50"  # Añadir opciones de simplificación
+    
+    # Convertir PBM a SVG usando Potrace
+    pbm_to_svg(pbm_path, svg_path, potrace_opts)
+    
+    # Convertir SVG a G-code con arcos
+    svg_to_gcode_with_arcs(
+        svg_path,
+        output_gcode,
+        feed_rate=feed_rate,
+        z_safe=z_safe,
+        z_cut=z_cut,
+        scale=scale,
+        verbose=True
+    )
+    
+    # Limpiar archivos temporales si es necesario
+    if dot_output is None:  # Si no se pide guardar archivos intermedios
+        try:
+            os.remove(pbm_path)
+            os.remove(svg_path)
+        except:
+            pass
+    
+    return True
 
 
 def main():
