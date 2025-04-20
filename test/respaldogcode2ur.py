@@ -119,102 +119,6 @@ class NCtoURConverter:
         
         return True
     
-    def move_arc(self, end_x, end_y, center_i, center_j, z, is_clockwise=True):
-        """Move the robot in an arc specified by G2/G3 command
-        
-        Args:
-            end_x, end_y: End point of the arc
-            center_i, center_j: Offset from current position to center of arc
-            z: Z-coordinate for the movement
-            is_clockwise: True for G2 (CW), False for G3 (CCW)
-        """
-        # Apply offset to coordinates
-        end_x = end_x + self.x_offset
-        end_y = -end_y + self.y_offset
-        
-        # Calculate arc center (considering the inverted y-axis)
-        center_x = self.current_x + center_i
-        center_y = self.current_y - center_j  # Negative due to inverted y-axis
-        
-        # Verify current position is set
-        if self.current_x is None or self.current_y is None or self.current_z is None:
-            print("Warning: Current position not set, cannot create arc")
-            return False
-            
-        # Check if end point is within workspace
-        if not self.is_point_within_reach(end_x, end_y, z):
-            print(f"Warning: End point ({end_x:.3f}, {end_y:.3f}, {z:.3f}) is outside workspace!")
-            return False
-            
-        # Create via point - we need a point on the arc between start and end
-        # For a circular arc, we can use the midpoint of the arc as our via point
-        # First, we need to calculate the angle between start, center, and end points
-        
-        # Vectors from center to start and end
-        start_vec = [self.current_x - center_x, self.current_y - center_y]
-        end_vec = [end_x - center_x, end_y - center_y]
-        
-        # Calculate the angle between vectors
-        dot_product = start_vec[0] * end_vec[0] + start_vec[1] * end_vec[1]
-        start_len = np.sqrt(start_vec[0]**2 + start_vec[1]**2)
-        end_len = np.sqrt(end_vec[0]**2 + end_vec[1]**2)
-        
-        # Avoid division by zero
-        if start_len == 0 or end_len == 0:
-            print("Warning: Zero length vector in arc calculation")
-            return False
-            
-        cos_angle = dot_product / (start_len * end_len)
-        # Clamp to valid range for arccos
-        cos_angle = max(min(cos_angle, 1.0), -1.0)
-        angle = np.arccos(cos_angle)
-        
-        # Check direction using cross product
-        cross_z = start_vec[0] * end_vec[1] - start_vec[1] * end_vec[0]
-        if (cross_z < 0 and is_clockwise) or (cross_z > 0 and not is_clockwise):
-            angle = 2 * np.pi - angle
-            
-        # Calculate the via point - we use 1/3 of the way around the arc
-        via_angle = angle / 3 if is_clockwise else -angle / 3
-        
-        # Rotate start vector by via_angle to get via point
-        cos_via = np.cos(via_angle)
-        sin_via = np.sin(via_angle)
-        via_vec = [
-            cos_via * start_vec[0] - sin_via * start_vec[1],
-            sin_via * start_vec[0] + cos_via * start_vec[1]
-        ]
-        
-        via_x = center_x + via_vec[0]
-        via_y = center_y + via_vec[1]
-        
-        # Check if via point is within workspace
-        if not self.is_point_within_reach(via_x, via_y, z):
-            print(f"Warning: Via point ({via_x:.3f}, {via_y:.3f}, {z:.3f}) is outside workspace!")
-            return False
-            
-        # Create pose vectors for movec
-        via_pose = [via_x, via_y, z, self.initial_rx, self.initial_ry, self.initial_rz]
-        end_pose = [end_x, end_y, z, self.initial_rx, self.initial_ry, self.initial_rz]
-        
-        # Mode 0: Orientation interpolation (from current to end)
-        mode = 0
-        
-        # Execute the arc movement
-        try:
-            self.control.moveC(via_pose, end_pose, self.move_speed, self.move_accel, self.blend_radius, mode)
-            time.sleep(0.1)  # Add sleep to ensure movement completes
-            
-            # Update current position
-            self.current_x = end_x
-            self.current_y = end_y
-            self.current_z = z
-            
-            return True
-        except Exception as e:
-            print(f"Arc movement failed: {e}")
-            return False
-    
     def process_nc_file(self, file_path=None, nc_code=None):
         """Process NC code from a file or string"""
         if file_path:
@@ -246,9 +150,8 @@ class NCtoURConverter:
         self.current_y = tcp_pose[1]
         self.current_z = tcp_pose[2]
         
-        # Filtrar solo las líneas de G-code válidas (G0, G1, G2 o G3)
-        valid_line_pattern = r'G[0123]\s'
-        valid_lines = [line.strip() for line in nc_lines if line.strip() and re.match(valid_line_pattern, line.strip())]
+        # Filtrar solo las líneas de G-code válidas (G0 o G1)
+        valid_lines = [line.strip() for line in nc_lines if line.strip() and re.match(r'G[01]\s', line.strip())]
         total_valid_lines = len(valid_lines)
         
         print(f"Starting NC code processing with {total_valid_lines} valid G-code lines")
@@ -263,38 +166,29 @@ class NCtoURConverter:
                 continue
                     
             # Parse G-code command
-            g_match = re.match(r'G([0123])\s', line)
+            g_match = re.match(r'G([01])\s', line)
             if not g_match:
                 print(f"Skipping unsupported command: {line}")
                 continue
                     
             g_code = int(g_match.group(1))
             is_rapid = (g_code == 0)  # G0 is rapid movement
-            is_linear = (g_code == 1)  # G1 is linear movement
-            is_arc_cw = (g_code == 2)  # G2 is clockwise arc
-            is_arc_ccw = (g_code == 3)  # G3 is counterclockwise arc
             processed_lines += 1
-            
+                
             # Parse X, Y coordinates
             x_match = re.search(r'X([-\d.]+)', line)
             y_match = re.search(r'Y([-\d.]+)', line)
             
-            # For arc movements, also parse I, J (arc center offset)
-            i_match = re.search(r'I([-\d.]+)', line) if (is_arc_cw or is_arc_ccw) else None
-            j_match = re.search(r'J([-\d.]+)', line) if (is_arc_cw or is_arc_ccw) else None
-            
-            # For linear or rapid movements (G0, G1)
-            if (is_rapid or is_linear) and x_match and y_match:
-                # Convert from mm to meters
+            if x_match and y_match:
+                # Convert from mm to meters - handle conversion properly
                 x = float(x_match.group(1)) / 1000.0
                 y = float(y_match.group(1)) / 1000.0
                 
                 # Set Z based on whether it's a drawing move or a rapid move
                 z = self.drawing_plane_z if not is_rapid else self.drawing_plane_z + self.line_offset_z
                 
-                # Progress update
-                movement_type = 'Movimiento rápido' if is_rapid else 'Movimiento lineal'
-                progress_msg = f"Línea {processed_lines}/{total_valid_lines}: {movement_type} a X={x*1000:.2f}mm, Y={y*1000:.2f}mm"
+                # Progress update - Actualizamos en CADA línea para mejor seguimiento
+                progress_msg = f"Línea {processed_lines}/{total_valid_lines}: {'Movimiento rápido' if is_rapid else 'Movimiento lineal'} a X={x*1000:.2f}mm, Y={y*1000:.2f}mm"
                 print(progress_msg)
                 if self.progress_callback:
                     self.progress_callback(progress_msg)
@@ -304,36 +198,6 @@ class NCtoURConverter:
                     print(f"Warning: Movement to ({x:.3f}, {y:.3f}, {z:.3f}) failed!")
                     if self.progress_callback:
                         self.progress_callback(f"¡Advertencia! Movimiento a ({x*1000:.2f}mm, {y*1000:.2f}mm) falló")
-            
-            # For arc movements (G2, G3)
-            elif (is_arc_cw or is_arc_ccw) and x_match and y_match and i_match and j_match:
-                # Convert from mm to meters
-                end_x = float(x_match.group(1)) / 1000.0
-                end_y = float(y_match.group(1)) / 1000.0
-                center_i = float(i_match.group(1)) / 1000.0  # I is X offset from current position to center
-                center_j = float(j_match.group(1)) / 1000.0  # J is Y offset from current position to center
-                
-                # Z position for arc is always drawing plane (no rapid arcs in standard gcode)
-                z = self.drawing_plane_z
-                
-                # Progress update
-                arc_type = 'Arco horario (CW)' if is_arc_cw else 'Arco antihorario (CCW)'
-                progress_msg = f"Línea {processed_lines}/{total_valid_lines}: {arc_type} a X={end_x*1000:.2f}mm, Y={end_y*1000:.2f}mm (I={center_i*1000:.2f}mm, J={center_j*1000:.2f}mm)"
-                print(progress_msg)
-                if self.progress_callback:
-                    self.progress_callback(progress_msg)
-                
-                # Execute the arc movement
-                if not self.move_arc(end_x, end_y, center_i, center_j, z, is_clockwise=is_arc_cw):
-                    print(f"Warning: Arc movement to ({end_x:.3f}, {end_y:.3f}, {z:.3f}) failed!")
-                    if self.progress_callback:
-                        self.progress_callback(f"¡Advertencia! Movimiento de arco a ({end_x*1000:.2f}mm, {end_y*1000:.2f}mm) falló")
-            
-            # Incomplete G2/G3 command
-            elif (is_arc_cw or is_arc_ccw):
-                print(f"Warning: Incomplete arc command: {line}")
-                if self.progress_callback:
-                    self.progress_callback(f"¡Advertencia! Comando de arco incompleto: {line}")
         
         print("NC code processing complete")
         if self.progress_callback:
@@ -377,12 +241,10 @@ def main(robot_ip="192.168.1.1", progress_callback=None):
         print(f"File {default_nc_file} not found. Using hardcoded NC code.")
         if progress_callback:
             progress_callback(f"File {default_nc_file} not found. Using hardcoded NC code.")
-        # Hardcoded NC code as fallback - now including arc examples
+        # Hardcoded NC code as fallback
         nc_code = """G0 X60.00 Y-2.00
 G1 X63.00 Y-1.00
 G1 X64.00 Y-4.00
-G2 X67.00 Y-2.00 I1.50 J2.50
-G3 X70.00 Y-5.00 I0.00 J-3.00
 """
         converter.process_nc_file(nc_code=nc_code)
     
@@ -395,6 +257,45 @@ G3 X70.00 Y-5.00 I0.00 J-3.00
     if progress_callback:
         progress_callback("Program finished")
     return True
+
+
+
+# def main():
+#     # Set default file path for NC code
+#     default_nc_file = "out.nc"
+    
+#     # Create NC to UR converter
+#     converter = NCtoURConverter(robot_ip="192.168.1.1")
+    
+#     # Initialize robot connection
+#     print("Initializing robot connection...")
+#     while not converter.initialize_robot():
+#         print("Retrying connection to robot...")
+#         time.sleep(1)
+    
+#     # Move to home position
+#     print("Moving to home position...")
+#     converter.go_home()
+#     time.sleep(2)
+    
+#     # Process NC code from file
+#     print(f"Processing NC code from file: {default_nc_file}")
+#     # Check if file exists, otherwise use hardcoded NC code
+#     try:
+#         converter.process_nc_file(file_path=default_nc_file)
+#     except FileNotFoundError:
+#         print(f"File {default_nc_file} not found. Using hardcoded NC code.")
+#         # Hardcoded NC code as fallback
+#         nc_code = """G0 X60.00 Y-2.00
+# G1 X63.00 Y-1.00
+# G1 X64.00 Y-4.00
+# """
+#         converter.process_nc_file(nc_code=nc_code)
+    
+#     # Return to home position when done
+#     print("Execution complete. Returning to home position...")
+#     converter.go_home()
+#     print("Program finished")
 
 if __name__ == "__main__":
     main()

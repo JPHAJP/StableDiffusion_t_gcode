@@ -17,7 +17,8 @@ import qrcode
 
 
 from request_process_img import process_image  
-from img_t_gcode2 import convert_image_to_gcode
+# Reemplazamos la importación de img_t_gcode2 por svgtry
+from svgtry import convert_image_to_gcode  # Nueva importación desde svgtry
 from gcode_t_img import plot_gcode
 from gcode_t_ur import NCtoURConverter
 
@@ -233,31 +234,39 @@ def step_process_image(original_image, blur_kernel_size, min_contour_area, clahe
     )
     return processed, "Imagen procesada para detección de bordes."
 
-def step_generate_gcode(black_gcode):
+def step_generate_gcode(threshold_value=32, scale_value=0.1, simplify_value=True):
     """
     Paso 3: Genera el G-code a partir de la imagen procesada y lo visualiza.
+    Modificada para usar el nuevo svgtry.py
     """
-    mode = "black" if black_gcode else None
-    convert_image_to_gcode(
-        image_input="processed.png",
-        output_gcode="out.nc",
-        edges_mode=mode,
-        threshold=32,
-        scale=1.0,
-        simplify=0.8,
-        dot_output=None
-    )
-    if not check_gcode_conditions("out.nc", max_segment=700, max_lines=10000):
-        return None, "El G-code generado no cumple con las restricciones."
     try:
-        plot_gcode("out.nc", "gcode_plot.png")
-        gcode_plot = Image.open("gcode_plot.png")
-        with open("out.nc", "r") as f:
-            lines = [l.strip() for l in f.readlines() if l.startswith("G0") or l.startswith("G1")]
-            num_lines = len(lines)
-        return gcode_plot, f"G-code generado exitosamente. Líneas: {num_lines}/10000"
+        # Llamamos a la nueva función desde svgtry
+        convert_image_to_gcode(
+            image_input="processed.png",
+            output_gcode="out.nc",
+            threshold=threshold_value,
+            scale=scale_value/10,
+            simplify=simplify_value,
+            dot_output=None,  # No guardamos archivos intermedios
+            feed_rate=1000,   # Valores predeterminados
+            z_safe=5.0,
+            z_cut=-1.0
+        )
+        
+        if not check_gcode_conditions("out.nc", max_segment=700, max_lines=10000):
+            return None, "El G-code generado no cumple con las restricciones."
+        
+        try:
+            plot_gcode("out.nc", "gcode_plot.png")
+            gcode_plot = Image.open("gcode_plot.png")
+            with open("out.nc", "r") as f:
+                lines = [l.strip() for l in f.readlines() if l.startswith("G0") or l.startswith("G1") or l.startswith("G2") or l.startswith("G3")]
+                num_lines = len(lines)
+            return gcode_plot, f"G-code generado exitosamente. Líneas: {num_lines}/10000"
+        except Exception as e:
+            return None, f"Error al visualizar G-code: {str(e)}"
     except Exception as e:
-        return None, f"Error al visualizar G-code: {str(e)}"
+        return None, f"Error al generar G-code: {str(e)}"
 
 
 def check_gcode_exists():
@@ -265,7 +274,7 @@ def check_gcode_exists():
     if os.path.exists("out.nc"):
         try:
             with open("out.nc", "r") as f:
-                lines = [l.strip() for l in f.readlines() if l.startswith("G0") or l.startswith("G1")]
+                lines = [l.strip() for l in f.readlines() if l.startswith("G0") or l.startswith("G1") or l.startswith("G2") or l.startswith("G3")]
                 if len(lines) > 0:
                     return True
         except:
@@ -284,7 +293,7 @@ def step_send_gcode(robot_ip, robot_port):
     # Contar el número total de líneas para mostrar el progreso
     try:
         with open("out.nc", "r") as f:
-            gcode_lines = [l for l in f.readlines() if l.strip() and (l.startswith("G0") or l.startswith("G1"))]
+            gcode_lines = [l for l in f.readlines() if l.strip() and (l.startswith("G0") or l.startswith("G1") or l.startswith("G2") or l.startswith("G3"))]
             total_lines = len(gcode_lines)
         yield f"Archivo G-code cargado: {total_lines} líneas de código detectadas."
     except Exception as e:
@@ -406,7 +415,7 @@ def step_send_gcode(robot_ip, robot_port):
         yield "✅ Ejecución de G-code completada correctamente."
 
 
-# Añadida función para verificar condiciones del G-code (faltaba en el código original)
+# Añadida función para verificar condiciones del G-code
 def check_gcode_conditions(gcode_file, max_segment=700, max_lines=10000):
     """
     Verifica si el G-code cumple con las restricciones:
@@ -415,7 +424,7 @@ def check_gcode_conditions(gcode_file, max_segment=700, max_lines=10000):
     """
     try:
         with open(gcode_file, "r") as f:
-            lines = [l.strip() for l in f.readlines() if l.startswith("G0") or l.startswith("G1")]
+            lines = [l.strip() for l in f.readlines() if l.startswith("G0") or l.startswith("G1") or l.startswith("G2") or l.startswith("G3")]
             if len(lines) > max_lines:
                 return False
             
@@ -433,6 +442,18 @@ def get_gcode_preview():
             return "".join(lines)
     except:
         return "// G-code no disponible o no se pudo leer el archivo"
+
+# Función para cargar imágenes en la pestaña de resumen
+def load_images():
+    try:
+        original = Image.open("original.png")
+    except Exception as e:
+        original = None
+    try:
+        gcode_img = Image.open("gcode_plot.png")
+    except Exception as e:
+        gcode_img = None
+    return original, gcode_img
 
 # ====================================================
 # Interfaz con Gradio REDISEÑADA: Con pestañas y mejor organización
@@ -578,18 +599,9 @@ def main():
                 with gr.Row():
                     with gr.Column(scale=1):
                         gr.Markdown("### ⚙️ Configuración de G-code")
-                        with gr.Row():
-                            black_gcode = gr.Checkbox(
-                                label="Simplificación (usar 'black')", 
-                                value=True,
-                                info="Simplifica el G-code usando el modo 'black'"
-                            )
-                        
                         with gr.Accordion("Parámetros Avanzados", open=False):
                             with gr.Row():
-                                threshold = gr.Slider(minimum=10, maximum=100, value=32, step=1, label="Umbral")
-                                scale = gr.Slider(minimum=0.1, maximum=2.0, value=1.0, step=0.1, label="Escala")
-                            simplify = gr.Slider(minimum=0.1, maximum=1.0, value=0.8, step=0.1, label="Simplificación")
+                                scalaa = gr.Slider(minimum=0.01, maximum=3.0, value=1, step=0.01, label="Escala")
                         
                         gen_gcode_btn = gr.Button("Generar G-code", variant="primary")
                         status_gcode = gr.Textbox(label="Estado", lines=2)
@@ -608,18 +620,20 @@ def main():
                 with gr.Row():
                     gr.Markdown("*Para volver a 'Procesamiento de Imagen' o continuar a 'Envío al Robot', usa las pestañas de arriba.*")
                 
-                def generate_gcode_and_preview(black_gcode_option):
-                    result, status = step_generate_gcode(black_gcode_option)
+                def generate_gcode_and_preview(scale_value):
+                    result, status = step_generate_gcode(threshold_value=32, scale_value=scale_value, simplify_value=True)
                     gcode_text = get_gcode_preview()
                     is_ready = result is not None
                     return result, status, gcode_text, is_ready
                 
                 gen_gcode_btn.click(
                     fn=generate_gcode_and_preview,
-                    inputs=[black_gcode],
+                    inputs=[scalaa],
                     outputs=[gcode_output, status_gcode, gcode_preview, gcode_ready]
                 )
+
             
+
             # =============================================
             # Pestaña 4: Envío al Robot UR
             # =============================================
@@ -727,7 +741,7 @@ def main():
                 )
     
     
-    demo.queue().launch(share=True)
+    demo.queue().launch(share=False, server_port=7861)
 
 if __name__ == "__main__":
     main()
