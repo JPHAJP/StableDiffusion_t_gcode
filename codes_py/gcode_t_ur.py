@@ -9,14 +9,12 @@ class NCtoURConverter:
     def __init__(self, robot_ip="192.168.1.1", progress_callback=None):
         self.ip = robot_ip
         self.progress_callback = progress_callback  # Función de callback para el progreso
-        # Resto del código sin cambios...
-        #self.ip = robot_ip
         self.control = None
         self.receive = None
         self.io = None
-        self.drawing_plane_z = 0.002  # 16.5mm drawing plane
-        self.line_offset_z = .01  # 25mm offset between lines
-        self.blend_radius = 0.005     # 5mm blend radius
+        self.drawing_plane_z = 0.002  # 2mm drawing plane
+        self.line_offset_z = 0.01  # 10mm offset between lines
+        self.blend_radius = 0.005  # 5mm blend radius para movimientos continuos
         self.current_x = None
         self.current_y = None
         self.current_z = None
@@ -25,7 +23,7 @@ class NCtoURConverter:
         self.initial_rz = None
         self.move_speed = 0.5
         self.move_accel = 0.5
-        # Add X and Y offset of -0.3 meters
+        # Add X and Y offset for positioning
         self.x_offset = -0.1
         self.y_offset = -0.2
         
@@ -97,20 +95,20 @@ class NCtoURConverter:
         # Set speed and blend radius based on movement type
         speed = self.move_speed * 2 if is_rapid else self.move_speed
         accel = self.move_accel * 2 if is_rapid else self.move_accel
+        
+        # CORRECCIÓN: Usar blend radius solo para movimientos lineales (G1)
+        # Para movimientos rápidos (G0), usar blend=0 para mayor precisión en el posicionamiento
         blend = 0 if is_rapid else self.blend_radius
         
-        # Move the robot - removed asynchronous flag
-        if is_rapid:
-            # For G0 (rapid movement), we'll use moveL without blending
-            self.control.moveL(target_pose, speed, accel)
-            # Add sleep to ensure movement completes
-            time.sleep(0.1)
-        else:
-            # For G1 (linear movement), use proper path format with blending
-            path_pose = target_pose + [speed, accel, blend]
-            self.control.moveL([path_pose])
-            # Add sleep to ensure movement completes
-            time.sleep(0.1)
+        # Move the robot
+        try:
+            # Usar el formato correcto para moveL
+            self.control.moveL(target_pose, speed, accel, blend)
+            # Reduce el tiempo de espera para movimientos más fluidos
+            time.sleep(0.05)
+        except Exception as e:
+            print(f"Movement error: {e}")
+            return False
         
         # Update current position
         self.current_x = x
@@ -119,8 +117,8 @@ class NCtoURConverter:
         
         return True
     
-    def move_arc(self, end_x, end_y, center_i, center_j, z, is_clockwise=True):
-        """Move the robot in an arc specified by G2/G3 command
+    def move_arc_by_linear_segments(self, end_x, end_y, center_i, center_j, z, is_clockwise=True):
+        """Move the robot in an arc by approximating with multiple linear movements
         
         Args:
             end_x, end_y: End point of the arc
@@ -140,70 +138,66 @@ class NCtoURConverter:
         if self.current_x is None or self.current_y is None or self.current_z is None:
             print("Warning: Current position not set, cannot create arc")
             return False
-            
+        
         # Check if end point is within workspace
         if not self.is_point_within_reach(end_x, end_y, z):
             print(f"Warning: End point ({end_x:.3f}, {end_y:.3f}, {z:.3f}) is outside workspace!")
             return False
-            
-        # Create via point - we need a point on the arc between start and end
-        # For a circular arc, we can use the midpoint of the arc as our via point
-        # First, we need to calculate the angle between start, center, and end points
         
-        # Vectors from center to start and end
-        start_vec = [self.current_x - center_x, self.current_y - center_y]
-        end_vec = [end_x - center_x, end_y - center_y]
-        
-        # Calculate the angle between vectors
-        dot_product = start_vec[0] * end_vec[0] + start_vec[1] * end_vec[1]
-        start_len = np.sqrt(start_vec[0]**2 + start_vec[1]**2)
-        end_len = np.sqrt(end_vec[0]**2 + end_vec[1]**2)
-        
-        # Avoid division by zero
-        if start_len == 0 or end_len == 0:
-            print("Warning: Zero length vector in arc calculation")
-            return False
-            
-        cos_angle = dot_product / (start_len * end_len)
-        # Clamp to valid range for arccos
-        cos_angle = max(min(cos_angle, 1.0), -1.0)
-        angle = np.arccos(cos_angle)
-        
-        # Check direction using cross product
-        cross_z = start_vec[0] * end_vec[1] - start_vec[1] * end_vec[0]
-        if (cross_z < 0 and is_clockwise) or (cross_z > 0 and not is_clockwise):
-            angle = 2 * np.pi - angle
-            
-        # Calculate the via point - we use 1/3 of the way around the arc
-        via_angle = angle / 3 if is_clockwise else -angle / 3
-        
-        # Rotate start vector by via_angle to get via point
-        cos_via = np.cos(via_angle)
-        sin_via = np.sin(via_angle)
-        via_vec = [
-            cos_via * start_vec[0] - sin_via * start_vec[1],
-            sin_via * start_vec[0] + cos_via * start_vec[1]
-        ]
-        
-        via_x = center_x + via_vec[0]
-        via_y = center_y + via_vec[1]
-        
-        # Check if via point is within workspace
-        if not self.is_point_within_reach(via_x, via_y, z):
-            print(f"Warning: Via point ({via_x:.3f}, {via_y:.3f}, {z:.3f}) is outside workspace!")
-            return False
-            
-        # Create pose vectors for movec
-        via_pose = [via_x, via_y, z, self.initial_rx, self.initial_ry, self.initial_rz]
-        end_pose = [end_x, end_y, z, self.initial_rx, self.initial_ry, self.initial_rz]
-        
-        # Mode 0: Orientation interpolation (from current to end)
-        mode = 0
-        
-        # Execute the arc movement
         try:
-            self.control.moveC(via_pose, end_pose, self.move_speed, self.move_accel, self.blend_radius, mode)
-            time.sleep(0.1)  # Add sleep to ensure movement completes
+            # Calculate vectors from center to start and end points
+            start_vec = [self.current_x - center_x, self.current_y - center_y]
+            end_vec = [end_x - center_x, end_y - center_y]
+            
+            # Calculate radius as magnitude of vector from center to start
+            radius = np.sqrt(start_vec[0]**2 + start_vec[1]**2)
+            
+            # Calculate start and end angles (relative to positive x-axis)
+            start_angle = np.arctan2(start_vec[1], start_vec[0])
+            end_angle = np.arctan2(end_vec[1], end_vec[0])
+            
+            # Ensure proper angle direction
+            if is_clockwise:
+                if end_angle > start_angle:
+                    end_angle -= 2 * np.pi
+            else:  # Counter-clockwise
+                if end_angle < start_angle:
+                    end_angle += 2 * np.pi
+            
+            # Calculate angle difference
+            angle_diff = abs(end_angle - start_angle)
+            
+            # Determine number of segments (more segments for larger arcs)
+            # Use at least 12 segments for a full circle, scaled by arc length
+            segments = max(int(12 * angle_diff / (2 * np.pi)), 5)
+            
+            # Generate points along the arc
+            for i in range(1, segments + 1):
+                # Calculate angle for this segment
+                segment_ratio = i / segments
+                if is_clockwise:
+                    angle = start_angle + (end_angle - start_angle) * segment_ratio
+                else:
+                    angle = start_angle + (end_angle - start_angle) * segment_ratio
+                
+                # Calculate point coordinates
+                point_x = center_x + radius * np.cos(angle)
+                point_y = center_y + radius * np.sin(angle)
+                
+                # Create pose
+                pose = [point_x, point_y, z, self.initial_rx, self.initial_ry, self.initial_rz]
+                
+                # Check if point is within workspace
+                if not self.is_point_within_reach(point_x, point_y, z):
+                    print(f"Warning: Arc segment point ({point_x:.3f}, {point_y:.3f}, {z:.3f}) is outside workspace!")
+                    return False
+                
+                # Para todos excepto el último segmento, usar blending
+                blend = self.blend_radius if i < segments else 0
+                
+                # Use moveL for each segment - EXACTAMENTE como en gcode_t_ur.py original
+                self.control.moveL(pose, self.move_speed, self.move_accel, blend)
+                time.sleep(0.05)  # Short sleep between segments
             
             # Update current position
             self.current_x = end_x
@@ -214,6 +208,41 @@ class NCtoURConverter:
         except Exception as e:
             print(f"Arc movement failed: {e}")
             return False
+    
+    def _execute_buffered_movements(self, points_buffer):
+        """Execute a series of buffered movements as a continuous path"""
+        if not points_buffer:
+            return
+        
+        try:
+            # Si es un solo punto, usar moveL normal
+            if len(points_buffer) == 1:
+                pose = points_buffer[0]
+                self.control.moveL(pose, self.move_speed, self.move_accel, 0)
+                # Actualizar posición actual
+                self.current_x = pose[0]
+                self.current_y = pose[1]
+                self.current_z = pose[2]
+                return
+            
+            # Para múltiples puntos, crear un path con blending entre puntos
+            path = []
+            for i, pose in enumerate(points_buffer):
+                # El último punto tiene blend_radius=0 para asegurar llegar exactamente
+                blend = 0 if i == len(points_buffer) - 1 else self.blend_radius
+                path.append(pose + [self.move_speed, self.move_accel, blend])
+            
+            # Ejecutar el path completo
+            self.control.moveL(path)
+            
+            # Actualizar posición actual al último punto
+            last_pose = points_buffer[-1]
+            self.current_x = last_pose[0]
+            self.current_y = last_pose[1]
+            self.current_z = last_pose[2]
+            
+        except Exception as e:
+            print(f"Error executing buffered movements: {e}")
     
     def process_nc_file(self, file_path=None, nc_code=None):
         """Process NC code from a file or string"""
@@ -257,6 +286,8 @@ class NCtoURConverter:
         
         # Process each line of NC code
         processed_lines = 0
+        linear_points_buffer = []  # Buffer for sequential G1 movements
+        
         for i, line in enumerate(nc_lines):
             line = line.strip()
             if not line:
@@ -265,14 +296,24 @@ class NCtoURConverter:
             # Parse G-code command
             g_match = re.match(r'G([0123])\s', line)
             if not g_match:
+                # Si hay puntos en el buffer y cambiamos de comando, los ejecutamos
+                if linear_points_buffer:
+                    self._execute_buffered_movements(linear_points_buffer)
+                    linear_points_buffer = []
                 print(f"Skipping unsupported command: {line}")
                 continue
                     
             g_code = int(g_match.group(1))
-            is_rapid = (g_code == 0)  # G0 is rapid movement
-            is_linear = (g_code == 1)  # G1 is linear movement
-            is_arc_cw = (g_code == 2)  # G2 is clockwise arc
-            is_arc_ccw = (g_code == 3)  # G3 is counterclockwise arc
+            is_rapid = (g_code == 0)      # G0 is rapid movement
+            is_linear = (g_code == 1)     # G1 is linear movement
+            is_arc_cw = (g_code == 2)     # G2 is clockwise arc
+            is_arc_ccw = (g_code == 3)    # G3 is counterclockwise arc
+            
+            # Si cambiamos de tipo de movimiento (G1->G0, G1->G2, etc), ejecutamos buffer pendiente
+            if (not is_linear) and linear_points_buffer:
+                self._execute_buffered_movements(linear_points_buffer)
+                linear_points_buffer = []
+                
             processed_lines += 1
             
             # Parse X, Y coordinates
@@ -299,11 +340,26 @@ class NCtoURConverter:
                 if self.progress_callback:
                     self.progress_callback(progress_msg)
                 
-                # Execute the movement
-                if not self.move_robot(x, y, z, is_rapid):
-                    print(f"Warning: Movement to ({x:.3f}, {y:.3f}, {z:.3f}) failed!")
-                    if self.progress_callback:
-                        self.progress_callback(f"¡Advertencia! Movimiento a ({x*1000:.2f}mm, {y*1000:.2f}mm) falló")
+                # Si es movimiento lineal (G1), acumulamos para path continuo
+                if is_linear:
+                    # Apply offset to x and y coordinates
+                    x_adjusted = x + self.x_offset
+                    y_adjusted = -y + self.y_offset
+                    
+                    # Create pose with initial TCP orientation
+                    target_pose = [x_adjusted, y_adjusted, z, self.initial_rx, self.initial_ry, self.initial_rz]
+                    linear_points_buffer.append(target_pose)
+                    
+                    # Si el buffer alcanza un máximo, lo ejecutamos
+                    if len(linear_points_buffer) >= 10:
+                        self._execute_buffered_movements(linear_points_buffer)
+                        linear_points_buffer = []
+                else:
+                    # Para G0 (movimiento rápido), ejecutamos directamente
+                    if not self.move_robot(x, y, z, is_rapid=True):
+                        print(f"Warning: Movement to ({x:.3f}, {y:.3f}, {z:.3f}) failed!")
+                        if self.progress_callback:
+                            self.progress_callback(f"¡Advertencia! Movimiento a ({x*1000:.2f}mm, {y*1000:.2f}mm) falló")
             
             # For arc movements (G2, G3)
             elif (is_arc_cw or is_arc_ccw) and x_match and y_match and i_match and j_match:
@@ -323,8 +379,9 @@ class NCtoURConverter:
                 if self.progress_callback:
                     self.progress_callback(progress_msg)
                 
-                # Execute the arc movement
-                if not self.move_arc(end_x, end_y, center_i, center_j, z, is_clockwise=is_arc_cw):
+                # Execute the arc movement using linear segment approximation
+                # NOTA: Usar EXACTAMENTE el mismo algoritmo de arco del archivo original
+                if not self.move_arc_by_linear_segments(end_x, end_y, center_i, center_j, z, is_clockwise=is_arc_cw):
                     print(f"Warning: Arc movement to ({end_x:.3f}, {end_y:.3f}, {z:.3f}) failed!")
                     if self.progress_callback:
                         self.progress_callback(f"¡Advertencia! Movimiento de arco a ({end_x*1000:.2f}mm, {end_y*1000:.2f}mm) falló")
@@ -334,6 +391,10 @@ class NCtoURConverter:
                 print(f"Warning: Incomplete arc command: {line}")
                 if self.progress_callback:
                     self.progress_callback(f"¡Advertencia! Comando de arco incompleto: {line}")
+        
+        # Procesar cualquier punto restante en el buffer
+        if linear_points_buffer:
+            self._execute_buffered_movements(linear_points_buffer)
         
         print("NC code processing complete")
         if self.progress_callback:
@@ -350,25 +411,25 @@ def main(robot_ip="192.168.1.1", progress_callback=None):
     # Initialize robot connection
     print("Initializing robot connection...")
     if progress_callback:
-        progress_callback("Initializing robot connection...")
+        progress_callback("Inicializando conexión con el robot...")
     
     while not converter.initialize_robot():
         print("Retrying connection to robot...")
         if progress_callback:
-            progress_callback("Retrying connection to robot...")
+            progress_callback("Reintentando conexión con el robot...")
         time.sleep(1)
     
     # Move to home position
     print("Moving to home position...")
     if progress_callback:
-        progress_callback("Moving to home position...")
+        progress_callback("Moviendo a posición inicial...")
     converter.go_home()
     time.sleep(2)
     
     # Process NC code from file
     print(f"Processing NC code from file: {default_nc_file}")
     if progress_callback:
-        progress_callback(f"Processing NC code from file: {default_nc_file}")
+        progress_callback(f"Procesando código NC desde archivo: {default_nc_file}")
     
     # Check if file exists, otherwise use hardcoded NC code
     try:
@@ -376,7 +437,7 @@ def main(robot_ip="192.168.1.1", progress_callback=None):
     except FileNotFoundError:
         print(f"File {default_nc_file} not found. Using hardcoded NC code.")
         if progress_callback:
-            progress_callback(f"File {default_nc_file} not found. Using hardcoded NC code.")
+            progress_callback(f"Archivo {default_nc_file} no encontrado. Usando código NC predefinido.")
         # Hardcoded NC code as fallback - now including arc examples
         nc_code = """G0 X60.00 Y-2.00
 G1 X63.00 Y-1.00
@@ -389,11 +450,11 @@ G3 X70.00 Y-5.00 I0.00 J-3.00
     # Return to home position when done
     print("Execution complete. Returning to home position...")
     if progress_callback:
-        progress_callback("Execution complete. Returning to home position...")
+        progress_callback("Ejecución completada. Volviendo a posición inicial...")
     converter.go_home()
     print("Program finished")
     if progress_callback:
-        progress_callback("Program finished")
+        progress_callback("Programa finalizado")
     return True
 
 if __name__ == "__main__":
