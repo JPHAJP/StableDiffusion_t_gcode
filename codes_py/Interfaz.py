@@ -70,10 +70,13 @@ def generate_qr_code(url):
 
 def update_qr_with_url(url):
     """Actualiza el código QR con la URL proporcionada"""
-    if url and url.startswith("http"):
-        qr_img = generate_qr_code(url)
-        return qr_img, f"QR generado para: {url}"
-    return None, "Ingresa una URL válida que comience con http:// o https://"
+    # if url and url.startswith("http"):
+    #     qr_img = generate_qr_code(url)
+    #     return qr_img, f"QR generado para: {url}"
+    # return None, "Ingresa una URL válida que comience con http:// o https://"
+    url = "https://ur5.postretogourmet.com"
+    qr_img = generate_qr_code(url)
+    return qr_img, f"QR generado para: {url}"
 
 # ====================================================
 # Función para generar imagen usando la API txt2img de AUTOMATIC1111
@@ -392,6 +395,25 @@ def step_send_gcode(robot_ip, robot_port):
             current = progress_data["current_line"]
             total = progress_data["total_lines"]
             progress_percent = round((current / total) * 100, 1) if total > 0 else 0
+            
+            # Guardar porcentaje en archivo cuando supere múltiplos de 5%
+            try:
+                # Leer el último porcentaje guardado
+                last_saved_percent = 0
+                if os.path.exists("porcentaje.txt"):
+                    with open("porcentaje.txt", "r") as f:
+                        content = f.read().strip()
+                        if content:
+                            last_saved_percent = float(content)
+                
+                # Actualizar si el progreso ha aumentado en 5% o más
+                if progress_percent >= last_saved_percent + 5:
+                    with open("porcentaje.txt", "w") as f:
+                        f.write(str(progress_percent))
+
+            except Exception as e:
+                # Si hay error escribiendo el archivo, continuar sin interrumpir
+                pass
             
             # Cabecera con barra de progreso
             progress_header = f"Progreso: {current}/{total} líneas ({progress_percent}%)\n"

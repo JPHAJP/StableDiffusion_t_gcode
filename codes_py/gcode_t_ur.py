@@ -269,6 +269,8 @@ class NCtoURConverter:
                 self.progress_callback("Error: No se ha proporcionado código NC")
             return False
         
+        
+        
         # Get current TCP pose to initialize values
         tcp_pose = self.receive.getActualTCPPose()
         self.current_x = tcp_pose[0]
@@ -286,6 +288,8 @@ class NCtoURConverter:
         
         # Process each line of NC code
         processed_lines = 0
+        progress_percentage_old = 0
+        progress_percentage = 0
         linear_points_buffer = []  # Buffer for sequential G1 movements
         
         for i, line in enumerate(nc_lines):
@@ -315,6 +319,37 @@ class NCtoURConverter:
                 linear_points_buffer = []
                 
             processed_lines += 1
+            
+
+            # --------------------------------- PROYECTO LEON ---------------------------------
+            # Leer I/O si esta en true segir, sino detener hasta que sea true
+            while not self.receive.getDigitalInState(0):
+                print("Waiting for I/O signal to start processing...")
+                if self.progress_callback:
+                    self.progress_callback("Esperando señal de I/O para iniciar procesamiento...")
+                time.sleep(1)  # Esperar medio segundo antes de volver a comprobar
+
+            # Calcular porcentaje de progreso
+            progress_percentage = (processed_lines / total_valid_lines) * 100
+            if progress_percentage >= progress_percentage_old + 5:
+                progress_percentage_old = progress_percentage
+                progress_msg = f"Porcentaje({progress_percentage:.2f}%)"
+                print(progress_msg)
+                # if self.progress_callback:
+                #     self.progress_callback(progress_msg)
+                # Encender I/O para indicar progreso durante medio segundo
+                self.io.setStandardDigitalOut(0, True)
+                time.sleep(0.5)
+                self.io.setStandardDigitalOut(0, False)
+            
+            if progress_percentage >= 100:
+                for i in range(5):
+                    self.io.setStandardDigitalOut(0, True)
+                    time.sleep(0.5)
+                    self.io.setStandardDigitalOut(0, False)
+
+            # ---------------------------------------------------------------------------------
+            
             
             # Parse X, Y coordinates
             x_match = re.search(r'X([-\d.]+)', line)
